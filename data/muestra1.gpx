@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" creator="overpass-turbo"><metadata><desc>Filtered OSM data converted to GPX by overpass turbo</desc><copyright author="The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."/><time>2026-05-13T23:10:48Z</time></metadata><trk><name>Antonio Balcarce</name><desc>highway=residential
+lit=yes
+name=Antonio Balcarce
+old_name=Calle de la Florida
+oneway=yes
+short_name=Balcarce
+sidewalk=both
+surface=asphalt</desc><link href="http://osm.org/browse/way/34210763"/><trkseg><trkpt lat="-24.7896984" lon="-65.4123944"/><trkpt lat="-24.7884574" lon="-65.4122682"/><trkpt lat="-24.7876002" lon="-65.4121819"/><trkpt lat="-24.7874934" lon="-65.4122065"/><trkpt lat="-24.7861943" lon="-65.4120542"/><trkpt lat="-24.7848873" lon="-65.411925"/><trkpt lat="-24.7836752" lon="-65.4118079"/><trkpt lat="-24.783626" lon="-65.4118031"/></trkseg></trk><trk><name>Córdoba</name><desc>highway=secondary
+lanes=4
+lit=yes
+maxspeed=40
+name=Córdoba
+oneway=yes
+parking:both=yes
+parking:both:orientation=parallel
+parking:condition:both=free
+sidewalk=both
+surface=asphalt</desc><link href="http://osm.org/browse/way/86216573"/><trkseg><trkpt lat="-24.7938456" lon="-65.4086459"/><trkpt lat="-24.7940473" lon="-65.4086627"/><trkpt lat="-24.7942314" lon="-65.4086781"/><trkpt lat="-24.7942541" lon="-65.4086799"/><trkpt lat="-24.79433" lon="-65.408686"/><trkpt lat="-24.7950059" lon="-65.4087406"/><trkpt lat="-24.7963272" lon="-65.4088354"/><trkpt lat="-24.7969428" lon="-65.4088748"/><trkpt lat="-24.7975543" lon="-65.4089207"/><trkpt lat="-24.7987869" lon="-65.4090268"/><trkpt lat="-24.7995128" lon="-65.4090839"/><trkpt lat="-24.8002286" lon="-65.4091324"/><trkpt lat="-24.8014522" lon="-65.4092288"/><trkpt lat="-24.8026431" lon="-65.4093259"/><trkpt lat="-24.8027135" lon="-65.4093324"/><trkpt lat="-24.8027841" lon="-65.4093388"/><trkpt lat="-24.8031121" lon="-65.4093647"/><trkpt lat="-24.8034766" lon="-65.4093973"/><trkpt lat="-24.8039653" lon="-65.4094393"/><trkpt lat="-24.8046152" lon="-65.4094888"/><trkpt lat="-24.8052867" lon="-65.4095449"/><trkpt lat="-24.8059822" lon="-65.4095959"/><trkpt lat="-24.8065203" lon="-65.4096393"/><trkpt lat="-24.8072813" lon="-65.4096956"/><trkpt lat="-24.8073212" lon="-65.4096981"/><trkpt lat="-24.8073659" lon="-65.4097012"/><trkpt lat="-24.8080495" lon="-65.4097536"/><trkpt lat="-24.8081569" lon="-65.4097618"/></trkseg></trk><trk><name>Ituzaingó</name><desc>highway=residential
+name=Ituzaingó
+oneway=yes</desc><link href="http://osm.org/browse/way/86216575"/><trkseg><trkpt lat="-24.7896137" lon="-65.4137381"/><trkpt lat="-24.7901689" lon="-65.4137973"/><trkpt lat="-24.7903057" lon="-65.4138126"/><trkpt lat="-24.7908264" lon="-65.4138686"/><trkpt lat="-24.7921204" lon="-65.4139887"/></trkseg></trk><trk><name>25 de Mayo</name><desc>highway=secondary
+name=25 de Mayo
+oneway=yes</desc><link href="http://osm.org/browse/way/86216577"/><trkseg><trkpt lat="-24.7895261" lon="-65.4150781"/><trkpt lat="-24.7885157" lon="-65.4150377"/><trkpt lat="-24.7882499" lon="-65.4150271"/><trkpt lat="-24.7871896" lon="-65.4149283"/><trkpt lat="-24.7869253" lon="-65.4148975"/></trkseg></trk><trk><name>Catamarca</name><desc>highway=residential
+lanes=2
+lit=yes
+maxspeed=40
+name=Catamarca
+oneway=yes
+sidewalk=both
+smoothness=horrible
+surface=asphalt</desc><link href="http://osm.org/browse/way/86216581"/><trkseg><trkpt lat="-24.7939671" lon="-65.4058662"/><trkpt lat="-24.7940568" lon="-65.4058618"/><trkpt lat="-24.7943677" lon="-65.4058836"/><trkpt lat="-24.7944871" lon="-65.405892"/><trkpt lat="-24.7946882" lon="-65.4059061"/><trkpt lat="-24.7947256" lon="-65.4059082"/><trkpt lat="-24.794775" lon="-65.4059114"/><trkpt lat="-24.7951565" lon="-65.4059359"/><trkpt lat="-24.7952477" lon="-65.4059418"/><trkpt lat="-24.796523" lon="-65.406074"/><trkpt lat="-24.7965877" lon="-65.4060787"/><trkpt lat="-24.7966606" lon="-65.4060833"/><trkpt lat="-24.7971949" lon="-65.4061147"/><trkpt lat="-24.7977225" lon="-65.4061515"/><trkpt lat="-24.7977899" lon="-65.406157"/><trkpt lat="-24.7978577" lon="-65.4061625"/><trkpt lat="-24.7989127" lon="-65.4062362"/><trkpt lat="-24.798984" lon="-65.406242"/><trkpt lat="-24.7990482" lon="-65.4062467"/><trkpt lat="-24.7997537" lon="-65.4062909"/><trkpt lat="-24.8003794" lon="-65.4063331"/><trkpt lat="-24.8004563" lon="-65.4063391"/><trkpt lat="-24.8005412" lon="-65.4063467"/><trkpt lat="-24.8016432" lon="-65.4064332"/><trkpt lat="-24.8017259" lon="-65.4064406"/><trkpt lat="-24.8017956" lon="-65.4064467"/><trkpt lat="-24.8029135" lon="-65.4065315"/><trkpt lat="-24.8029838" lon="-65.4065374"/><trkpt lat="-24.8030466" lon="-65.406542"/><trkpt lat="-24.8035956" lon="-65.406576"/><trkpt lat="-24.8037555" lon="-65.4065873"/><trkpt lat="-24.804169" lon="-65.4066128"/><trkpt lat="-24.8042256" lon="-65.4066169"/><trkpt lat="-24.8042815" lon="-65.4066206"/><trkpt lat="-24.8048101" lon="-65.4066581"/><trkpt lat="-24.8048552" lon="-65.4066604"/><trkpt lat="-24.804947" lon="-65.4066668"/><trkpt lat="-24.8054283" lon="-65.4067041"/><trkpt lat="-24.8054974" lon="-65.4067091"/><trkpt lat="-24.8055699" lon="-65.4067136"/><trkpt lat="-24.8060942" lon="-65.4067509"/><trkpt lat="-24.8061443" lon="-65.406755"/><trkpt lat="-24.8062209" lon="-65.4067613"/><trkpt lat="-24.8067077" lon="-65.4067959"/><trkpt lat="-24.806769" lon="-65.4067996"/><trkpt lat="-24.8068396" lon="-65.4068032"/><trkpt lat="-24.8074325" lon="-65.4068398"/><trkpt lat="-24.808044" lon="-65.4068842"/><trkpt lat="-24.8081598" lon="-65.4068922"/></trkseg></trk><trk><name>Manuel Antonio Castro</name><desc>highway=residential
+name=Manuel Antonio Castro
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/102896862"/><trkseg><trkpt lat="-24.7872665" lon="-65.4128235"/><trkpt lat="-24.7861443" lon="-65.412693"/></trkseg></trk><trk><name>España</name><desc>fixme:housenumber=2166
+highway=residential
+name=España
+old_name=Calle de la Victoria
+oneway=yes</desc><link href="http://osm.org/browse/way/110355020"/><trkseg><trkpt lat="-24.7884574" lon="-65.4122682"/><trkpt lat="-24.7883956" lon="-65.4130204"/><trkpt lat="-24.7883474" lon="-65.4136067"/><trkpt lat="-24.7882499" lon="-65.4150271"/><trkpt lat="-24.7882226" lon="-65.4153596"/><trkpt lat="-24.7881426" lon="-65.4163355"/><trkpt lat="-24.7881191" lon="-65.4166516"/><trkpt lat="-24.7881055" lon="-65.4168355"/><trkpt lat="-24.7880325" lon="-65.4178229"/><trkpt lat="-24.7879295" lon="-65.419156"/><trkpt lat="-24.7878354" lon="-65.4205302"/><trkpt lat="-24.7877349" lon="-65.4218993"/><trkpt lat="-24.7876928" lon="-65.4226043"/><trkpt lat="-24.787652" lon="-65.4233108"/><trkpt lat="-24.7875846" lon="-65.4240646"/><trkpt lat="-24.7875427" lon="-65.4247047"/><trkpt lat="-24.7874387" lon="-65.4261005"/><trkpt lat="-24.7873483" lon="-65.4274689"/><trkpt lat="-24.7872964" lon="-65.4281609"/><trkpt lat="-24.7872406" lon="-65.4288541"/><trkpt lat="-24.7872008" lon="-65.4294122"/><trkpt lat="-24.787165" lon="-65.4302504"/><trkpt lat="-24.7871174" lon="-65.4308783"/><trkpt lat="-24.7870575" lon="-65.4316675"/><trkpt lat="-24.7870077" lon="-65.4323219"/><trkpt lat="-24.7869611" lon="-65.4330295"/><trkpt lat="-24.7868515" lon="-65.4344027"/><trkpt lat="-24.7867724" lon="-65.4357918"/><trkpt lat="-24.7867511" lon="-65.4360866"/></trkseg></trk><trk><name>Avenida Manuel Belgrano</name><desc>cycleway:left=lane
+highway=secondary
+lane_markings=yes
+name=Avenida Manuel Belgrano
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/110355637"/><trkseg><trkpt lat="-24.7876419" lon="-65.40673"/><trkpt lat="-24.7876121" lon="-65.4066085"/><trkpt lat="-24.7875626" lon="-65.4064661"/><trkpt lat="-24.7875139" lon="-65.4063443"/><trkpt lat="-24.7874757" lon="-65.4062515"/><trkpt lat="-24.7874395" lon="-65.4061848"/><trkpt lat="-24.7873943" lon="-65.4060952"/><trkpt lat="-24.7873491" lon="-65.4060185"/><trkpt lat="-24.7872147" lon="-65.4058482"/></trkseg></trk><trk><name>Bartolomé Mitre</name><desc>highway=tertiary
+name=Bartolomé Mitre
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/124766628"/><trkseg><trkpt lat="-24.7837131" lon="-65.4104201"/><trkpt lat="-24.7837559" lon="-65.4104243"/><trkpt lat="-24.78447" lon="-65.4104946"/><trkpt lat="-24.7850033" lon="-65.4105469"/><trkpt lat="-24.7863396" lon="-65.4106886"/><trkpt lat="-24.7877121" lon="-65.4108343"/></trkseg></trk><trk><name>way/125150504</name><desc>highway=secondary_link
+oneway=yes</desc><link href="http://osm.org/browse/way/125150504"/><trkseg><trkpt lat="-24.7872147" lon="-65.4058482"/><trkpt lat="-24.7871229" lon="-65.4058048"/><trkpt lat="-24.7870629" lon="-65.4057899"/><trkpt lat="-24.7870224" lon="-65.4057943"/><trkpt lat="-24.7869849" lon="-65.405818"/><trkpt lat="-24.7869281" lon="-65.4058612"/></trkseg></trk><trk><name>Avenida Domingo Faustino Sarmiento</name><desc>highway=secondary
+name=Avenida Domingo Faustino Sarmiento
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/158295060"/><trkseg><trkpt lat="-24.7808944" lon="-65.415652"/><trkpt lat="-24.7809768" lon="-65.4156585"/><trkpt lat="-24.781165" lon="-65.4156775"/><trkpt lat="-24.7815179" lon="-65.4157221"/><trkpt lat="-24.78201" lon="-65.4157843"/><trkpt lat="-24.782118" lon="-65.4157953"/><trkpt lat="-24.7821987" lon="-65.4158036"/><trkpt lat="-24.7833452" lon="-65.4159209"/><trkpt lat="-24.7846087" lon="-65.4160525"/></trkseg></trk><trk><name>Caseros</name><desc>highway=residential
+lane_markings=no
+name=Caseros
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/167717981"/><trkseg><trkpt lat="-24.7901178" lon="-65.4042478"/><trkpt lat="-24.7902211" lon="-65.4027179"/></trkseg></trk><trk><name>Avenida Manuel Belgrano</name><desc>cycleway:left=lane
+highway=secondary
+lane_markings=yes
+lanes=2
+name=Avenida Manuel Belgrano
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/193819160"/><trkseg><trkpt lat="-24.7875891" lon="-65.4080772"/><trkpt lat="-24.7876224" lon="-65.4072288"/><trkpt lat="-24.7876315" lon="-65.4069954"/><trkpt lat="-24.7876419" lon="-65.40673"/></trkseg></trk><trk><name>Benjamín Zorrilla</name><desc>highway=residential
+lane_markings=no
+name=Benjamín Zorrilla
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/193819161"/><trkseg><trkpt lat="-24.7876419" lon="-65.40673"/><trkpt lat="-24.7876969" lon="-65.4065975"/><trkpt lat="-24.7878513" lon="-65.4054067"/></trkseg></trk><trk><name>Benjamín Zorrilla</name><desc>highway=residential
+name=Benjamín Zorrilla
+oneway=yes</desc><link href="http://osm.org/browse/way/193819162"/><trkseg><trkpt lat="-24.7878513" lon="-65.4054067"/><trkpt lat="-24.7880097" lon="-65.4040961"/><trkpt lat="-24.7882088" lon="-65.4026708"/><trkpt lat="-24.7882177" lon="-65.4026074"/></trkseg></trk><trk><name>Deán Funes</name><desc>highway=residential
+lane_markings=no
+name=Deán Funes
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/193819163"/><trkseg><trkpt lat="-24.7866059" lon="-65.4079793"/><trkpt lat="-24.7874455" lon="-65.4080644"/><trkpt lat="-24.7875891" lon="-65.4080772"/></trkseg></trk><trk><name>Deán Funes</name><desc>highway=residential
+lane_markings=no
+name=Deán Funes
+oneway=yes
+surface=paving_stones</desc><link href="http://osm.org/browse/way/193819164"/><trkseg><trkpt lat="-24.7887576" lon="-65.4081943"/><trkpt lat="-24.789984" lon="-65.4083104"/></trkseg></trk><trk><name>General Martín Miguel de Güemes</name><desc>highway=residential
+name=General Martín Miguel de Güemes
+oneway=yes
+short_name=General Güemes</desc><link href="http://osm.org/browse/way/193819165"/><trkseg><trkpt lat="-24.7866059" lon="-65.4079793"/><trkpt lat="-24.786545" lon="-65.4085881"/><trkpt lat="-24.7864696" lon="-65.4093416"/><trkpt lat="-24.7863396" lon="-65.4106886"/><trkpt lat="-24.7861943" lon="-65.4120542"/><trkpt lat="-24.7861443" lon="-65.412693"/><trkpt lat="-24.7860823" lon="-65.4127659"/><trkpt lat="-24.7860157" lon="-65.4133755"/><trkpt lat="-24.7858319" lon="-65.4147748"/><trkpt lat="-24.7856696" lon="-65.4161466"/><trkpt lat="-24.7855715" lon="-65.4175752"/><trkpt lat="-24.785473" lon="-65.4189696"/><trkpt lat="-24.7853858" lon="-65.420352"/><trkpt lat="-24.7852848" lon="-65.421719"/><trkpt lat="-24.7851911" lon="-65.4231046"/><trkpt lat="-24.7851372" lon="-65.4238076"/><trkpt lat="-24.7850883" lon="-65.4245019"/><trkpt lat="-24.7850018" lon="-65.4258794"/><trkpt lat="-24.7849688" lon="-65.4263674"/><trkpt lat="-24.7848973" lon="-65.4272431"/><trkpt lat="-24.7848189" lon="-65.4286801"/></trkseg></trk><trk><name>General Martín Miguel de Güemes</name><desc>highway=residential
+lane_markings=no
+name=General Martín Miguel de Güemes
+oneway=yes
+short_name=General Güemes
+surface=asphalt</desc><link href="http://osm.org/browse/way/196489389"/><trkseg><trkpt lat="-24.7869281" lon="-65.4058612"/><trkpt lat="-24.7868919" lon="-65.4059463"/><trkpt lat="-24.7868605" lon="-65.4060436"/><trkpt lat="-24.7868107" lon="-65.4063435"/><trkpt lat="-24.7867668" lon="-65.4066662"/><trkpt lat="-24.7866059" lon="-65.4079793"/></trkseg></trk><trk><name>Miramar</name><desc>highway=residential
+lane_markings=no
+name=Miramar
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/196532712"/><trkseg><trkpt lat="-24.7939554" lon="-65.4100167"/><trkpt lat="-24.793964" lon="-65.4099351"/><trkpt lat="-24.7940274" lon="-65.4093351"/><trkpt lat="-24.7942314" lon="-65.4086781"/><trkpt lat="-24.7946717" lon="-65.4072167"/></trkseg></trk><trk><name>Avenida San Martín</name><desc>highway=secondary
+name=Avenida San Martín
+oneway=yes</desc><link href="http://osm.org/browse/way/196574130"/><trkseg><trkpt lat="-24.7940319" lon="-65.4045555"/><trkpt lat="-24.7940273" lon="-65.4046323"/><trkpt lat="-24.7940015" lon="-65.4052078"/><trkpt lat="-24.7939766" lon="-65.4057625"/><trkpt lat="-24.7939671" lon="-65.4058662"/></trkseg></trk><trk><name>Deán Funes</name><desc>highway=residential
+lane_markings=no
+lit=yes
+name=Deán Funes
+oneway=yes
+sidewalk=both
+surface=asphalt</desc><link href="http://osm.org/browse/way/196574133"/><trkseg><trkpt lat="-24.7826576" lon="-65.4075564"/><trkpt lat="-24.7839014" lon="-65.4076919"/><trkpt lat="-24.7842544" lon="-65.40773"/><trkpt lat="-24.7850311" lon="-65.4078137"/><trkpt lat="-24.7852213" lon="-65.407834"/><trkpt lat="-24.7866059" lon="-65.4079793"/></trkseg></trk><trk><name>Santa Fe</name><desc>highway=residential
+lane_markings=no
+name=Santa Fe
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/196574147"/><trkseg><trkpt lat="-24.7940319" lon="-65.4045555"/><trkpt lat="-24.7939568" lon="-65.4045493"/><trkpt lat="-24.7928555" lon="-65.4044584"/><trkpt lat="-24.7927818" lon="-65.4044523"/><trkpt lat="-24.7915305" lon="-65.4043806"/><trkpt lat="-24.7902438" lon="-65.4042576"/></trkseg></trk><trk><name>Rudecindo Alvarado</name><desc>highway=residential
+name=Rudecindo Alvarado
+oneway=yes</desc><link href="http://osm.org/browse/way/197277112"/><trkseg><trkpt lat="-24.7913571" lon="-65.4057127"/><trkpt lat="-24.7913527" lon="-65.4057959"/><trkpt lat="-24.7913434" lon="-65.4070282"/><trkpt lat="-24.7913123" lon="-65.4084173"/><trkpt lat="-24.7913097" lon="-65.4085002"/><trkpt lat="-24.7911981" lon="-65.4097793"/><trkpt lat="-24.7910587" lon="-65.4111567"/><trkpt lat="-24.7909409" lon="-65.412528"/><trkpt lat="-24.7908264" lon="-65.4138686"/><trkpt lat="-24.7907274" lon="-65.4151557"/><trkpt lat="-24.7906834" lon="-65.4157153"/><trkpt lat="-24.7906148" lon="-65.4165883"/><trkpt lat="-24.7905684" lon="-65.4172552"/><trkpt lat="-24.7905105" lon="-65.4180886"/><trkpt lat="-24.7904319" lon="-65.4192028"/><trkpt lat="-24.7904258" lon="-65.4192943"/><trkpt lat="-24.7903542" lon="-65.4205252"/><trkpt lat="-24.790336" lon="-65.4207951"/><trkpt lat="-24.7902583" lon="-65.4220389"/><trkpt lat="-24.7902184" lon="-65.4226169"/><trkpt lat="-24.7902058" lon="-65.4227975"/><trkpt lat="-24.7901589" lon="-65.42357"/><trkpt lat="-24.7900636" lon="-65.424934"/><trkpt lat="-24.7899617" lon="-65.4263103"/><trkpt lat="-24.7898692" lon="-65.4276821"/><trkpt lat="-24.7897663" lon="-65.4290786"/><trkpt lat="-24.7896775" lon="-65.4304524"/><trkpt lat="-24.7895834" lon="-65.4318339"/><trkpt lat="-24.7895479" lon="-65.432295"/><trkpt lat="-24.7895255" lon="-65.4325853"/><trkpt lat="-24.7894697" lon="-65.4332337"/><trkpt lat="-24.7893615" lon="-65.4346413"/><trkpt lat="-24.7892623" lon="-65.4360067"/><trkpt lat="-24.7891613" lon="-65.4373962"/><trkpt lat="-24.7891051" lon="-65.4381694"/></trkseg></trk><trk><name>Avenida Manuel Belgrano</name><desc>cycleway:left=lane
+highway=secondary
+name=Avenida Manuel Belgrano
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/197277113"/><trkseg><trkpt lat="-24.7877121" lon="-65.4108343"/><trkpt lat="-24.7876673" lon="-65.4105321"/><trkpt lat="-24.7875948" lon="-65.4101314"/><trkpt lat="-24.787568" lon="-65.4098823"/><trkpt lat="-24.7875635" lon="-65.4094554"/></trkseg></trk><trk><name>Avenida San Martín</name><desc>highway=secondary
+name=Avenida San Martín
+oneway=yes</desc><link href="http://osm.org/browse/way/197277120"/><trkseg><trkpt lat="-24.7939671" lon="-65.4058662"/><trkpt lat="-24.793961" lon="-65.4059887"/><trkpt lat="-24.793918" lon="-65.4070801"/><trkpt lat="-24.7939114" lon="-65.4071657"/></trkseg></trk><trk><name>Santiago del Estero</name><desc>bicycle=yes
+cycleway=no
+foot=yes
+highway=residential
+lit=yes
+name=Santiago del Estero
+oneway=yes
+sidewalk=both
+surface=asphalt</desc><link href="http://osm.org/browse/way/197277148"/><trkseg><trkpt lat="-24.784789" lon="-65.4132621"/><trkpt lat="-24.7848388" lon="-65.4126489"/><trkpt lat="-24.7848873" lon="-65.411925"/><trkpt lat="-24.7850033" lon="-65.4105469"/><trkpt lat="-24.7851203" lon="-65.4091942"/></trkseg></trk><trk><name>20 de Febrero</name><desc>highway=residential
+lane_markings=no
+name=20 de Febrero
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/197277223"/><trkseg><trkpt lat="-24.784789" lon="-65.4132621"/><trkpt lat="-24.7860157" lon="-65.4133755"/><trkpt lat="-24.7864989" lon="-65.4134269"/><trkpt lat="-24.7870476" lon="-65.4134854"/></trkseg></trk><trk><name>Avenida San Martín</name><desc>highway=secondary
+name=Avenida San Martín
+oneway=yes</desc><link href="http://osm.org/browse/way/197460658"/><trkseg><trkpt lat="-24.7939114" lon="-65.4071657"/><trkpt lat="-24.793899" lon="-65.4072576"/><trkpt lat="-24.7938484" lon="-65.4085726"/><trkpt lat="-24.7938456" lon="-65.4086459"/></trkseg></trk><trk><name>Avenida Manuel Belgrano</name><desc>cycleway:left=lane
+highway=secondary
+lane_markings=yes
+lanes=2
+name=Avenida Manuel Belgrano
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/197469330"/><trkseg><trkpt lat="-24.7867758" lon="-65.4162011"/><trkpt lat="-24.7869253" lon="-65.4148975"/></trkseg></trk><trk><name>Avenida San Martín</name><desc>highway=secondary
+name=Avenida San Martín
+oneway=yes</desc><link href="http://osm.org/browse/way/197469341"/><trkseg><trkpt lat="-24.7933401" lon="-65.4127616"/><trkpt lat="-24.7932848" lon="-65.4136504"/><trkpt lat="-24.7932565" lon="-65.4141065"/><trkpt lat="-24.793225" lon="-65.4146251"/><trkpt lat="-24.7931997" lon="-65.4154181"/><trkpt lat="-24.7931165" lon="-65.416866"/></trkseg></trk><trk><name>Florida</name><desc>highway=residential
+name=Florida
+oneway=yes</desc><link href="http://osm.org/browse/way/197469354"/><trkseg><trkpt lat="-24.7959564" lon="-65.4129914"/><trkpt lat="-24.7946769" lon="-65.4128732"/><trkpt lat="-24.7933401" lon="-65.4127616"/></trkseg></trk><trk><name>Santiago del Estero</name><desc>bicycle=yes
+cycleway=no
+foot=yes
+highway=residential
+name=Santiago del Estero
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/197469382"/><trkseg><trkpt lat="-24.7846087" lon="-65.4160525"/><trkpt lat="-24.7846993" lon="-65.4146673"/></trkseg></trk><trk><name>Avenida San Martín</name><desc>highway=secondary
+lanes=2
+name=Avenida San Martín
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/197593308"/><trkseg><trkpt lat="-24.7938456" lon="-65.4086459"/><trkpt lat="-24.7937876" lon="-65.4098147"/><trkpt lat="-24.7937827" lon="-65.4098978"/><trkpt lat="-24.7937767" lon="-65.4100013"/></trkseg></trk><trk><name>Caseros</name><desc>highway=residential
+name=Caseros
+oneway=yes</desc><link href="http://osm.org/browse/way/197593315"/><trkseg><trkpt lat="-24.7889626" lon="-65.423453"/><trkpt lat="-24.7890049" lon="-65.4227092"/><trkpt lat="-24.7890223" lon="-65.4225147"/><trkpt lat="-24.789053" lon="-65.4219741"/><trkpt lat="-24.7891466" lon="-65.420592"/><trkpt lat="-24.789164" lon="-65.4204191"/><trkpt lat="-24.7892397" lon="-65.4192488"/><trkpt lat="-24.7893353" lon="-65.4179362"/><trkpt lat="-24.7894297" lon="-65.4164623"/><trkpt lat="-24.7894838" lon="-65.4156875"/><trkpt lat="-24.7895261" lon="-65.4150781"/></trkseg></trk><trk><name>Facundo de Zuviría</name><desc>highway=tertiary
+name=Facundo de Zuviría
+oneway=yes
+short_name=Zuviria
+surface=asphalt</desc><link href="http://osm.org/browse/way/197593322"/><trkseg><trkpt lat="-24.7851203" lon="-65.4091942"/><trkpt lat="-24.7838073" lon="-65.409049"/><trkpt lat="-24.782555" lon="-65.4089378"/><trkpt lat="-24.7818833" lon="-65.4088685"/><trkpt lat="-24.7814262" lon="-65.4088011"/><trkpt lat="-24.7813542" lon="-65.4087905"/></trkseg></trk><trk><name>Carlos Pellegrini</name><desc>highway=secondary
+name=Carlos Pellegrini
+oneway=yes</desc><link href="http://osm.org/browse/way/197593335"/><trkseg><trkpt lat="-24.7920252" lon="-65.4153103"/><trkpt lat="-24.7916926" lon="-65.4152692"/><trkpt lat="-24.7907274" lon="-65.4151557"/><trkpt lat="-24.7895261" lon="-65.4150781"/></trkseg></trk><trk><name>Santiago del Estero</name><desc>bicycle=yes
+cycleway=no
+foot=yes
+highway=residential
+name=Santiago del Estero
+oneway=yes</desc><link href="http://osm.org/browse/way/197593340"/><trkseg><trkpt lat="-24.7846993" lon="-65.4146673"/><trkpt lat="-24.784789" lon="-65.4132621"/></trkseg></trk><trk><name>Santiago del Estero</name><desc>bicycle=yes
+cycleway=no
+foot=yes
+highway=residential
+name=Santiago del Estero
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/197593343"/><trkseg><trkpt lat="-24.7851203" lon="-65.4091942"/><trkpt lat="-24.7852213" lon="-65.407834"/><trkpt lat="-24.7853361" lon="-65.40652"/><trkpt lat="-24.7854324" lon="-65.4052214"/><trkpt lat="-24.7855445" lon="-65.4038979"/><trkpt lat="-24.7855961" lon="-65.4032969"/><trkpt lat="-24.7856429" lon="-65.4027823"/></trkseg></trk><trk><name>Justo José de Urquiza</name><desc>highway=residential
+lane_markings=no
+name=Justo José de Urquiza
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/197593346"/><trkseg><trkpt lat="-24.7920252" lon="-65.4153103"/><trkpt lat="-24.7920846" lon="-65.4144861"/><trkpt lat="-24.7921204" lon="-65.4139887"/><trkpt lat="-24.7922252" lon="-65.412655"/><trkpt lat="-24.7923441" lon="-65.4112626"/><trkpt lat="-24.7924891" lon="-65.409898"/><trkpt lat="-24.7925402" lon="-65.4085278"/><trkpt lat="-24.7926231" lon="-65.4071"/><trkpt lat="-24.7926883" lon="-65.405946"/><trkpt lat="-24.7926967" lon="-65.4058033"/><trkpt lat="-24.792701" lon="-65.4057287"/><trkpt lat="-24.7927818" lon="-65.4044523"/><trkpt lat="-24.7927859" lon="-65.4043797"/><trkpt lat="-24.7928582" lon="-65.4029534"/><trkpt lat="-24.7928623" lon="-65.4028719"/></trkseg></trk><trk><name>Justo José de Urquiza</name><desc>highway=residential
+name=Justo José de Urquiza
+oneway=yes</desc><link href="http://osm.org/browse/way/197593347"/><trkseg><trkpt lat="-24.7919228" lon="-65.4167133"/><trkpt lat="-24.7920252" lon="-65.4153103"/></trkseg></trk><trk><name>25 de Mayo</name><desc>highway=secondary
+name=25 de Mayo
+oneway=yes
+surface=concrete</desc><link href="http://osm.org/browse/way/197593462"/><trkseg><trkpt lat="-24.7846993" lon="-65.4146673"/><trkpt lat="-24.7839414" lon="-65.4145873"/><trkpt lat="-24.7838637" lon="-65.4145845"/><trkpt lat="-24.783504" lon="-65.4145414"/><trkpt lat="-24.7834703" lon="-65.414538"/><trkpt lat="-24.7834464" lon="-65.4145355"/><trkpt lat="-24.7821919" lon="-65.4144121"/></trkseg></trk><trk><name>Carlos Pellegrini</name><desc>highway=secondary
+name=Carlos Pellegrini
+oneway=yes</desc><link href="http://osm.org/browse/way/197595482"/><trkseg><trkpt lat="-24.7944434" lon="-65.4155708"/><trkpt lat="-24.7931997" lon="-65.4154181"/><trkpt lat="-24.7920252" lon="-65.4153103"/></trkseg></trk><trk><name>20 de Febrero</name><desc>highway=residential
+name=20 de Febrero
+oneway=yes</desc><link href="http://osm.org/browse/way/197607327"/><trkseg><trkpt lat="-24.7835422" lon="-65.4131584"/><trkpt lat="-24.784789" lon="-65.4132621"/></trkseg></trk><trk><name>Avenida Manuel Belgrano</name><desc>cycleway:left=lane
+highway=secondary
+name=Avenida Manuel Belgrano
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/197610845"/><trkseg><trkpt lat="-24.7870476" lon="-65.4134854"/><trkpt lat="-24.7872665" lon="-65.4128235"/><trkpt lat="-24.7874934" lon="-65.4122065"/><trkpt lat="-24.7877121" lon="-65.4108343"/></trkseg></trk><trk><name>Avenida San Martín</name><desc>highway=secondary
+name=Avenida San Martín
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/197610846"/><trkseg><trkpt lat="-24.7937767" lon="-65.4100013"/><trkpt lat="-24.7937729" lon="-65.4100521"/><trkpt lat="-24.7937381" lon="-65.4105128"/><trkpt lat="-24.793688" lon="-65.4108244"/><trkpt lat="-24.7935638" lon="-65.4112672"/><trkpt lat="-24.7935376" lon="-65.4113605"/><trkpt lat="-24.7933761" lon="-65.4124126"/><trkpt lat="-24.7933401" lon="-65.4127616"/></trkseg></trk><trk><name>Buenos Aires</name><desc>highway=residential
+name=Buenos Aires
+oneway=yes
+parking:right=no</desc><link href="http://osm.org/browse/way/197610847"/><trkseg><trkpt lat="-24.7937767" lon="-65.4100013"/><trkpt lat="-24.7924891" lon="-65.409898"/><trkpt lat="-24.7911981" lon="-65.4097793"/><trkpt lat="-24.7906851" lon="-65.4097436"/><trkpt lat="-24.7898542" lon="-65.4096859"/></trkseg></trk><trk><name>20 de Febrero</name><desc>highway=residential
+name=20 de Febrero
+old_name=Calle de la Estrella
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/197610888"/><trkseg><trkpt lat="-24.7870476" lon="-65.4134854"/><trkpt lat="-24.787588" lon="-65.4135358"/><trkpt lat="-24.7883474" lon="-65.4136067"/><trkpt lat="-24.7896137" lon="-65.4137381"/></trkseg></trk><trk><name>Avenida Manuel Belgrano</name><desc>cycleway:left=lane
+highway=secondary
+lane_markings=yes
+name=Avenida Manuel Belgrano
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/197611866"/><trkseg><trkpt lat="-24.7869253" lon="-65.4148975"/><trkpt lat="-24.7869985" lon="-65.4141898"/><trkpt lat="-24.7870476" lon="-65.4134854"/></trkseg></trk><trk><name>25 de Mayo</name><desc>highway=secondary
+lane_markings=no
+name=25 de Mayo
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/197611921"/><trkseg><trkpt lat="-24.7869253" lon="-65.4148975"/><trkpt lat="-24.7858319" lon="-65.4147748"/><trkpt lat="-24.7846993" lon="-65.4146673"/></trkseg></trk><trk><name>Manuel Antonio Castro</name><desc>highway=residential
+name=Manuel Antonio Castro
+oneway=yes</desc><link href="http://osm.org/browse/way/197817013"/><trkseg><trkpt lat="-24.7860823" lon="-65.4127659"/><trkpt lat="-24.7848388" lon="-65.4126489"/></trkseg></trk><trk><name>Buenos Aires</name><desc>highway=residential
+name=Buenos Aires
+oneway=yes</desc><link href="http://osm.org/browse/way/198405113"/><trkseg><trkpt lat="-24.7948911" lon="-65.4101036"/><trkpt lat="-24.7939554" lon="-65.4100167"/><trkpt lat="-24.7938719" lon="-65.4100095"/><trkpt lat="-24.7937767" lon="-65.4100013"/></trkseg></trk><trk><name>Juan Martín Leguizamón</name><desc>foot=yes
+highway=residential
+lit=yes
+name=Juan Martín Leguizamón
+oneway=yes
+sidewalk=both
+surface=asphalt</desc><link href="http://osm.org/browse/way/198407112"/><trkseg><trkpt lat="-24.7841527" lon="-65.4037814"/><trkpt lat="-24.7840627" lon="-65.4051096"/><trkpt lat="-24.7839841" lon="-65.406401"/></trkseg></trk><trk><name>Avenida Manuel Belgrano</name><desc>cycleway:left=lane
+highway=secondary
+lane_markings=yes
+name=Avenida Manuel Belgrano
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/198408556"/><trkseg><trkpt lat="-24.7875635" lon="-65.4094554"/><trkpt lat="-24.7875809" lon="-65.408518"/><trkpt lat="-24.7875891" lon="-65.4080772"/></trkseg></trk><trk><name>Facundo de Zuviría</name><desc>highway=tertiary
+name=Facundo de Zuviría
+oneway=yes
+short_name=Zuviria
+surface=asphalt</desc><link href="http://osm.org/browse/way/198408561"/><trkseg><trkpt lat="-24.7875635" lon="-65.4094554"/><trkpt lat="-24.7864696" lon="-65.4093416"/><trkpt lat="-24.7859394" lon="-65.4092837"/><trkpt lat="-24.7851203" lon="-65.4091942"/></trkseg></trk><trk><name>Juramento</name><desc>highway=residential
+name=Juramento
+oneway=yes</desc><link href="http://osm.org/browse/way/625653840"/><trkseg><trkpt lat="-24.7870115" lon="-65.4040248"/><trkpt lat="-24.7868707" lon="-65.4040159"/><trkpt lat="-24.7868071" lon="-65.4040102"/><trkpt lat="-24.7855445" lon="-65.4038979"/><trkpt lat="-24.7842543" lon="-65.4037899"/><trkpt lat="-24.7841527" lon="-65.4037814"/></trkseg></trk><trk><name>way/625878572</name><desc>highway=secondary_link</desc><link href="http://osm.org/browse/way/625878572"/><trkseg><trkpt lat="-24.7868939" lon="-65.4046521"/><trkpt lat="-24.7870357" lon="-65.4046474"/></trkseg></trk><trk><name>Juan Martín de Pueyrredón</name><desc>highway=residential
+name=Juan Martín de Pueyrredón
+oneway=yes
+short_name=Pueyrredón
+surface=asphalt</desc><link href="http://osm.org/browse/way/655122788"/><trkseg><trkpt lat="-24.7867668" lon="-65.4066662"/><trkpt lat="-24.7853361" lon="-65.40652"/><trkpt lat="-24.7839841" lon="-65.406401"/></trkseg></trk><trk><name>Avenida Manuel Belgrano</name><desc>cycleway:left=lane
+highway=secondary
+name=Avenida Manuel Belgrano
+oneway=yes</desc><link href="http://osm.org/browse/way/784223989"/><trkseg><trkpt lat="-24.7872147" lon="-65.4058482"/><trkpt lat="-24.7871821" lon="-65.4058158"/><trkpt lat="-24.7871216" lon="-65.4057208"/><trkpt lat="-24.7870893" lon="-65.4056132"/><trkpt lat="-24.7870687" lon="-65.4055223"/><trkpt lat="-24.7870652" lon="-65.4053864"/><trkpt lat="-24.7870639" lon="-65.4053336"/></trkseg></trk><trk><name>Vicente López</name><desc>fixme:housenumber=168
+highway=tertiary
+lane_markings=no
+name=Vicente López
+oneway=yes
+surface=asphalt</desc><link href="http://osm.org/browse/way/812705810"/><trkseg><trkpt lat="-24.7870639" lon="-65.4053336"/><trkpt lat="-24.7871108" lon="-65.405338"/><trkpt lat="-24.7878513" lon="-65.4054067"/><trkpt lat="-24.788958" lon="-65.4054916"/><trkpt lat="-24.7901615" lon="-65.4055937"/></trkseg></trk><trk><name>General Martín Miguel de Güemes</name><desc>cycleway:left=lane
+highway=secondary
+name=General Martín Miguel de Güemes
+oneway=yes</desc><link href="http://osm.org/browse/way/812705811"/><trkseg><trkpt lat="-24.7870639" lon="-65.4053336"/><trkpt lat="-24.7870592" lon="-65.4052222"/><trkpt lat="-24.7870357" lon="-65.4046474"/><trkpt lat="-24.7870144" lon="-65.4041014"/><trkpt lat="-24.7870115" lon="-65.4040248"/><trkpt lat="-24.7870049" lon="-65.4039047"/><trkpt lat="-24.786977" lon="-65.4033972"/><trkpt lat="-24.7869496" lon="-65.4026531"/><trkpt lat="-24.7869461" lon="-65.4025572"/></trkseg></trk><trk><name>Hernando de Lerma</name><desc>highway=secondary
+lanes=3
+lit=yes
+maxspeed=40
+name=Hernando de Lerma
+oneway=yes
+parking:left=yes
+parking:left:orientation=diagonal
+sidewalk=both
+surface=asphalt</desc><link href="http://osm.org/browse/way/906980364"/><trkseg><trkpt lat="-24.8081528" lon="-65.408328"/><trkpt lat="-24.8080808" lon="-65.4083222"/><trkpt lat="-24.8073722" lon="-65.4082728"/><trkpt lat="-24.8066499" lon="-65.4082151"/><trkpt lat="-24.8061068" lon="-65.4081778"/><trkpt lat="-24.8060296" lon="-65.4081717"/><trkpt lat="-24.8056589" lon="-65.4081445"/><trkpt lat="-24.8054003" lon="-65.4081279"/><trkpt lat="-24.8047349" lon="-65.4080776"/><trkpt lat="-24.8040963" lon="-65.4080316"/><trkpt lat="-24.8036165" lon="-65.407994"/><trkpt lat="-24.8028559" lon="-65.4079296"/><trkpt lat="-24.8015849" lon="-65.4078242"/><trkpt lat="-24.800336" lon="-65.4077333"/><trkpt lat="-24.7996425" lon="-65.4076752"/><trkpt lat="-24.7988867" lon="-65.4076153"/><trkpt lat="-24.7976716" lon="-65.4075056"/><trkpt lat="-24.7970733" lon="-65.4074512"/><trkpt lat="-24.7964986" lon="-65.4074045"/><trkpt lat="-24.7951269" lon="-65.407278"/><trkpt lat="-24.794754" lon="-65.4072278"/><trkpt lat="-24.7947338" lon="-65.4072251"/><trkpt lat="-24.7946717" lon="-65.4072167"/><trkpt lat="-24.7945237" lon="-65.4072036"/><trkpt lat="-24.7944681" lon="-65.4071979"/><trkpt lat="-24.7942719" lon="-65.4071867"/><trkpt lat="-24.7939941" lon="-65.4071709"/><trkpt lat="-24.7939114" lon="-65.4071657"/></trkseg></trk><trk><name>General Martín Miguel de Güemes</name><desc>highway=secondary
+name=General Martín Miguel de Güemes
+oneway=yes</desc><link href="http://osm.org/browse/way/1155666831"/><trkseg><trkpt lat="-24.786813" lon="-65.4025802"/><trkpt lat="-24.786816" lon="-65.4026611"/><trkpt lat="-24.7868216" lon="-65.40281"/><trkpt lat="-24.7868435" lon="-65.403395"/><trkpt lat="-24.7868658" lon="-65.4039034"/><trkpt lat="-24.7868707" lon="-65.4040159"/><trkpt lat="-24.7868735" lon="-65.4040975"/><trkpt lat="-24.7868939" lon="-65.4046521"/><trkpt lat="-24.786909" lon="-65.4052118"/><trkpt lat="-24.786912" lon="-65.405318"/></trkseg></trk><trk><name>Vicente López</name><desc>fixme:housenumber=168
+highway=residential
+name=Vicente López
+oneway=yes</desc><link href="http://osm.org/browse/way/1155666833"/><trkseg><trkpt lat="-24.786912" lon="-65.405318"/><trkpt lat="-24.7870639" lon="-65.4053336"/></trkseg></trk><trk><name>General Martín Miguel de Güemes</name><desc>highway=secondary
+name=General Martín Miguel de Güemes
+oneway=yes</desc><link href="http://osm.org/browse/way/1155666834"/><trkseg><trkpt lat="-24.786912" lon="-65.405318"/><trkpt lat="-24.786914" lon="-65.4053864"/><trkpt lat="-24.7869281" lon="-65.4058612"/></trkseg></trk><trk><name>Hernando de Lerma</name><desc>highway=residential
+lanes=3
+lit=yes
+maxspeed=40
+name=Hernando de Lerma
+oneway=yes
+parking:left=yes
+parking:left:orientation=diagonal
+sidewalk=both
+surface=asphalt</desc><link href="http://osm.org/browse/way/1238469291"/><trkseg><trkpt lat="-24.7939114" lon="-65.4071657"/><trkpt lat="-24.7926231" lon="-65.4071"/><trkpt lat="-24.7913434" lon="-65.4070282"/><trkpt lat="-24.7900668" lon="-65.4069425"/></trkseg></trk><trk><name>Córdoba</name><desc>highway=residential
+lanes=4
+lit=yes
+maxspeed=40
+name=Córdoba
+oneway=yes
+parking:condition:both=free
+parking:lane:both=parallel
+sidewalk=both
+surface=paving_stones</desc><link href="http://osm.org/browse/way/1238469292"/><trkseg><trkpt lat="-24.789984" lon="-65.4083104"/><trkpt lat="-24.7913123" lon="-65.4084173"/><trkpt lat="-24.7925402" lon="-65.4085278"/><trkpt lat="-24.7932617" lon="-65.4085931"/><trkpt lat="-24.7938456" lon="-65.4086459"/></trkseg></trk><trk><name>Catamarca</name><desc>highway=tertiary
+lanes=2
+lit=yes
+maxspeed=40
+name=Catamarca
+oneway=yes
+sidewalk=both
+smoothness=horrible
+surface=asphalt</desc><link href="http://osm.org/browse/way/1238469293"/><trkseg><trkpt lat="-24.7913571" lon="-65.4057127"/><trkpt lat="-24.7914204" lon="-65.4057176"/><trkpt lat="-24.7926967" lon="-65.4058033"/><trkpt lat="-24.7939671" lon="-65.4058662"/></trkseg></trk><trk><name>Rudecindo Alvarado</name><desc>highway=tertiary
+name=Rudecindo Alvarado
+oneway=yes</desc><link href="http://osm.org/browse/way/1238469294"/><trkseg><trkpt lat="-24.7917245" lon="-65.4018279"/><trkpt lat="-24.7916963" lon="-65.4019517"/><trkpt lat="-24.7916116" lon="-65.4027005"/><trkpt lat="-24.7916047" lon="-65.4027726"/><trkpt lat="-24.7915968" lon="-65.4028591"/><trkpt lat="-24.7915305" lon="-65.4043806"/><trkpt lat="-24.7913625" lon="-65.4056344"/><trkpt lat="-24.7913571" lon="-65.4057127"/></trkseg></trk><trk><name>Catamarca</name><desc>highway=tertiary
+lanes=2
+lit=yes
+maxspeed=40
+name=Catamarca
+oneway=yes
+sidewalk=both
+smoothness=horrible
+surface=asphalt</desc><link href="http://osm.org/browse/way/1238469295"/><trkseg><trkpt lat="-24.7901615" lon="-65.4055937"/><trkpt lat="-24.7912646" lon="-65.4057044"/><trkpt lat="-24.7913571" lon="-65.4057127"/></trkseg></trk><trk><name>Vicente López</name><desc>fixme:housenumber=168
+highway=residential
+name=Vicente López
+oneway=yes</desc><link href="http://osm.org/browse/way/1289771113"/><trkseg><trkpt lat="-24.7816161" lon="-65.4049003"/><trkpt lat="-24.7816719" lon="-65.4049061"/><trkpt lat="-24.7822079" lon="-65.4049623"/><trkpt lat="-24.7828178" lon="-65.4050225"/><trkpt lat="-24.7840627" lon="-65.4051096"/><trkpt lat="-24.7854324" lon="-65.4052214"/><trkpt lat="-24.7868611" lon="-65.4053147"/><trkpt lat="-24.786912" lon="-65.405318"/></trkseg></trk><trk><name>Juan Martín de Pueyrredón</name><desc>highway=residential
+lane_markings=no
+name=Juan Martín de Pueyrredón
+oneway=yes
+short_name=Pueyrredón
+surface=asphalt</desc><link href="http://osm.org/browse/way/1392217602"/><trkseg><trkpt lat="-24.7876419" lon="-65.40673"/><trkpt lat="-24.7867668" lon="-65.4066662"/></trkseg></trk><trk><name>España</name><desc>highway=residential
+name=España
+oneway=yes
+surface=concrete</desc><link href="http://osm.org/browse/way/1392217605"/><trkseg><trkpt lat="-24.7891802" lon="-65.402654"/><trkpt lat="-24.7890599" lon="-65.4041774"/></trkseg></trk><trk><name>Ituzaingó</name><desc>highway=residential
+name=Ituzaingó
+oneway=yes</desc><link href="http://osm.org/browse/way/1392217611"/><trkseg><trkpt lat="-24.7932565" lon="-65.4141065"/><trkpt lat="-24.7945556" lon="-65.4142311"/></trkseg></trk><trk><name>way/1497231273</name><desc>highway=residential</desc><link href="http://osm.org/browse/way/1497231273"/><trkseg><trkpt lat="-24.7889068" lon="-65.4061597"/><trkpt lat="-24.7881492" lon="-65.4060667"/></trkseg></trk></gpx>

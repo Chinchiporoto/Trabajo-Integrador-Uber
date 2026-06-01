@@ -1,0 +1,18 @@
+// Web para extraer datos 
+// https://overpass-turbo.eu/#
+
+/*
+  Mini Mapa: 5 cuadras a la redonda de la Catedral de Salta
+  Ideal para ejercicios de matriz de adyacencia y Dijkstra.
+*/
+[out:json][timeout:30];
+
+// BBox centrado en la Catedral (-24.7892, -65.4103)
+(
+  way["highway"~"primary|secondary|tertiary|residential"](-24.7940, -65.4160, -24.7840, -65.4040);
+);
+
+// Recuperamos las vías y sus nodos
+out body;
+>;
+out skel qt;
