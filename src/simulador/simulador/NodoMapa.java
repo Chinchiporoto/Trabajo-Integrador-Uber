@@ -1,3 +1,5 @@
+package simulador;
+
 public class NodoMapa{
 protected long id;
 protected double latitud,longitud;
