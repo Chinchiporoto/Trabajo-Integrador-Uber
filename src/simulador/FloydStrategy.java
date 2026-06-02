@@ -1,10 +1,11 @@
 package simulador;
 
-import contenedores.AbsGrafo;
+import grafoDirigido.AbsGrafo;
 import grafoDirigido.AbsGrafoD;
 import recursos.NodoMapa;
 
 public class FloydStrategy implements IntelligenceStrategy {
+    @Override
     public double calculaETA(AbsGrafo a, NodoMapa origin, NodoMapa destino) {
         AbsGrafoD grafo = (AbsGrafoD) a;
         int idxOrigen = ((grafoDirigido.GrafoSalta) a).buscarIndice(origin.getId());

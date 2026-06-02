@@ -3,26 +3,44 @@ package simulador;
 import java.util.ArrayList;
 
 import contenedores.VehiculoPriority;
-
+import recursos.NodoMapa;
+import grafoDirigido.AbsGrafo;
+import grafoDirigido.GrafoSalta;
 public class Despachador {
     protected ArrayList<Vehiculo> vehiculos;
     protected VehiculoPriority colaDespacho;
-
-    public Despachador(ArrayList<Vehiculo>a){
+    private AbsGrafo map;
+    private IntelligenceStrategy metodoDji;
+    private IntelligenceStrategy metodoFlo;
+    public Despachador(ArrayList<Vehiculo>a, AbsGrafo mapa){
         this.colaDespacho=new VehiculoPriority();
         this.vehiculos=a;
+        this.map=mapa;
+        this.metodoDji= new DijsktraStrat();
+        this.metodoFlo= new FloydStrategy();
     }
+    
     public void cargaAutos(Vehiculo a){
         vehiculos.add(a);
     }
     public void limpiar(){
         this.colaDespacho.limpiar();
     }
-    public void registrarDisponibles(){ 
+    public void registrarDisponibles(int nodePasajero){ 
         limpiar();
     for(int i=0;i<this.vehiculos.size();i++)
         if(vehiculos.get(i).getState()== EstadoVehiculo.DISPONIBLE){ 
-            //calcularETA nuevo. . . se va ingresando prioritativamente con el calculo de eta...
+        NodoMapa nodeAuto = ((GrafoSalta)this.map).getNodo(vehiculos.get(i).getNodoActual());
+        NodoMapa nodoPasajero = ((GrafoSalta)this.map).getNodo(nodePasajero);
+        if (nodeAuto != null && nodoPasajero != null) {
+            IntelligenceStrategy metodo;
+            int distancia=Math.abs(vehiculos.get(i).getNodoActual()-nodePasajero);
+            if (distancia>5)
+                metodo=this.metodoFlo;
+            else
+                metodo=this.metodoDji;
+            vehiculos.get(i).setEta(metodo.calculaETA(this.map, nodeAuto, nodoPasajero));
+                }
             this.colaDespacho.meter(vehiculos.get(i));
         }
     }
@@ -30,13 +48,15 @@ public class Despachador {
         Vehiculo candidato=null;
         while(!this.colaDespacho.estaVacia()){
             candidato=(Vehiculo)this.colaDespacho.sacar();
-            if((candidato).aceptaViaje())
+            if((candidato).aceptaViaje()){ 
                 candidato.setState(EstadoVehiculo.OCUPADO);
+                return candidato;
+            }
         }
         return candidato;
     }
     public void muestraCovhes(){
         for(int i=0;i<this.vehiculos.size();i++)
-            this.vehiculos.get(i).toString();
+            System.out.println(this.vehiculos.get(i).toString());
     }
 }

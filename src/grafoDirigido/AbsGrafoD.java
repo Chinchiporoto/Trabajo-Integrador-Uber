@@ -182,5 +182,15 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD{
 			System.out.print(" |");
 		}
 	}
-	
+	public double obtenerCostoDijkstra(int origen, int destino) {
+		Dijkstra(origen); 
+		return (double) this.listaDistancia.devolver(destino);
+	}
+	public double obtenerCostoFloyd(int origen, int destino) {
+
+		if (this.matrizCostoF == null) {
+			this.muestraFloyd(); 
+		}
+		return (double) this.matrizCostoF.devolver(origen, destino);
+	}
 }

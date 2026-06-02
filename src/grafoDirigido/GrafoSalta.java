@@ -1,6 +1,5 @@
 package grafoDirigido;
 
-import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -12,7 +11,7 @@ public class GrafoSalta extends AbsGrafoD {
     protected String rutaMetaDatos;
     protected String rutaMatriz;
 
-    public int contarLineas(String ruta){
+    public static int contarLineas(String ruta){
     int lineas=0;
     try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
         while (br.readLine() != null) {
@@ -61,23 +60,24 @@ public class GrafoSalta extends AbsGrafoD {
     }
     private void cargarAristas() {
         try (BufferedReader br = new BufferedReader(new FileReader(this.rutaMatriz))) {
-            String linea;
-            br.readLine(); 
-            while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split(",");
-                long idOrigen = Long.parseLong(datos[0].trim());
-                long idDestino = Long.parseLong(datos[1].trim());
-                String tipoVia = datos[2].trim();
-                int indiceU = buscarIndice(idOrigen);
-                int indiceV = buscarIndice(idDestino);
-
-                if (indiceU != -1 && indiceV != -1) {
-                    NodoMapa origen = catalogo[indiceU];
-                    NodoMapa destino = catalogo[indiceV];
-                    double pesoETA = origen.calcularETA(destino, tipoVia);
-                    this.matrizCosto.actualizar(pesoETA, indiceU, indiceV);
+               String[] cols = br.readLine().split(",");
+        long[] idsColumnas = new long[cols.length - 1];
+        for (int j = 1; j < cols.length; j++)
+            idsColumnas[j-1] = Long.parseLong(cols[j].trim());
+        String linea;
+        while ((linea = br.readLine()) != null) {
+            String[] datos = linea.split(",");
+            int indiceU = buscarIndice(Long.parseLong(datos[0].trim()));
+            if (indiceU == -1) continue;
+            for (int j = 1; j < datos.length; j++) {
+                if (datos[j].trim().equals("1")) {
+                    int indiceV = buscarIndice(idsColumnas[j-1]);
+                    if (indiceV == -1) continue;
+                    double eta = catalogo[indiceU].calcularETA(catalogo[indiceV], "residential");
+                    this.matrizCosto.actualizar(eta, indiceU, indiceV);
                 }
             }
+        }
         } catch (Exception e) {
             System.out.println("Error al cargar las aristas: " + e.getMessage());
         }
