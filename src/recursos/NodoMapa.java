@@ -1,3 +1,4 @@
+package recursos;
 public class NodoMapa{
 protected long id;
 protected double latitud,longitud;
@@ -35,7 +36,7 @@ public String getNombreEsquina(){
     return this.nombreEsquina;
 }
 public double distanciaHaversine(NodoMapa otro) {
-double R = 63710000;
+double R = 63_710_000.0;
 
 double lat1 = Math.toRadians(this.latitud);
 double lat2 = Math.toRadians(otro.latitud);
@@ -61,17 +62,11 @@ private double obtenerVelocidadMS(String tipoVia) {
         return 5.0;
     }
     switch (tipoVia.toLowerCase()) {
-        case "autopista":
-        case "ruta":
-            return 27.78; // 100 km/h in m/s
-        case "avenida":
-        case "carretera":
-            return 16.67; // 60 km/h in m/s
-        case "calle":
-        case "residencial":
-            return 8.33; // 30 km/h in m/s
-        default:
-            return 5.0; // default walking speed in m/s
+        case "primary": return 45.0 / 3.6;   // 12.5 m/s
+        case "secondary": return 35.0 / 3.6; // 9.7 m/s
+        case "residential":
+        case "tertiary": return 25.0 / 3.6;  // 6.9 m/s
+        default: return 20.0 / 3.6;          // 5.5 m/s
     }
 }
 }

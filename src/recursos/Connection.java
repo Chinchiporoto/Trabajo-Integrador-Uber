@@ -1,5 +1,4 @@
 package recursos;
-
 public class Connection {
 	protected int vertexI, vertexJ;
 	protected double connectionCost;
