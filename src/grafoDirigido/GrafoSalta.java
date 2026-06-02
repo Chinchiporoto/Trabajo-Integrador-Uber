@@ -3,6 +3,9 @@ package grafoDirigido;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
+import contenedores.ListaDoubleLinkedL;
+import contenedores.MatrizGrafo;
 import recursos.NodoMapa;
 
 public class GrafoSalta extends AbsGrafoD {
@@ -96,5 +99,104 @@ public class GrafoSalta extends AbsGrafoD {
         }
         return null;
     }
+    @Override
+public double obtenerCostoDijkstra(int origen, int destino) {
+    // inicializar listaDistancia con infinito explícito
+    this.listaDistancia = new ListaDoubleLinkedL();
+    this.listaCamino    = new ListaDoubleLinkedL();
+    this.listaSolucion  = new ListaDoubleLinkedL();
+
+    for (int i = 0; i < getOrden(); i++) {
+        this.listaSolucion.insertar(-1, i);
+        this.listaCamino.insertar(-1, i);
+        this.listaDistancia.insertar(infinito, i);
+    }
+    this.listaSolucion.reemplazar(origen, origen);
+
+    for (int i = 0; i < getOrden(); i++) {
+        if (i != origen) {
+            Object val = this.matrizCosto.devolver(origen, i);
+            this.listaDistancia.reemplazar(val != null ? val : infinito, i);
+            this.listaCamino.reemplazar(origen, i);
+        }
+    }
+    for (int i = 1; i < getOrden(); i++) {
+        double minCost = infinito;
+        int minVertex = -1;
+
+        for (int w = 0; w < getOrden(); w++) {
+            if (w != origen) {
+                double currCost = (double) this.listaDistancia.devolver(w);
+                int vertex      = (int)    this.listaSolucion.devolver(w);
+                if (currCost < minCost && vertex == -1) {
+                    minCost = currCost;
+                    minVertex = w;
+                }
+            }
+        }
+        if (minVertex != -1) {
+            this.listaSolucion.reemplazar(minVertex, minVertex);
+            this.listaDistancia.reemplazar(minCost, minVertex);
+
+            for (int v = 0; v < getOrden(); v++) {
+                int vertex = (int) this.listaSolucion.devolver(v);
+                if (vertex == -1) {
+                    Object arc   = this.matrizCosto.devolver(minVertex, v);
+                    double arcCost  = (arc != null) ? (double) arc : infinito;
+                    double currCost = (double) this.listaDistancia.devolver(v);
+                    if (minCost + arcCost < currCost) {
+                        this.listaDistancia.reemplazar(minCost + arcCost, v);
+                        this.listaCamino.reemplazar(minVertex, v);
+                    }
+                }
+            }
+        }
+    }
+
+    return (double) this.listaDistancia.devolver(destino);
+}
+@Override
+public double obtenerCostoFloyd(int origen, int destino) {
+    if (this.matrizCostoF == null) {
+        // inicializar con infinito antes de correr Floyd
+        this.matrizCostoF  = new MatrizGrafo(this.ordenGrafo);
+        this.matrizCaminoF = new MatrizGrafo(this.ordenGrafo);
+
+        for (int i = 0; i < ordenGrafo; i++) {
+            for (int j = 0; j < ordenGrafo; j++) {
+                if (i == j) {
+                    matrizCostoF.actualizar(0.0, i, j);
+                } else {
+                    Object val = matrizCosto.devolver(i, j);
+                    matrizCostoF.actualizar(val != null ? val : infinito, i, j);
+                }
+            }
+        }
+
+        // Floyd
+        for (int k = 0; k < ordenGrafo; k++) {
+            for (int i = 0; i < ordenGrafo; i++) {
+                for (int j = 0; j < ordenGrafo; j++) {
+                    double ik = ((Double) matrizCostoF.devolver(i, k));
+                    double kj = ((Double) matrizCostoF.devolver(k, j));
+                    double ij = ((Double) matrizCostoF.devolver(i, j));
+                    if (ik + kj < ij) {
+                        matrizCostoF.actualizar(ik + kj, i, j);
+                        matrizCaminoF.actualizar(k, i, j);
+                    }
+                }
+            }
+        }
+    }
+    return ((Double) this.matrizCostoF.devolver(origen, destino));
+}
+public void actualizarPeso(long idOrigen, long idDestino, String tipoVia) {
+    int indiceU = buscarIndice(idOrigen);
+    int indiceV = buscarIndice(idDestino);
+    if (indiceU == -1 || indiceV == -1) return;
+    if (this.matrizCosto.devolver(indiceU, indiceV) == null) return;
+    double eta = catalogo[indiceU].calcularETA(catalogo[indiceV], tipoVia);
+    this.matrizCosto.actualizar(eta, indiceU, indiceV);
+}
 }
 

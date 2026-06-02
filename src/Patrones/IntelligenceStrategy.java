@@ -1,4 +1,4 @@
-package simulador;
+package Patrones;
 
 import grafoDirigido.AbsGrafo;
 import recursos.NodoMapa;

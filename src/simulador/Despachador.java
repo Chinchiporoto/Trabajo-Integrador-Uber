@@ -2,6 +2,9 @@ package simulador;
 
 import java.util.ArrayList;
 
+import Patrones.DijsktraStrat;
+import Patrones.FloydStrategy;
+import Patrones.IntelligenceStrategy;
 import contenedores.VehiculoPriority;
 import recursos.NodoMapa;
 import grafoDirigido.AbsGrafo;
