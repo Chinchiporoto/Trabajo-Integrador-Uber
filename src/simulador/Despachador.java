@@ -56,7 +56,7 @@ public class Despachador {
                 return candidato;
             }
         }
-        return candidato;
+        return null;
     }
     public void muestraCovhes(){
         for(int i=0;i<this.vehiculos.size();i++)

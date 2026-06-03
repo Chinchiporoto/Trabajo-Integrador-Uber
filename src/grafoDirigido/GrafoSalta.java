@@ -190,13 +190,14 @@ public double obtenerCostoFloyd(int origen, int destino) {
     }
     return ((Double) this.matrizCostoF.devolver(origen, destino));
 }
-public void actualizarPeso(long idOrigen, long idDestino, String tipoVia) {
+public int actualizarPeso(long idOrigen, long idDestino, String tipoVia) {
     int indiceU = buscarIndice(idOrigen);
     int indiceV = buscarIndice(idDestino);
-    if (indiceU == -1 || indiceV == -1) return;
-    if (this.matrizCosto.devolver(indiceU, indiceV) == null) return;
+    if (indiceU == -1 || indiceV == -1) return 0;
+    if (this.matrizCosto.devolver(indiceU, indiceV) == null) return 0;
     double eta = catalogo[indiceU].calcularETA(catalogo[indiceV], tipoVia);
     this.matrizCosto.actualizar(eta, indiceU, indiceV);
+    return 1;
 }
 }
 
