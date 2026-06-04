@@ -3,6 +3,7 @@ package grafoDirigido;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import contenedores.ListaDoubleLinkedL;
 import contenedores.MatrizGrafo;
@@ -199,5 +200,35 @@ public int actualizarPeso(long idOrigen, long idDestino, String tipoVia) {
     this.matrizCosto.actualizar(eta, indiceU, indiceV);
     return 1;
 }
+public ArrayList<Integer> recuperarCaminoDijkstra(int origen, int destino) {
+        ArrayList<Integer> ruta = new ArrayList<>();
+        int actual = destino;
+        while (actual != origen && actual != -1) {
+            ruta.add(0, actual); 
+            Object previoObj = this.listaCamino.devolver(actual);
+            if (previoObj == null) break; 
+            actual = (int) previoObj;
+        }
+        ruta.add(0, origen); 
+        return ruta;
+    }
+    public ArrayList<Integer> recuperarCaminoFloyd(int origen, int destino) {
+        ArrayList<Integer> ruta = new ArrayList<>();
+        ruta.add(origen);
+        construirRutaFloyd(origen, destino, ruta);
+        if (origen != destino) {
+            ruta.add(destino);
+        }
+        return ruta;
+    }
+    private void construirRutaFloyd(int i, int j, ArrayList<Integer> ruta) {
+        Object kObj = this.matrizCaminoF.devolver(i, j);
+        if (kObj != null) {
+            int k = (int) kObj;
+            construirRutaFloyd(i, k, ruta);
+            ruta.add(k);
+            construirRutaFloyd(k, j, ruta);
+        }
+    }
 }
 

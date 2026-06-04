@@ -45,6 +45,7 @@ public class Despachador {
                 metodo=this.metodoDji;
             RutaAsignada ruta = metodo.calculaETA(this.map, nodeAuto, nodoPasajero);
             vehiculos.get(i).setEta(ruta.getEta());
+            vehiculos.get(i).setRutaAsignada(ruta.getCaminoNodos());
                 }
             this.colaDespacho.meter(vehiculos.get(i));
         }

@@ -14,6 +14,8 @@ public class FloydStrategy implements IntelligenceStrategy {
         int idxOrigen = ((grafoDirigido.GrafoSalta) a).buscarIndice(origin.getId());
         int idxDestino = ((grafoDirigido.GrafoSalta) a).buscarIndice(destino.getId());
         if (idxOrigen == -1 || idxDestino == -1) return new RutaAsignada(10000.0, new ArrayList<>());
-        return new RutaAsignada(grafo.obtenerCostoFloyd(idxOrigen, idxDestino), new ArrayList<>());
+        double costo = grafo.obtenerCostoFloyd(idxOrigen, idxDestino);
+        ArrayList<Integer> caminoReal = ((grafoDirigido.GrafoSalta) a).recuperarCaminoDijkstra(idxOrigen, idxDestino);
+        return new RutaAsignada(costo, caminoReal);
     }
 }

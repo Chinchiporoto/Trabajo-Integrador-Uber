@@ -1,9 +1,10 @@
 package simulador;
-
+import java.util.ArrayList;
 public class Vehiculo {
     private int id;
     private int nodoActual;
     private double eta;
+    private ArrayList<Integer> rutaAsignada = new ArrayList<>();
     private EstadoVehiculo state;
     
     public Vehiculo(int iD, int nodo){
@@ -12,7 +13,9 @@ public class Vehiculo {
         this.state=EstadoVehiculo.DISPONIBLE;
         this.eta=0.0;
     }
-    
+    public ArrayList<Integer> getRutaAsignada() {
+        return rutaAsignada;
+    }
     public boolean aceptaViaje(){
         return Math.random()<0.7;
     }
@@ -36,6 +39,9 @@ public class Vehiculo {
     }
     public void setState(EstadoVehiculo state) {
         this.state = state;
+    }
+    public void setRutaAsignada(ArrayList<Integer> rutaAsignada) {
+        this.rutaAsignada = rutaAsignada;
     }
 @Override
 public String toString(){

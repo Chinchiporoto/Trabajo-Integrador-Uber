@@ -10,7 +10,10 @@ import org.json.JSONObject;
 import grafoDirigido.GrafoSalta;
 
 public class LectorJSON {
-
+private static final double LAT_MIN = -24.800;
+private static final double LAT_MAX = -24.770;
+private static final double LNG_MIN = -65.425;
+private static final double LNG_MAX = -65.400;
     public void probarLecturaNodos(String rutaArchivo, GrafoSalta grafo) {
         try {
             String contenido = new String(Files.readAllBytes(Paths.get(rutaArchivo)));
@@ -48,4 +51,50 @@ public class LectorJSON {
             System.out.println("Error procesando JSON: " + e.getMessage());
         }
     }
+    public void dibujarMapa(String rutaGeoJSON, javafx.scene.canvas.GraphicsContext gc, 
+                         double ancho, double alto) {
+    try {
+        String contenido = new String(Files.readAllBytes(Paths.get(rutaGeoJSON)));
+        JSONObject json = new JSONObject(contenido);
+        JSONArray features = json.getJSONArray("features");
+        gc.setStroke(javafx.scene.paint.Color.web("#555555"));
+        gc.setLineWidth(1.0);
+        for (int i = 0; i < features.length(); i++) {
+            JSONObject feature  = features.getJSONObject(i);
+            JSONObject props    = feature.optJSONObject("properties");
+            JSONArray  coords   = feature.getJSONObject("geometry")
+                                         .getJSONArray("coordinates");
+            String highway = props != null ? props.optString("highway", "residential") : "residential";
+            switch (highway) {
+                case "primary":   gc.setStroke(javafx.scene.paint.Color.web("#FFFFFF")); 
+                                  gc.setLineWidth(2.5); break;
+                case "secondary": gc.setStroke(javafx.scene.paint.Color.web("#DDDDDD")); 
+                                  gc.setLineWidth(2.0); break;
+                case "tertiary":  gc.setStroke(javafx.scene.paint.Color.web("#AAAAAA")); 
+                                  gc.setLineWidth(1.5); break;
+                default:          gc.setStroke(javafx.scene.paint.Color.web("#777777")); 
+                                  gc.setLineWidth(1.0); break;
+            }
+            gc.beginPath();
+            for (int j = 0; j < coords.length(); j++) {
+                JSONArray punto = coords.getJSONArray(j);
+                double lng = punto.getDouble(0);
+                double lat = punto.getDouble(1);
+                double x = lngAPixel(lng, ancho);
+                double y = latAPixel(lat, alto);
+                if (j == 0) gc.moveTo(x, y);
+                else        gc.lineTo(x, y);
+            }
+            gc.stroke();
+        }
+    } catch (Exception e) {
+        System.out.println("Error dibujando mapa: " + e.getMessage());
+    }
+}
+private double lngAPixel(double lng, double ancho) {
+    return (lng - LNG_MIN) / (LNG_MAX - LNG_MIN) * ancho;
+}
+private double latAPixel(double lat, double alto) {
+    return (1.0 - (lat - LAT_MIN) / (LAT_MAX - LAT_MIN)) * alto;
+}
 }
