@@ -1,51 +1,58 @@
-==> src/Patrones/IntelligenceStrategy.java <==
+==> src/Modelo/Patrones/IntelligenceStrategy.java <==
 package Patrones;
 
 import grafoDirigido.AbsGrafo;
 import recursos.NodoMapa;
+import recursos.RutaAsignada;
 
 public interface IntelligenceStrategy {
-    public double calculaETA(AbsGrafo a, NodoMapa origin, NodoMapa destino);
+    public RutaAsignada calculaETA(AbsGrafo a, NodoMapa origin, NodoMapa destino);
 }
 
-==> src/Patrones/DijsktraStrat.java <==
+==> src/Modelo/Patrones/DijsktraStrat.java <==
 package Patrones;
 
+import java.util.ArrayList;
+
+import recursos.RutaAsignada;
 import grafoDirigido.AbsGrafo;
 import grafoDirigido.AbsGrafoD;
 import recursos.NodoMapa;
 
 public class DijsktraStrat implements IntelligenceStrategy {
     @Override
-    public double calculaETA(AbsGrafo a, NodoMapa origin, NodoMapa destino) {
+    public RutaAsignada calculaETA(AbsGrafo a, NodoMapa origin, NodoMapa destino) {
         AbsGrafoD grafo = (AbsGrafoD) a;
         int idxOrigen = ((grafoDirigido.GrafoSalta) a).buscarIndice(origin.getId());
         int idxDestino = ((grafoDirigido.GrafoSalta) a).buscarIndice(destino.getId());
-        if (idxOrigen == -1 || idxDestino == -1) return 10000.0;
-        return grafo.obtenerCostoDijkstra(idxOrigen, idxDestino);
+        if (idxOrigen == -1 || idxDestino == -1) return new RutaAsignada(10000.0, new ArrayList<>());
+        return new RutaAsignada(grafo.obtenerCostoDijkstra(idxOrigen, idxDestino), new ArrayList<>());
     }
 }
 
 
-==> src/Patrones/FloydStrategy.java <==
+==> src/Modelo/Patrones/FloydStrategy.java <==
 package Patrones;
+
+import java.util.ArrayList;
 
 import grafoDirigido.AbsGrafo;
 import grafoDirigido.AbsGrafoD;
 import recursos.NodoMapa;
+import recursos.RutaAsignada;
 
 public class FloydStrategy implements IntelligenceStrategy {
     @Override
-    public double calculaETA(AbsGrafo a, NodoMapa origin, NodoMapa destino) {
+    public RutaAsignada calculaETA(AbsGrafo a, NodoMapa origin, NodoMapa destino) {
         AbsGrafoD grafo = (AbsGrafoD) a;
         int idxOrigen = ((grafoDirigido.GrafoSalta) a).buscarIndice(origin.getId());
         int idxDestino = ((grafoDirigido.GrafoSalta) a).buscarIndice(destino.getId());
-        if (idxOrigen == -1 || idxDestino == -1) return 10000.0;
-        return grafo.obtenerCostoFloyd(idxOrigen, idxDestino);
+        if (idxOrigen == -1 || idxDestino == -1) return new RutaAsignada(10000.0, new ArrayList<>());
+        return new RutaAsignada(grafo.obtenerCostoFloyd(idxOrigen, idxDestino), new ArrayList<>());
     }
 }
 
-==> src/servicio/LectorJSON.java <==
+==> src/Modelo/servicio/LectorJSON.java <==
 package servicio;
 
 import java.nio.file.Files;
@@ -97,7 +104,7 @@ public class LectorJSON {
         }
     }
 }
-==> src/contenedores/MatrizGrafo.java <==
+==> src/Modelo/contenedores/MatrizGrafo.java <==
 package contenedores;
 
 public class MatrizGrafo extends MatrizArr{
@@ -117,7 +124,7 @@ public class MatrizGrafo extends MatrizArr{
 	
 }
 
-==> src/contenedores/Lista1DLinkedL.java <==
+==> src/Modelo/contenedores/Lista1DLinkedL.java <==
 package contenedores;
 import recursos.*;
 
@@ -206,7 +213,7 @@ public abstract class Lista1DLinkedL extends Lista0DLinkedL implements Operacion
 
 }
 
-==> src/contenedores/ColaLinkedList.java <==
+==> src/Modelo/contenedores/ColaLinkedList.java <==
 package contenedores;
 import recursos.Nodo;
 import recursos.OperacionesCL1;
@@ -243,7 +250,7 @@ public abstract class ColaLinkedList implements OperacionesCL1{
 	
 }
 
-==> src/contenedores/GraphPriorityQueue.java <==
+==> src/Modelo/contenedores/GraphPriorityQueue.java <==
 package contenedores;
 import recursos.Connection;
 import recursos.Nodo;
@@ -294,7 +301,7 @@ public class GraphPriorityQueue extends ColaPrioridad {
 	}	
 }
 
-==> src/contenedores/VehiculoPriority.java <==
+==> src/Modelo/contenedores/VehiculoPriority.java <==
 package contenedores;
 
 import simulador.Vehiculo;
@@ -322,7 +329,7 @@ public class VehiculoPriority extends ColaPrioridad{
     }
 }
 
-==> src/contenedores/MatrizArr.java <==
+==> src/Modelo/contenedores/MatrizArr.java <==
 package contenedores;
 
 public class MatrizArr {
@@ -375,7 +382,7 @@ public class MatrizArr {
 	}	
 }
 
-==> src/contenedores/Lista0DLinkedL.java <==
+==> src/Modelo/contenedores/Lista0DLinkedL.java <==
 package contenedores;
 import recursos.*;
 
@@ -470,7 +477,7 @@ public abstract class Lista0DLinkedL implements OperacionesCL2{
 
 }
 
-==> src/contenedores/ColaSLinkedList.java <==
+==> src/Modelo/contenedores/ColaSLinkedList.java <==
 package contenedores;
 import recursos.Nodo;
 public class ColaSLinkedList extends ColaLinkedList{
@@ -487,7 +494,7 @@ public class ColaSLinkedList extends ColaLinkedList{
 		
 }
 
-==> src/contenedores/ColaPrioridad.java <==
+==> src/Modelo/contenedores/ColaPrioridad.java <==
 package contenedores;
 import recursos.Nodo;
 
@@ -524,7 +531,7 @@ public abstract class ColaPrioridad extends ColaLinkedList{
 	}	
 }
 
-==> src/contenedores/ListaDoubleLinkedL.java <==
+==> src/Modelo/contenedores/ListaDoubleLinkedL.java <==
 package contenedores;
 
 public class ListaDoubleLinkedL extends Lista1DLinkedL{
@@ -536,18 +543,18 @@ public class ListaDoubleLinkedL extends Lista1DLinkedL{
 
 }
 
-==> src/simulador/EstadoVehiculo.java <==
+==> src/Modelo/simulador/EstadoVehiculo.java <==
 package simulador;
 
 public enum EstadoVehiculo {
 DISPONIBLE,OCUPADO,NOSERVICE    
 }
 
-==> src/simulador/Main.java <==
+==> src/Modelo/simulador/Main.java <==
 package simulador;
 import java.util.ArrayList;
 import grafoDirigido.GrafoSalta;
-import org.json.*;
+
 public class Main { 
     public static void main(String[] args) {
         String rutaMeta   = "data/meta_datos_nodos_2k.csv";
@@ -609,7 +616,7 @@ public class Main {
     }
 }
 
-==> src/simulador/Vehiculo.java <==
+==> src/Modelo/simulador/Vehiculo.java <==
 package simulador;
 
 public class Vehiculo {
@@ -657,11 +664,12 @@ public String toString(){
 
 
 
-==> src/simulador/Despachador.java <==
+==> src/Modelo/simulador/Despachador.java <==
 package simulador;
 
 import java.util.ArrayList;
 
+import recursos.RutaAsignada;
 import Patrones.DijsktraStrat;
 import Patrones.FloydStrategy;
 import Patrones.IntelligenceStrategy;
@@ -702,7 +710,8 @@ public class Despachador {
                 metodo=this.metodoFlo;
             else
                 metodo=this.metodoDji;
-            vehiculos.get(i).setEta(metodo.calculaETA(this.map, nodeAuto, nodoPasajero));
+            RutaAsignada ruta = metodo.calculaETA(this.map, nodeAuto, nodoPasajero);
+            vehiculos.get(i).setEta(ruta.getEta());
                 }
             this.colaDespacho.meter(vehiculos.get(i));
         }
@@ -724,7 +733,7 @@ public class Despachador {
     }
 }
 
-==> src/grafoDirigido/AbsGrafo.java <==
+==> src/Modelo/grafoDirigido/AbsGrafo.java <==
 package grafoDirigido;
 
 import contenedores.ColaSLinkedList;
@@ -824,7 +833,7 @@ public abstract class AbsGrafo implements OperacionesG{
 	}
 }
 
-==> src/grafoDirigido/GrafoSalta.java <==
+==> src/Modelo/grafoDirigido/GrafoSalta.java <==
 package grafoDirigido;
 
 import java.io.BufferedReader;
@@ -1029,7 +1038,7 @@ public int actualizarPeso(long idOrigen, long idDestino, String tipoVia) {
 }
 
 
-==> src/grafoDirigido/AbsGrafoD.java <==
+==> src/Modelo/grafoDirigido/AbsGrafoD.java <==
 package grafoDirigido;
 import contenedores.*;
 import recursos.*;
@@ -1227,7 +1236,7 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD{
 	}
 }
 
-==> src/recursos/NodoDoble.java <==
+==> src/Modelo/recursos/NodoDoble.java <==
 package recursos;
 
 public class NodoDoble {
@@ -1270,7 +1279,7 @@ public class NodoDoble {
 
 }
 
-==> src/recursos/OperacionesG.java <==
+==> src/Modelo/recursos/OperacionesG.java <==
 package recursos;
 
 public interface OperacionesG {
@@ -1281,7 +1290,30 @@ public interface OperacionesG {
 
 }
 
-==> src/recursos/OperacionesCL2.java <==
+==> src/Modelo/recursos/RutaAsignada.java <==
+package recursos;
+
+
+import java.util.ArrayList;
+
+public class RutaAsignada {
+    private double eta;
+    private ArrayList<Integer> caminoNodos;
+
+    public RutaAsignada(double eta, ArrayList<Integer> caminoNodos) {
+        this.eta = eta;
+        this.caminoNodos = caminoNodos;
+    }
+
+    public double getEta() {
+        return eta;
+    }
+
+    public ArrayList<Integer> getCaminoNodos() {
+        return caminoNodos;
+    }
+}
+==> src/Modelo/recursos/OperacionesCL2.java <==
 package recursos;
 
 public interface OperacionesCL2 {
@@ -1295,7 +1327,7 @@ public interface OperacionesCL2 {
 	
 }
 
-==> src/recursos/Connection.java <==
+==> src/Modelo/recursos/Connection.java <==
 package recursos;
 public class Connection {
 	protected int vertexI, vertexJ;
@@ -1320,7 +1352,7 @@ public class Connection {
 	}	
 }
 
-==> src/recursos/OperacionesCL1.java <==
+==> src/Modelo/recursos/OperacionesCL1.java <==
 package recursos;
 public interface OperacionesCL1 {
   void meter(Object elemento);
@@ -1328,7 +1360,7 @@ public interface OperacionesCL1 {
   void limpiar();
   boolean estaVacia();
 }
-==> src/recursos/Nodo.java <==
+==> src/Modelo/recursos/Nodo.java <==
 package recursos;
 
 public class Nodo {
@@ -1361,7 +1393,7 @@ public class Nodo {
 	
 }
 
-==> src/recursos/OperacionesCL3.java <==
+==> src/Modelo/recursos/OperacionesCL3.java <==
 package recursos;
 
 // es para terminar de especificar las operaciones de una lista comun
@@ -1370,7 +1402,7 @@ public interface OperacionesCL3 {
 	public void reemplazar(Object elemento, int posicion);
 }
 
-==> src/recursos/OperacionesGD.java <==
+==> src/Modelo/recursos/OperacionesGD.java <==
 
 package recursos;
 
@@ -1381,7 +1413,7 @@ public interface OperacionesGD {
 
 }
 
-==> src/recursos/NodoMapa.java <==
+==> src/Modelo/recursos/NodoMapa.java <==
 package recursos;
 public class NodoMapa{
 protected long id;

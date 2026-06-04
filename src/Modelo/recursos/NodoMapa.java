@@ -36,7 +36,7 @@ public String getNombreEsquina(){
     return this.nombreEsquina;
 }
 public double distanciaHaversine(NodoMapa otro) {
-double R = 6_710_000.0;
+double R = 6_371_000.0;
 
 double lat1 = Math.toRadians(this.latitud);
 double lat2 = Math.toRadians(otro.latitud);
