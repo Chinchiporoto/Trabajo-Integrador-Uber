@@ -1,7 +1,7 @@
 package simulador;
 import java.util.ArrayList;
 import grafoDirigido.GrafoSalta;
-import org.json.*;
+
 public class Main { 
     public static void main(String[] args) {
         String rutaMeta   = "data/meta_datos_nodos_2k.csv";

@@ -2,6 +2,7 @@ package simulador;
 
 import java.util.ArrayList;
 
+import recursos.RutaAsignada;
 import Patrones.DijsktraStrat;
 import Patrones.FloydStrategy;
 import Patrones.IntelligenceStrategy;
@@ -42,7 +43,8 @@ public class Despachador {
                 metodo=this.metodoFlo;
             else
                 metodo=this.metodoDji;
-            vehiculos.get(i).setEta(metodo.calculaETA(this.map, nodeAuto, nodoPasajero));
+            RutaAsignada ruta = metodo.calculaETA(this.map, nodeAuto, nodoPasajero);
+            vehiculos.get(i).setEta(ruta.getEta());
                 }
             this.colaDespacho.meter(vehiculos.get(i));
         }
