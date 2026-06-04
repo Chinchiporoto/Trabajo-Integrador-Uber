@@ -1,8 +1,15 @@
 {
+<<<<<<< HEAD
+=======
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+>>>>>>> backend-patterndesign
     "version": "0.2.0",
     "configurations": [
         {
             "type": "java",
+<<<<<<< HEAD
             "name": "MainApp",
             "request": "launch",
             "mainClass": "Vista.MainApp",
@@ -16,13 +23,26 @@
             "mainClass": "simulador.Main",
             "projectName": "Proyecto AYED_4317eda8",
             "vmArgs": "--module-path /home/leandrojoel/javafx-sdk/javafx-sdk-21/lib --add-modules javafx.controls,javafx.fxml,javafx.graphics -Djava.library.path=/home/leandrojoel/javafx-sdk/javafx-sdk-21/lib"
+=======
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "simulador.Main",
+            "projectName": "Proyecto AYED_4317eda8"
+>>>>>>> backend-patterndesign
         },
         {
             "type": "java",
             "name": "Current File",
             "request": "launch",
+<<<<<<< HEAD
             "mainClass": "${file}",
             "vmArgs": "--module-path /home/leandrojoel/javafx-sdk/javafx-sdk-21/lib --add-modules javafx.controls,javafx.fxml,javafx.graphics -Djava.library.path=/home/leandrojoel/javafx-sdk/javafx-sdk-21/lib"
         }
     ]
 }
+=======
+            "mainClass": "${file}"
+        }
+    ]
+}
+>>>>>>> backend-patterndesign

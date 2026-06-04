@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.VentanaController">
+   <children>
+      
+      <AnchorPane fx:id="panelMapa" />
+      
+      <AnchorPane pickOnBounds="false">
+         <children>
+            <Button fx:id="btnToggle" layoutX="1130.0" layoutY="20.0" mnemonicParsing="false" onAction="#togglePanel" text="TRACKING ◀" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      
+      <VBox fx:id="panelLateral" maxWidth="350.0" prefWidth="350.0" StackPane.alignment="CENTER_RIGHT">
+         <children>
+            
+            <AnchorPane prefHeight="60.0" style="-fx-background-color: #383635;">
+               <children>
+                  <Label layoutX="20.0" layoutY="18.0" text="Panel de Control" AnchorPane.leftAnchor="20.0">
+                     <font>
+                        <Font name="Tahoma Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            
+            <VBox spacing="15.0" style="-fx-padding: 20;">
+               <children>
+                  
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label text="Cola de Solicitudes (Tracking)">
+                           <font>
+                              <Font name="Tahoma" size="14.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="listaSolicitudes" prefHeight="350.0" />
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#generarSimulacion" text="NUEVA SOLICITUD" />
+                     </children>
+                  </VBox>
+                  
+                  <VBox spacing="8.0" style="-fx-padding: 15 0 0 0;">
+                     <children>
+                        <Label text="Laboratorio CSS:">
+                           <font>
+                              <Font name="Tahoma Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtPruebaCss" promptText="Ingresá un comando..." />
+                        <Button fx:id="btnPruebaCss" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="PROBAR ESTILOS" />
+                     </children>
+                  </VBox>
+                  
+               </children>
+            </VBox>
+            
+         </children>
+      </VBox>
+      
+   </children>
+</StackPane>

@@ -1,0 +1,66 @@
+.root{
+    -fx-background-color: #4c5844;
+    -fx-font-family: "Carlito"
+}
+#panelMap{
+    -fx-background-color: #4c5844;
+    -fx-border-color: #5d6d54;
+    -fx-border-width: 0 0 0 2;
+}
+.label{
+    -fx-text-fill: #ffffff;
+}
+.button{
+    -fx-background-color: #4c5844;
+    -fx-text-fill:  #ffffff;
+    -fx-background-radius: 0;
+    -fx-border-color:#3e4637
+    -fx-border-width 1;
+    -fx-padding: 8 16 8 16;
+}
+
+.list-view {
+    -fx-background-color: #42493b; /* El fondo interno oscuro */
+    -fx-border-color: #1a1c17 #7d8a6f #7d8a6f #1a1c17; 
+    -fx-border-width: 1 1 1 1; 
+    -fx-border-radius: 0; 
+}
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #e1e1e1;
+}
+.button {
+    -fx-background-color: #5d6d54; 
+    -fx-border-color: #7d8a6f #1a1c17 #1a1c17 #7d8a6f; 
+    -fx-border-width: 1 1 1 1;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 0;
+    -fx-padding: 8 16 8 16;
+}
+.button:pressed {
+    -fx-background-color: #4b5844;
+    -fx-border-color: #1a1c17 #7d8a6f #7d8a6f #1a1c17; 
+    -fx-padding: 9 15 7 17; 
+}
+/* EL CAMPO DE TEXTO (Relieve Bajo / Hueco) */
+.text-field {
+    -fx-background-color: #42493b; /* Fondo oscuro tipo consola */
+    
+    /* Borde Invertido: Sombra arriba/izq, Luz abajo/der */
+    -fx-border-color: #1a1c17 #7d8a6f #7d8a6f #1a1c17; 
+    
+    -fx-border-width: 1;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    
+    -fx-text-fill: #e1e1e1; /* Texto claro al escribir */
+    -fx-prompt-text-fill: #ffffff; /* El texto fantasma (placeholder) más apagado */
+    -fx-padding: 6 8 6 8;
+    -fx-font-family: "Tahoma";
+}
+
+/* Cuando hacés clic en el campo para escribir (Focus) */
+.text-field:focused {
+    -fx-background-color: #2b3027; /* Se oscurece un poquito más */
+    -fx-border-color: #5d6d54; /* Borde Verde Oliva para indicar que está activo */
+}

@@ -1,0 +1,3911 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-06-02T00:10:45Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "way",
+      "id": 34210763,
+      "nodes": [
+        446376377,
+        392350369,
+        5909119725,
+        4783628461,
+        392350322,
+        392350310,
+        11624973513,
+        1167270469
+      ],
+      "tags": {
+        "highway": "residential",
+        "lit": "yes",
+        "name": "Antonio Balcarce",
+        "old_name": "Calle de la Florida",
+        "oneway": "yes",
+        "short_name": "Balcarce",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 86216573,
+      "nodes": [
+        1167270280,
+        12875844268,
+        2068540654,
+        12874634510,
+        12874634505,
+        1168544500,
+        985377272,
+        2052323184,
+        985377273,
+        1170590918,
+        1365467110,
+        1170590849,
+        1170591158,
+        7805430459,
+        1365467434,
+        8399440892,
+        8420781609,
+        1365467465,
+        1365467497,
+        1365467518,
+        1365467544,
+        1365467573,
+        1365467610,
+        8421009346,
+        8421009331,
+        8421009349,
+        7799798726,
+        7799798730
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "4",
+        "lit": "yes",
+        "maxspeed": "40",
+        "name": "Córdoba",
+        "oneway": "yes",
+        "parking:both": "yes",
+        "parking:both:orientation": "parallel",
+        "parking:condition:both": "free",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 86216575,
+      "nodes": [
+        567058873,
+        11749456236,
+        11749456238,
+        1167270081,
+        1167270286
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "Ituzaingó",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 86216577,
+      "nodes": [
+        571784153,
+        11747705607,
+        571784162,
+        2068477171,
+        446390853
+      ],
+      "tags": {
+        "highway": "secondary",
+        "name": "25 de Mayo",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 86216581,
+      "nodes": [
+        571784169,
+        12874338405,
+        12875844262,
+        12875844259,
+        12872347842,
+        2068540678,
+        12875844260,
+        12874338419,
+        446376412,
+        8415593451,
+        1170590884,
+        8415593453,
+        2052323186,
+        8415593449,
+        1170590967,
+        8415593454,
+        8415593433,
+        1170590768,
+        8415593452,
+        1365467144,
+        8415593440,
+        1170590662,
+        8415593436,
+        8415593441,
+        1170590690,
+        8415593456,
+        8415593462,
+        1170591161,
+        8415593459,
+        1365467473,
+        1365467484,
+        8415593464,
+        1170591093,
+        8415593450,
+        8415593455,
+        1170591066,
+        8415593444,
+        8415593461,
+        1170591131,
+        8415593465,
+        8415593460,
+        1170590723,
+        8415593473,
+        8415593435,
+        1170591186,
+        8415593467,
+        1170591103,
+        7799798717,
+        7799798720
+      ],
+      "tags": {
+        "highway": "residential",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "40",
+        "name": "Catamarca",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "smoothness": "horrible",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 102896862,
+      "nodes": [
+        1260432719,
+        1188226890
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "Manuel Antonio Castro",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 110355020,
+      "nodes": [
+        392350369,
+        11877258532,
+        567058872,
+        571784162,
+        11747705611,
+        571784157,
+        11747705612,
+        11747705617,
+        1167270428,
+        1167270473,
+        1167270390,
+        1167270479,
+        1824867768,
+        1167270393,
+        4240571032,
+        3954626667,
+        1194373326,
+        392350367,
+        2052323087,
+        1390858540,
+        1390673961,
+        1390944724,
+        2052323083,
+        1824867767,
+        1824867766,
+        1824867765,
+        1167269821,
+        1167270023,
+        1167270032
+      ],
+      "tags": {
+        "fixme:housenumber": "2166",
+        "highway": "residential",
+        "name": "España",
+        "old_name": "Calle de la Victoria",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 110355637,
+      "nodes": [
+        392350352,
+        1260437531,
+        1260437524,
+        1260437525,
+        1260437522,
+        1260437526,
+        1260437527,
+        1260437523,
+        1260437546
+      ],
+      "tags": {
+        "cycleway:left": "lane",
+        "highway": "secondary",
+        "lane_markings": "yes",
+        "name": "Avenida Manuel Belgrano",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 124766628,
+      "nodes": [
+        392350343,
+        11624973509,
+        11303618786,
+        392350347,
+        392350351,
+        392350355
+      ],
+      "tags": {
+        "highway": "tertiary",
+        "name": "Bartolomé Mitre",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 125150504,
+      "nodes": [
+        1260437546,
+        1390703268,
+        1390703266,
+        1390703264,
+        1390703262,
+        1167270305
+      ],
+      "tags": {
+        "highway": "secondary_link",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 158295060,
+      "nodes": [
+        5910349674,
+        12884511859,
+        11555151031,
+        13701394982,
+        11960088280,
+        571784192,
+        11960088281,
+        1387566320,
+        1167270146
+      ],
+      "tags": {
+        "highway": "secondary",
+        "name": "Avenida Domingo Faustino Sarmiento",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 167717981,
+      "nodes": [
+        1791167734,
+        1260437832
+      ],
+      "tags": {
+        "highway": "residential",
+        "lane_markings": "no",
+        "name": "Caseros",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 193819160,
+      "nodes": [
+        392350353,
+        13711224024,
+        10760869020,
+        392350352
+      ],
+      "tags": {
+        "cycleway:left": "lane",
+        "highway": "secondary",
+        "lane_markings": "yes",
+        "lanes": "2",
+        "name": "Avenida Manuel Belgrano",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 193819161,
+      "nodes": [
+        392350352,
+        1260437831,
+        446390857
+      ],
+      "tags": {
+        "highway": "residential",
+        "lane_markings": "no",
+        "name": "Benjamín Zorrilla",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 193819162,
+      "nodes": [
+        446390857,
+        1176386736,
+        12882427189,
+        1260437542
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "Benjamín Zorrilla",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 193819163,
+      "nodes": [
+        392350349,
+        2068477174,
+        392350353
+      ],
+      "tags": {
+        "highway": "residential",
+        "lane_markings": "no",
+        "name": "Deán Funes",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 193819164,
+      "nodes": [
+        392350370,
+        446376382
+      ],
+      "tags": {
+        "highway": "residential",
+        "lane_markings": "no",
+        "name": "Deán Funes",
+        "oneway": "yes",
+        "surface": "paving_stones"
+      }
+    },
+    {
+      "type": "way",
+      "id": 193819165,
+      "nodes": [
+        392350349,
+        11303618804,
+        392350350,
+        392350351,
+        392350322,
+        1188226890,
+        2080106169,
+        567058870,
+        1167269803,
+        1167270203,
+        1167270117,
+        1167270506,
+        1167270302,
+        1167270505,
+        1167270410,
+        2052323064,
+        1167270442,
+        1167270330,
+        1387608900,
+        1167270374,
+        1390858524
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "General Martín Miguel de Güemes",
+        "oneway": "yes",
+        "short_name": "General Güemes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 196489389,
+      "nodes": [
+        1167270305,
+        7681050333,
+        1390703260,
+        3898617082,
+        392350348,
+        392350349
+      ],
+      "tags": {
+        "highway": "residential",
+        "lane_markings": "no",
+        "name": "General Martín Miguel de Güemes",
+        "oneway": "yes",
+        "short_name": "General Güemes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 196532712,
+      "nodes": [
+        2068540634,
+        12874634506,
+        2068540637,
+        2068540654,
+        2068540677
+      ],
+      "tags": {
+        "highway": "residential",
+        "lane_markings": "no",
+        "name": "Miramar",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 196574130,
+      "nodes": [
+        1167269921,
+        12873890080,
+        12875844269,
+        12874282564,
+        571784169
+      ],
+      "tags": {
+        "highway": "secondary",
+        "name": "Avenida San Martín",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 196574133,
+      "nodes": [
+        392350337,
+        392350341,
+        5941408761,
+        2068477168,
+        392350345,
+        392350349
+      ],
+      "tags": {
+        "highway": "residential",
+        "lane_markings": "no",
+        "lit": "yes",
+        "name": "Deán Funes",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 196574147,
+      "nodes": [
+        1167269921,
+        12873890078,
+        12873752319,
+        1260431218,
+        878835003,
+        1176386807
+      ],
+      "tags": {
+        "highway": "residential",
+        "lane_markings": "no",
+        "name": "Santa Fe",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197277112,
+      "nodes": [
+        8415593438,
+        8415593443,
+        392350362,
+        392350363,
+        5909120207,
+        392350364,
+        392350365,
+        392350361,
+        1167270081,
+        1167270180,
+        13701254477,
+        1000789497,
+        11747705619,
+        1167270243,
+        4240571013,
+        1170590670,
+        1167270245,
+        1167269805,
+        1167270329,
+        1824867777,
+        1167270103,
+        1167270461,
+        1167270316,
+        1390875773,
+        1167270516,
+        1167269845,
+        1393664770,
+        1393667383,
+        2052323137,
+        1387511770,
+        2105952201,
+        1824867776,
+        1824867775,
+        2105952200,
+        2052323129
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "Rudecindo Alvarado",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197277113,
+      "nodes": [
+        392350355,
+        1260432442,
+        994612648,
+        1260432445,
+        392350354
+      ],
+      "tags": {
+        "cycleway:left": "lane",
+        "highway": "secondary",
+        "name": "Avenida Manuel Belgrano",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197277120,
+      "nodes": [
+        571784169,
+        12874338406,
+        12874634276,
+        1167270403
+      ],
+      "tags": {
+        "highway": "secondary",
+        "name": "Avenida San Martín",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197277148,
+      "nodes": [
+        567058880,
+        1188226907,
+        392350310,
+        392350347,
+        392350346
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "cycleway": "no",
+        "foot": "yes",
+        "highway": "residential",
+        "lit": "yes",
+        "name": "Santiago del Estero",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197277223,
+      "nodes": [
+        567058880,
+        567058870,
+        12125603264,
+        567058871
+      ],
+      "tags": {
+        "highway": "residential",
+        "lane_markings": "no",
+        "name": "20 de Febrero",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197460658,
+      "nodes": [
+        1167270403,
+        12874634275,
+        12874634379,
+        1167270280
+      ],
+      "tags": {
+        "highway": "secondary",
+        "name": "Avenida San Martín",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197469330,
+      "nodes": [
+        571784167,
+        446390853
+      ],
+      "tags": {
+        "cycleway:left": "lane",
+        "highway": "secondary",
+        "lane_markings": "yes",
+        "lanes": "2",
+        "name": "Avenida Manuel Belgrano",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197469341,
+      "nodes": [
+        446390860,
+        11749456244,
+        567058866,
+        2068477184,
+        571784152,
+        446390862
+      ],
+      "tags": {
+        "highway": "secondary",
+        "name": "Avenida San Martín",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197469354,
+      "nodes": [
+        567058869,
+        1170591049,
+        446390860
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "Florida",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197469382,
+      "nodes": [
+        1167270146,
+        1167269880
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "cycleway": "no",
+        "foot": "yes",
+        "highway": "residential",
+        "name": "Santiago del Estero",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197593308,
+      "nodes": [
+        1167270280,
+        2068477187,
+        12874634465,
+        1167270266
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "2",
+        "name": "Avenida San Martín",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197593315,
+      "nodes": [
+        1167270483,
+        1167270241,
+        1824867774,
+        1167270228,
+        1167270491,
+        1167269991,
+        1167270257,
+        446376376,
+        571784154,
+        13697041870,
+        571784153
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "Caseros",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197593322,
+      "nodes": [
+        392350346,
+        392350342,
+        392350338,
+        2052323006,
+        12884511928,
+        5910349679
+      ],
+      "tags": {
+        "highway": "tertiary",
+        "name": "Facundo de Zuviría",
+        "oneway": "yes",
+        "short_name": "Zuviria",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197593335,
+      "nodes": [
+        1167270405,
+        2068477181,
+        1167270180,
+        571784153
+      ],
+      "tags": {
+        "highway": "secondary",
+        "name": "Carlos Pellegrini",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197593340,
+      "nodes": [
+        1167269880,
+        567058880
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "cycleway": "no",
+        "foot": "yes",
+        "highway": "residential",
+        "name": "Santiago del Estero",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197593343,
+      "nodes": [
+        392350346,
+        392350345,
+        392350344,
+        1167270196,
+        1167269929,
+        2109826778,
+        1260443039
+      ],
+      "tags": {
+        "bicycle": "yes",
+        "cycleway": "no",
+        "foot": "yes",
+        "highway": "residential",
+        "name": "Santiago del Estero",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197593346,
+      "nodes": [
+        1167270405,
+        11749456243,
+        1167270286,
+        392350308,
+        392350359,
+        392350358,
+        392350357,
+        392350356,
+        8415593470,
+        1260431217,
+        8415593431,
+        1260431218,
+        12873752317,
+        12873752387,
+        1260438016
+      ],
+      "tags": {
+        "highway": "residential",
+        "lane_markings": "no",
+        "name": "Justo José de Urquiza",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197593347,
+      "nodes": [
+        1000789486,
+        1167270405
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "Justo José de Urquiza",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197593462,
+      "nodes": [
+        1167269880,
+        10749357701,
+        2068477165,
+        10749357702,
+        10749357703,
+        1167270057,
+        571784194
+      ],
+      "tags": {
+        "highway": "secondary",
+        "name": "25 de Mayo",
+        "oneway": "yes",
+        "surface": "concrete"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197595482,
+      "nodes": [
+        1015252985,
+        571784152,
+        1167270405
+      ],
+      "tags": {
+        "highway": "secondary",
+        "name": "Carlos Pellegrini",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197607327,
+      "nodes": [
+        567058879,
+        567058880
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "20 de Febrero",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197610845,
+      "nodes": [
+        567058871,
+        1260432719,
+        4783628461,
+        392350355
+      ],
+      "tags": {
+        "cycleway:left": "lane",
+        "highway": "secondary",
+        "name": "Avenida Manuel Belgrano",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197610846,
+      "nodes": [
+        1167270266,
+        12874634484,
+        446390859,
+        2068540626,
+        12874634504,
+        1000789479,
+        5915084199,
+        446390860
+      ],
+      "tags": {
+        "highway": "secondary",
+        "name": "Avenida San Martín",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197610847,
+      "nodes": [
+        1167270266,
+        392350358,
+        392350364,
+        12999251877,
+        446376380
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "Buenos Aires",
+        "oneway": "yes",
+        "parking:right": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197610888,
+      "nodes": [
+        567058871,
+        13701395297,
+        567058872,
+        567058873
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "20 de Febrero",
+        "old_name": "Calle de la Estrella",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197611866,
+      "nodes": [
+        446390853,
+        3902992553,
+        567058871
+      ],
+      "tags": {
+        "cycleway:left": "lane",
+        "highway": "secondary",
+        "lane_markings": "yes",
+        "name": "Avenida Manuel Belgrano",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197611921,
+      "nodes": [
+        446390853,
+        1167269803,
+        1167269880
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lane_markings": "no",
+        "name": "25 de Mayo",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 197817013,
+      "nodes": [
+        2080106169,
+        1188226907
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "Manuel Antonio Castro",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 198405113,
+      "nodes": [
+        567058877,
+        2068540634,
+        12874634467,
+        1167270266
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "Buenos Aires",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 198407112,
+      "nodes": [
+        1176386800,
+        1167270037,
+        392350340
+      ],
+      "tags": {
+        "foot": "yes",
+        "highway": "residential",
+        "lit": "yes",
+        "name": "Juan Martín Leguizamón",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 198408556,
+      "nodes": [
+        392350354,
+        11303618808,
+        392350353
+      ],
+      "tags": {
+        "cycleway:left": "lane",
+        "highway": "secondary",
+        "lane_markings": "yes",
+        "name": "Avenida Manuel Belgrano",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 198408561,
+      "nodes": [
+        392350354,
+        392350350,
+        11303618794,
+        392350346
+      ],
+      "tags": {
+        "highway": "tertiary",
+        "name": "Facundo de Zuviría",
+        "oneway": "yes",
+        "short_name": "Zuviria",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 625653840,
+      "nodes": [
+        1260437536,
+        1176386742,
+        12882427240,
+        1167269929,
+        5941408754,
+        1176386800
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "Juramento",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 625878572,
+      "nodes": [
+        5909157743,
+        5909157742
+      ],
+      "tags": {
+        "highway": "secondary_link"
+      }
+    },
+    {
+      "type": "way",
+      "id": 655122788,
+      "nodes": [
+        392350348,
+        392350344,
+        392350340
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "Juan Martín de Pueyrredón",
+        "oneway": "yes",
+        "short_name": "Pueyrredón",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784223989,
+      "nodes": [
+        1260437546,
+        1260437552,
+        1260437540,
+        1260437538,
+        1260437558,
+        12882427233,
+        7590861870
+      ],
+      "tags": {
+        "cycleway:left": "lane",
+        "highway": "secondary",
+        "name": "Avenida Manuel Belgrano",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 812705810,
+      "nodes": [
+        7590861870,
+        12882427231,
+        446390857,
+        1000789496,
+        446376414
+      ],
+      "tags": {
+        "fixme:housenumber": "168",
+        "highway": "tertiary",
+        "lane_markings": "no",
+        "name": "Vicente López",
+        "oneway": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 812705811,
+      "nodes": [
+        7590861870,
+        12882427229,
+        5909157742,
+        12882427243,
+        1260437536,
+        12882427239,
+        5909157744,
+        12882427220,
+        1260437543
+      ],
+      "tags": {
+        "cycleway:left": "lane",
+        "highway": "secondary",
+        "name": "General Martín Miguel de Güemes",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 906980364,
+      "nodes": [
+        7799798725,
+        7799798721,
+        1170590952,
+        1170590659,
+        1365467585,
+        1365467576,
+        7023739226,
+        1170590674,
+        1170590922,
+        1170590761,
+        1365467477,
+        1170590792,
+        1170590881,
+        1170590847,
+        1170591074,
+        1170591043,
+        1170590795,
+        2052323185,
+        1170591171,
+        1168544395,
+        12874634511,
+        12874634384,
+        2068540677,
+        2068540663,
+        12872347845,
+        12875844263,
+        12874634277,
+        1167270403
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "3",
+        "lit": "yes",
+        "maxspeed": "40",
+        "name": "Hernando de Lerma",
+        "oneway": "yes",
+        "parking:left": "yes",
+        "parking:left:orientation": "diagonal",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1155666831,
+      "nodes": [
+        1260437106,
+        12882427219,
+        12882427292,
+        2109826779,
+        12882427238,
+        1176386742,
+        12882427242,
+        5909157743,
+        12882427228,
+        1176386839
+      ],
+      "tags": {
+        "highway": "secondary",
+        "name": "General Martín Miguel de Güemes",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1155666833,
+      "nodes": [
+        1176386839,
+        7590861870
+      ],
+      "tags": {
+        "fixme:housenumber": "168",
+        "highway": "residential",
+        "name": "Vicente López",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1155666834,
+      "nodes": [
+        1176386839,
+        12882427232,
+        1167270305
+      ],
+      "tags": {
+        "highway": "secondary",
+        "name": "General Martín Miguel de Güemes",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1238469291,
+      "nodes": [
+        1167270403,
+        392350356,
+        392350362,
+        446376384
+      ],
+      "tags": {
+        "highway": "residential",
+        "lanes": "3",
+        "lit": "yes",
+        "maxspeed": "40",
+        "name": "Hernando de Lerma",
+        "oneway": "yes",
+        "parking:left": "yes",
+        "parking:left:orientation": "diagonal",
+        "sidewalk": "both",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1238469292,
+      "nodes": [
+        446376382,
+        392350363,
+        392350357,
+        13691431990,
+        1167270280
+      ],
+      "tags": {
+        "highway": "residential",
+        "lanes": "4",
+        "lit": "yes",
+        "maxspeed": "40",
+        "name": "Córdoba",
+        "oneway": "yes",
+        "parking:condition:both": "free",
+        "parking:lane:both": "parallel",
+        "sidewalk": "both",
+        "surface": "paving_stones"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1238469293,
+      "nodes": [
+        8415593438,
+        8415593439,
+        1260431217,
+        571784169
+      ],
+      "tags": {
+        "highway": "tertiary",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "40",
+        "name": "Catamarca",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "smoothness": "horrible",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1238469294,
+      "nodes": [
+        1260431092,
+        12259994682,
+        8415593442,
+        1260428345,
+        8415593463,
+        878835003,
+        8415593447,
+        8415593438
+      ],
+      "tags": {
+        "highway": "tertiary",
+        "name": "Rudecindo Alvarado",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1238469295,
+      "nodes": [
+        446376414,
+        8415593445,
+        8415593438
+      ],
+      "tags": {
+        "highway": "tertiary",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "40",
+        "name": "Catamarca",
+        "oneway": "yes",
+        "sidewalk": "both",
+        "smoothness": "horrible",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1289771113,
+      "nodes": [
+        1260443014,
+        12884511962,
+        2052323015,
+        1167270361,
+        1167270037,
+        1167270196,
+        12882427230,
+        1176386839
+      ],
+      "tags": {
+        "fixme:housenumber": "168",
+        "highway": "residential",
+        "name": "Vicente López",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1392217602,
+      "nodes": [
+        392350352,
+        392350348
+      ],
+      "tags": {
+        "highway": "residential",
+        "lane_markings": "no",
+        "name": "Juan Martín de Pueyrredón",
+        "oneway": "yes",
+        "short_name": "Pueyrredón",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1392217605,
+      "nodes": [
+        1260437833,
+        1176386765
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "España",
+        "oneway": "yes",
+        "surface": "concrete"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1392217611,
+      "nodes": [
+        567058866,
+        567058867
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "Ituzaingó",
+        "oneway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1497231273,
+      "nodes": [
+        13712871029,
+        13712871028
+      ],
+      "tags": {
+        "highway": "residential"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2052323129,
+      "lat": -24.7891051,
+      "lon": -65.4381694
+    },
+    {
+      "type": "node",
+      "id": 1387511770,
+      "lat": -24.7895255,
+      "lon": -65.4325853
+    },
+    {
+      "type": "node",
+      "id": 1393667383,
+      "lat": -24.7895834,
+      "lon": -65.4318339
+    },
+    {
+      "type": "node",
+      "id": 1824867775,
+      "lat": -24.7892623,
+      "lon": -65.4360067
+    },
+    {
+      "type": "node",
+      "id": 1824867776,
+      "lat": -24.7893615,
+      "lon": -65.4346413
+    },
+    {
+      "type": "node",
+      "id": 2052323137,
+      "lat": -24.7895479,
+      "lon": -65.432295
+    },
+    {
+      "type": "node",
+      "id": 2105952200,
+      "lat": -24.7891613,
+      "lon": -65.4373962
+    },
+    {
+      "type": "node",
+      "id": 2105952201,
+      "lat": -24.7894697,
+      "lon": -65.4332337
+    },
+    {
+      "type": "node",
+      "id": 1167269821,
+      "lat": -24.7868515,
+      "lon": -65.4344027
+    },
+    {
+      "type": "node",
+      "id": 1167270023,
+      "lat": -24.7867724,
+      "lon": -65.4357918
+    },
+    {
+      "type": "node",
+      "id": 1167270032,
+      "lat": -24.7867511,
+      "lon": -65.4360866
+    },
+    {
+      "type": "node",
+      "id": 1824867765,
+      "lat": -24.7869611,
+      "lon": -65.4330295
+    },
+    {
+      "type": "node",
+      "id": 1824867766,
+      "lat": -24.7870077,
+      "lon": -65.4323219
+    },
+    {
+      "type": "node",
+      "id": 1824867767,
+      "lat": -24.7870575,
+      "lon": -65.4316675
+    },
+    {
+      "type": "node",
+      "id": 1170590659,
+      "lat": -24.8066499,
+      "lon": -65.4082151
+    },
+    {
+      "type": "node",
+      "id": 1170590674,
+      "lat": -24.8054003,
+      "lon": -65.4081279
+    },
+    {
+      "type": "node",
+      "id": 1170590723,
+      "lat": -24.8061443,
+      "lon": -65.406755
+    },
+    {
+      "type": "node",
+      "id": 1170590761,
+      "lat": -24.8040963,
+      "lon": -65.4080316
+    },
+    {
+      "type": "node",
+      "id": 1170590792,
+      "lat": -24.8028559,
+      "lon": -65.4079296
+    },
+    {
+      "type": "node",
+      "id": 1170590922,
+      "lat": -24.8047349,
+      "lon": -65.4080776
+    },
+    {
+      "type": "node",
+      "id": 1170590952,
+      "lat": -24.8073722,
+      "lon": -65.4082728
+    },
+    {
+      "type": "node",
+      "id": 1170591066,
+      "lat": -24.8048552,
+      "lon": -65.4066604
+    },
+    {
+      "type": "node",
+      "id": 1170591093,
+      "lat": -24.8042256,
+      "lon": -65.4066169
+    },
+    {
+      "type": "node",
+      "id": 1170591103,
+      "lat": -24.8074325,
+      "lon": -65.4068398
+    },
+    {
+      "type": "node",
+      "id": 1170591131,
+      "lat": -24.8054974,
+      "lon": -65.4067091
+    },
+    {
+      "type": "node",
+      "id": 1170591161,
+      "lat": -24.8029838,
+      "lon": -65.4065374
+    },
+    {
+      "type": "node",
+      "id": 1170591186,
+      "lat": -24.806769,
+      "lon": -65.4067996
+    },
+    {
+      "type": "node",
+      "id": 1365467434,
+      "lat": -24.8027135,
+      "lon": -65.4093324
+    },
+    {
+      "type": "node",
+      "id": 1365467465,
+      "lat": -24.8034766,
+      "lon": -65.4093973
+    },
+    {
+      "type": "node",
+      "id": 1365467473,
+      "lat": -24.8035956,
+      "lon": -65.406576
+    },
+    {
+      "type": "node",
+      "id": 1365467477,
+      "lat": -24.8036165,
+      "lon": -65.407994
+    },
+    {
+      "type": "node",
+      "id": 1365467484,
+      "lat": -24.8037555,
+      "lon": -65.4065873
+    },
+    {
+      "type": "node",
+      "id": 1365467497,
+      "lat": -24.8039653,
+      "lon": -65.4094393
+    },
+    {
+      "type": "node",
+      "id": 1365467518,
+      "lat": -24.8046152,
+      "lon": -65.4094888
+    },
+    {
+      "type": "node",
+      "id": 1365467544,
+      "lat": -24.8052867,
+      "lon": -65.4095449
+    },
+    {
+      "type": "node",
+      "id": 1365467573,
+      "lat": -24.8059822,
+      "lon": -65.4095959
+    },
+    {
+      "type": "node",
+      "id": 1365467576,
+      "lat": -24.8060296,
+      "lon": -65.4081717
+    },
+    {
+      "type": "node",
+      "id": 1365467585,
+      "lat": -24.8061068,
+      "lon": -65.4081778
+    },
+    {
+      "type": "node",
+      "id": 1365467610,
+      "lat": -24.8065203,
+      "lon": -65.4096393
+    },
+    {
+      "type": "node",
+      "id": 7023739226,
+      "lat": -24.8056589,
+      "lon": -65.4081445
+    },
+    {
+      "type": "node",
+      "id": 7799798717,
+      "lat": -24.808044,
+      "lon": -65.4068842
+    },
+    {
+      "type": "node",
+      "id": 7799798720,
+      "lat": -24.8081598,
+      "lon": -65.4068922
+    },
+    {
+      "type": "node",
+      "id": 7799798721,
+      "lat": -24.8080808,
+      "lon": -65.4083222
+    },
+    {
+      "type": "node",
+      "id": 7799798725,
+      "lat": -24.8081528,
+      "lon": -65.408328
+    },
+    {
+      "type": "node",
+      "id": 7799798726,
+      "lat": -24.8080495,
+      "lon": -65.4097536
+    },
+    {
+      "type": "node",
+      "id": 7799798730,
+      "lat": -24.8081569,
+      "lon": -65.4097618
+    },
+    {
+      "type": "node",
+      "id": 7805430459,
+      "lat": -24.8026431,
+      "lon": -65.4093259
+    },
+    {
+      "type": "node",
+      "id": 8399440892,
+      "lat": -24.8027841,
+      "lon": -65.4093388
+    },
+    {
+      "type": "node",
+      "id": 8415593435,
+      "lat": -24.8067077,
+      "lon": -65.4067959
+    },
+    {
+      "type": "node",
+      "id": 8415593444,
+      "lat": -24.804947,
+      "lon": -65.4066668
+    },
+    {
+      "type": "node",
+      "id": 8415593450,
+      "lat": -24.8042815,
+      "lon": -65.4066206
+    },
+    {
+      "type": "node",
+      "id": 8415593455,
+      "lat": -24.8048101,
+      "lon": -65.4066581
+    },
+    {
+      "type": "node",
+      "id": 8415593459,
+      "lat": -24.8030466,
+      "lon": -65.406542
+    },
+    {
+      "type": "node",
+      "id": 8415593460,
+      "lat": -24.8060942,
+      "lon": -65.4067509
+    },
+    {
+      "type": "node",
+      "id": 8415593461,
+      "lat": -24.8054283,
+      "lon": -65.4067041
+    },
+    {
+      "type": "node",
+      "id": 8415593462,
+      "lat": -24.8029135,
+      "lon": -65.4065315
+    },
+    {
+      "type": "node",
+      "id": 8415593464,
+      "lat": -24.804169,
+      "lon": -65.4066128
+    },
+    {
+      "type": "node",
+      "id": 8415593465,
+      "lat": -24.8055699,
+      "lon": -65.4067136
+    },
+    {
+      "type": "node",
+      "id": 8415593467,
+      "lat": -24.8068396,
+      "lon": -65.4068032
+    },
+    {
+      "type": "node",
+      "id": 8415593473,
+      "lat": -24.8062209,
+      "lon": -65.4067613
+    },
+    {
+      "type": "node",
+      "id": 8420781609,
+      "lat": -24.8031121,
+      "lon": -65.4093647
+    },
+    {
+      "type": "node",
+      "id": 8421009331,
+      "lat": -24.8073212,
+      "lon": -65.4096981
+    },
+    {
+      "type": "node",
+      "id": 8421009346,
+      "lat": -24.8072813,
+      "lon": -65.4096956
+    },
+    {
+      "type": "node",
+      "id": 8421009349,
+      "lat": -24.8073659,
+      "lon": -65.4097012
+    },
+    {
+      "type": "node",
+      "id": 567058869,
+      "lat": -24.7959564,
+      "lon": -65.4129914
+    },
+    {
+      "type": "node",
+      "id": 985377272,
+      "lat": -24.7963272,
+      "lon": -65.4088354
+    },
+    {
+      "type": "node",
+      "id": 985377273,
+      "lat": -24.7975543,
+      "lon": -65.4089207
+    },
+    {
+      "type": "node",
+      "id": 1170590662,
+      "lat": -24.8004563,
+      "lon": -65.4063391
+    },
+    {
+      "type": "node",
+      "id": 1170590690,
+      "lat": -24.8017259,
+      "lon": -65.4064406
+    },
+    {
+      "type": "node",
+      "id": 1170590768,
+      "lat": -24.798984,
+      "lon": -65.406242
+    },
+    {
+      "type": "node",
+      "id": 1170590795,
+      "lat": -24.7976716,
+      "lon": -65.4075056
+    },
+    {
+      "type": "node",
+      "id": 1170590847,
+      "lat": -24.800336,
+      "lon": -65.4077333
+    },
+    {
+      "type": "node",
+      "id": 1170590849,
+      "lat": -24.8002286,
+      "lon": -65.4091324
+    },
+    {
+      "type": "node",
+      "id": 1170590881,
+      "lat": -24.8015849,
+      "lon": -65.4078242
+    },
+    {
+      "type": "node",
+      "id": 1170590884,
+      "lat": -24.7965877,
+      "lon": -65.4060787
+    },
+    {
+      "type": "node",
+      "id": 1170590918,
+      "lat": -24.7987869,
+      "lon": -65.4090268
+    },
+    {
+      "type": "node",
+      "id": 1170590967,
+      "lat": -24.7977899,
+      "lon": -65.406157
+    },
+    {
+      "type": "node",
+      "id": 1170591043,
+      "lat": -24.7988867,
+      "lon": -65.4076153
+    },
+    {
+      "type": "node",
+      "id": 1170591074,
+      "lat": -24.7996425,
+      "lon": -65.4076752
+    },
+    {
+      "type": "node",
+      "id": 1170591158,
+      "lat": -24.8014522,
+      "lon": -65.4092288
+    },
+    {
+      "type": "node",
+      "id": 1170591171,
+      "lat": -24.7964986,
+      "lon": -65.4074045
+    },
+    {
+      "type": "node",
+      "id": 1365467110,
+      "lat": -24.7995128,
+      "lon": -65.4090839
+    },
+    {
+      "type": "node",
+      "id": 1365467144,
+      "lat": -24.7997537,
+      "lon": -65.4062909
+    },
+    {
+      "type": "node",
+      "id": 2052323184,
+      "lat": -24.7969428,
+      "lon": -65.4088748
+    },
+    {
+      "type": "node",
+      "id": 2052323185,
+      "lat": -24.7970733,
+      "lon": -65.4074512
+    },
+    {
+      "type": "node",
+      "id": 2052323186,
+      "lat": -24.7971949,
+      "lon": -65.4061147
+    },
+    {
+      "type": "node",
+      "id": 8415593433,
+      "lat": -24.7989127,
+      "lon": -65.4062362
+    },
+    {
+      "type": "node",
+      "id": 8415593436,
+      "lat": -24.8005412,
+      "lon": -65.4063467
+    },
+    {
+      "type": "node",
+      "id": 8415593440,
+      "lat": -24.8003794,
+      "lon": -65.4063331
+    },
+    {
+      "type": "node",
+      "id": 8415593441,
+      "lat": -24.8016432,
+      "lon": -65.4064332
+    },
+    {
+      "type": "node",
+      "id": 8415593449,
+      "lat": -24.7977225,
+      "lon": -65.4061515
+    },
+    {
+      "type": "node",
+      "id": 8415593451,
+      "lat": -24.796523,
+      "lon": -65.406074
+    },
+    {
+      "type": "node",
+      "id": 8415593452,
+      "lat": -24.7990482,
+      "lon": -65.4062467
+    },
+    {
+      "type": "node",
+      "id": 8415593453,
+      "lat": -24.7966606,
+      "lon": -65.4060833
+    },
+    {
+      "type": "node",
+      "id": 8415593454,
+      "lat": -24.7978577,
+      "lon": -65.4061625
+    },
+    {
+      "type": "node",
+      "id": 8415593456,
+      "lat": -24.8017956,
+      "lon": -65.4064467
+    },
+    {
+      "type": "node",
+      "id": 1167269845,
+      "lat": -24.7897663,
+      "lon": -65.4290786
+    },
+    {
+      "type": "node",
+      "id": 1167270316,
+      "lat": -24.7900636,
+      "lon": -65.424934
+    },
+    {
+      "type": "node",
+      "id": 1167270516,
+      "lat": -24.7898692,
+      "lon": -65.4276821
+    },
+    {
+      "type": "node",
+      "id": 1390875773,
+      "lat": -24.7899617,
+      "lon": -65.4263103
+    },
+    {
+      "type": "node",
+      "id": 1393664770,
+      "lat": -24.7896775,
+      "lon": -65.4304524
+    },
+    {
+      "type": "node",
+      "id": 1167269805,
+      "lat": -24.790336,
+      "lon": -65.4207951
+    },
+    {
+      "type": "node",
+      "id": 1167269991,
+      "lat": -24.789164,
+      "lon": -65.4204191
+    },
+    {
+      "type": "node",
+      "id": 1167270103,
+      "lat": -24.7902058,
+      "lon": -65.4227975
+    },
+    {
+      "type": "node",
+      "id": 1167270228,
+      "lat": -24.789053,
+      "lon": -65.4219741
+    },
+    {
+      "type": "node",
+      "id": 1167270241,
+      "lat": -24.7890049,
+      "lon": -65.4227092
+    },
+    {
+      "type": "node",
+      "id": 1167270243,
+      "lat": -24.7905105,
+      "lon": -65.4180886
+    },
+    {
+      "type": "node",
+      "id": 1167270245,
+      "lat": -24.7903542,
+      "lon": -65.4205252
+    },
+    {
+      "type": "node",
+      "id": 1167270257,
+      "lat": -24.7892397,
+      "lon": -65.4192488
+    },
+    {
+      "type": "node",
+      "id": 1167270329,
+      "lat": -24.7902583,
+      "lon": -65.4220389
+    },
+    {
+      "type": "node",
+      "id": 1167270461,
+      "lat": -24.7901589,
+      "lon": -65.42357
+    },
+    {
+      "type": "node",
+      "id": 1167270491,
+      "lat": -24.7891466,
+      "lon": -65.420592
+    },
+    {
+      "type": "node",
+      "id": 1170590670,
+      "lat": -24.7904258,
+      "lon": -65.4192943
+    },
+    {
+      "type": "node",
+      "id": 1824867774,
+      "lat": -24.7890223,
+      "lon": -65.4225147
+    },
+    {
+      "type": "node",
+      "id": 1824867777,
+      "lat": -24.7902184,
+      "lon": -65.4226169
+    },
+    {
+      "type": "node",
+      "id": 4240571013,
+      "lat": -24.7904319,
+      "lon": -65.4192028
+    },
+    {
+      "type": "node",
+      "id": 392350367,
+      "lat": -24.7873483,
+      "lon": -65.4274689
+    },
+    {
+      "type": "node",
+      "id": 1167270330,
+      "lat": -24.7850018,
+      "lon": -65.4258794
+    },
+    {
+      "type": "node",
+      "id": 1167270374,
+      "lat": -24.7848973,
+      "lon": -65.4272431
+    },
+    {
+      "type": "node",
+      "id": 1194373326,
+      "lat": -24.7874387,
+      "lon": -65.4261005
+    },
+    {
+      "type": "node",
+      "id": 1387608900,
+      "lat": -24.7849688,
+      "lon": -65.4263674
+    },
+    {
+      "type": "node",
+      "id": 1390673961,
+      "lat": -24.7872008,
+      "lon": -65.4294122
+    },
+    {
+      "type": "node",
+      "id": 1390858524,
+      "lat": -24.7848189,
+      "lon": -65.4286801
+    },
+    {
+      "type": "node",
+      "id": 1390858540,
+      "lat": -24.7872406,
+      "lon": -65.4288541
+    },
+    {
+      "type": "node",
+      "id": 1390944724,
+      "lat": -24.787165,
+      "lon": -65.4302504
+    },
+    {
+      "type": "node",
+      "id": 2052323083,
+      "lat": -24.7871174,
+      "lon": -65.4308783
+    },
+    {
+      "type": "node",
+      "id": 2052323087,
+      "lat": -24.7872964,
+      "lon": -65.4281609
+    },
+    {
+      "type": "node",
+      "id": 3954626667,
+      "lat": -24.7875427,
+      "lon": -65.4247047
+    },
+    {
+      "type": "node",
+      "id": 1167270302,
+      "lat": -24.7853858,
+      "lon": -65.420352
+    },
+    {
+      "type": "node",
+      "id": 1167270390,
+      "lat": -24.7878354,
+      "lon": -65.4205302
+    },
+    {
+      "type": "node",
+      "id": 1167270393,
+      "lat": -24.787652,
+      "lon": -65.4233108
+    },
+    {
+      "type": "node",
+      "id": 1167270410,
+      "lat": -24.7851911,
+      "lon": -65.4231046
+    },
+    {
+      "type": "node",
+      "id": 1167270442,
+      "lat": -24.7850883,
+      "lon": -65.4245019
+    },
+    {
+      "type": "node",
+      "id": 1167270473,
+      "lat": -24.7879295,
+      "lon": -65.419156
+    },
+    {
+      "type": "node",
+      "id": 1167270479,
+      "lat": -24.7877349,
+      "lon": -65.4218993
+    },
+    {
+      "type": "node",
+      "id": 1167270483,
+      "lat": -24.7889626,
+      "lon": -65.423453
+    },
+    {
+      "type": "node",
+      "id": 1167270505,
+      "lat": -24.7852848,
+      "lon": -65.421719
+    },
+    {
+      "type": "node",
+      "id": 1167270506,
+      "lat": -24.785473,
+      "lon": -65.4189696
+    },
+    {
+      "type": "node",
+      "id": 1824867768,
+      "lat": -24.7876928,
+      "lon": -65.4226043
+    },
+    {
+      "type": "node",
+      "id": 2052323064,
+      "lat": -24.7851372,
+      "lon": -65.4238076
+    },
+    {
+      "type": "node",
+      "id": 4240571032,
+      "lat": -24.7875846,
+      "lon": -65.4240646
+    },
+    {
+      "type": "node",
+      "id": 392350308,
+      "lat": -24.7922252,
+      "lon": -65.412655
+    },
+    {
+      "type": "node",
+      "id": 392350361,
+      "lat": -24.7909409,
+      "lon": -65.412528
+    },
+    {
+      "type": "node",
+      "id": 446376376,
+      "lat": -24.7893353,
+      "lon": -65.4179362
+    },
+    {
+      "type": "node",
+      "id": 446376377,
+      "lat": -24.7896984,
+      "lon": -65.4123944
+    },
+    {
+      "type": "node",
+      "id": 446390860,
+      "lat": -24.7933401,
+      "lon": -65.4127616
+    },
+    {
+      "type": "node",
+      "id": 446390862,
+      "lat": -24.7931165,
+      "lon": -65.416866
+    },
+    {
+      "type": "node",
+      "id": 567058866,
+      "lat": -24.7932565,
+      "lon": -65.4141065
+    },
+    {
+      "type": "node",
+      "id": 567058867,
+      "lat": -24.7945556,
+      "lon": -65.4142311
+    },
+    {
+      "type": "node",
+      "id": 567058873,
+      "lat": -24.7896137,
+      "lon": -65.4137381
+    },
+    {
+      "type": "node",
+      "id": 571784152,
+      "lat": -24.7931997,
+      "lon": -65.4154181
+    },
+    {
+      "type": "node",
+      "id": 571784153,
+      "lat": -24.7895261,
+      "lon": -65.4150781
+    },
+    {
+      "type": "node",
+      "id": 571784154,
+      "lat": -24.7894297,
+      "lon": -65.4164623
+    },
+    {
+      "type": "node",
+      "id": 1000789486,
+      "lat": -24.7919228,
+      "lon": -65.4167133
+    },
+    {
+      "type": "node",
+      "id": 1000789497,
+      "lat": -24.7906148,
+      "lon": -65.4165883
+    },
+    {
+      "type": "node",
+      "id": 1015252985,
+      "lat": -24.7944434,
+      "lon": -65.4155708
+    },
+    {
+      "type": "node",
+      "id": 1167270081,
+      "lat": -24.7908264,
+      "lon": -65.4138686
+    },
+    {
+      "type": "node",
+      "id": 1167270180,
+      "lat": -24.7907274,
+      "lon": -65.4151557
+    },
+    {
+      "type": "node",
+      "id": 1167270286,
+      "lat": -24.7921204,
+      "lon": -65.4139887
+    },
+    {
+      "type": "node",
+      "id": 1167270405,
+      "lat": -24.7920252,
+      "lon": -65.4153103
+    },
+    {
+      "type": "node",
+      "id": 1170591049,
+      "lat": -24.7946769,
+      "lon": -65.4128732
+    },
+    {
+      "type": "node",
+      "id": 2068477181,
+      "lat": -24.7916926,
+      "lon": -65.4152692
+    },
+    {
+      "type": "node",
+      "id": 2068477184,
+      "lat": -24.793225,
+      "lon": -65.4146251
+    },
+    {
+      "type": "node",
+      "id": 5915084199,
+      "lat": -24.7933761,
+      "lon": -65.4124126
+    },
+    {
+      "type": "node",
+      "id": 11747705619,
+      "lat": -24.7905684,
+      "lon": -65.4172552
+    },
+    {
+      "type": "node",
+      "id": 11749456236,
+      "lat": -24.7901689,
+      "lon": -65.4137973
+    },
+    {
+      "type": "node",
+      "id": 11749456238,
+      "lat": -24.7903057,
+      "lon": -65.4138126
+    },
+    {
+      "type": "node",
+      "id": 11749456243,
+      "lat": -24.7920846,
+      "lon": -65.4144861
+    },
+    {
+      "type": "node",
+      "id": 11749456244,
+      "lat": -24.7932848,
+      "lon": -65.4136504
+    },
+    {
+      "type": "node",
+      "id": 13697041870,
+      "lat": -24.7894838,
+      "lon": -65.4156875
+    },
+    {
+      "type": "node",
+      "id": 13701254477,
+      "lat": -24.7906834,
+      "lon": -65.4157153
+    },
+    {
+      "type": "node",
+      "id": 392350356,
+      "lat": -24.7926231,
+      "lon": -65.4071
+    },
+    {
+      "type": "node",
+      "id": 392350357,
+      "lat": -24.7925402,
+      "lon": -65.4085278
+    },
+    {
+      "type": "node",
+      "id": 392350358,
+      "lat": -24.7924891,
+      "lon": -65.409898
+    },
+    {
+      "type": "node",
+      "id": 392350359,
+      "lat": -24.7923441,
+      "lon": -65.4112626
+    },
+    {
+      "type": "node",
+      "id": 392350362,
+      "lat": -24.7913434,
+      "lon": -65.4070282
+    },
+    {
+      "type": "node",
+      "id": 392350363,
+      "lat": -24.7913123,
+      "lon": -65.4084173
+    },
+    {
+      "type": "node",
+      "id": 392350364,
+      "lat": -24.7911981,
+      "lon": -65.4097793
+    },
+    {
+      "type": "node",
+      "id": 392350365,
+      "lat": -24.7910587,
+      "lon": -65.4111567
+    },
+    {
+      "type": "node",
+      "id": 446376380,
+      "lat": -24.7898542,
+      "lon": -65.4096859
+    },
+    {
+      "type": "node",
+      "id": 446376382,
+      "lat": -24.789984,
+      "lon": -65.4083104
+    },
+    {
+      "type": "node",
+      "id": 446376384,
+      "lat": -24.7900668,
+      "lon": -65.4069425
+    },
+    {
+      "type": "node",
+      "id": 446376412,
+      "lat": -24.7952477,
+      "lon": -65.4059418
+    },
+    {
+      "type": "node",
+      "id": 446376414,
+      "lat": -24.7901615,
+      "lon": -65.4055937
+    },
+    {
+      "type": "node",
+      "id": 446390859,
+      "lat": -24.7937381,
+      "lon": -65.4105128
+    },
+    {
+      "type": "node",
+      "id": 567058877,
+      "lat": -24.7948911,
+      "lon": -65.4101036
+    },
+    {
+      "type": "node",
+      "id": 571784169,
+      "lat": -24.7939671,
+      "lon": -65.4058662
+    },
+    {
+      "type": "node",
+      "id": 1000789479,
+      "lat": -24.7935376,
+      "lon": -65.4113605
+    },
+    {
+      "type": "node",
+      "id": 1167270266,
+      "lat": -24.7937767,
+      "lon": -65.4100013
+    },
+    {
+      "type": "node",
+      "id": 1167270280,
+      "lat": -24.7938456,
+      "lon": -65.4086459
+    },
+    {
+      "type": "node",
+      "id": 1167270403,
+      "lat": -24.7939114,
+      "lon": -65.4071657
+    },
+    {
+      "type": "node",
+      "id": 1168544395,
+      "lat": -24.7951269,
+      "lon": -65.407278
+    },
+    {
+      "type": "node",
+      "id": 1168544500,
+      "lat": -24.7950059,
+      "lon": -65.4087406
+    },
+    {
+      "type": "node",
+      "id": 1260431217,
+      "lat": -24.7926967,
+      "lon": -65.4058033
+    },
+    {
+      "type": "node",
+      "id": 2068477187,
+      "lat": -24.7937876,
+      "lon": -65.4098147
+    },
+    {
+      "type": "node",
+      "id": 2068540626,
+      "lat": -24.793688,
+      "lon": -65.4108244
+    },
+    {
+      "type": "node",
+      "id": 2068540634,
+      "lat": -24.7939554,
+      "lon": -65.4100167
+    },
+    {
+      "type": "node",
+      "id": 2068540637,
+      "lat": -24.7940274,
+      "lon": -65.4093351
+    },
+    {
+      "type": "node",
+      "id": 2068540654,
+      "lat": -24.7942314,
+      "lon": -65.4086781
+    },
+    {
+      "type": "node",
+      "id": 2068540663,
+      "lat": -24.7945237,
+      "lon": -65.4072036
+    },
+    {
+      "type": "node",
+      "id": 2068540677,
+      "lat": -24.7946717,
+      "lon": -65.4072167
+    },
+    {
+      "type": "node",
+      "id": 2068540678,
+      "lat": -24.7947256,
+      "lon": -65.4059082
+    },
+    {
+      "type": "node",
+      "id": 5909120207,
+      "lat": -24.7913097,
+      "lon": -65.4085002
+    },
+    {
+      "type": "node",
+      "id": 8415593431,
+      "lat": -24.792701,
+      "lon": -65.4057287
+    },
+    {
+      "type": "node",
+      "id": 8415593438,
+      "lat": -24.7913571,
+      "lon": -65.4057127
+    },
+    {
+      "type": "node",
+      "id": 8415593439,
+      "lat": -24.7914204,
+      "lon": -65.4057176
+    },
+    {
+      "type": "node",
+      "id": 8415593443,
+      "lat": -24.7913527,
+      "lon": -65.4057959
+    },
+    {
+      "type": "node",
+      "id": 8415593445,
+      "lat": -24.7912646,
+      "lon": -65.4057044
+    },
+    {
+      "type": "node",
+      "id": 8415593447,
+      "lat": -24.7913625,
+      "lon": -65.4056344
+    },
+    {
+      "type": "node",
+      "id": 8415593470,
+      "lat": -24.7926883,
+      "lon": -65.405946
+    },
+    {
+      "type": "node",
+      "id": 12872347842,
+      "lat": -24.7946882,
+      "lon": -65.4059061
+    },
+    {
+      "type": "node",
+      "id": 12872347845,
+      "lat": -24.7944681,
+      "lon": -65.4071979
+    },
+    {
+      "type": "node",
+      "id": 12874282564,
+      "lat": -24.7939766,
+      "lon": -65.4057625
+    },
+    {
+      "type": "node",
+      "id": 12874338405,
+      "lat": -24.7940568,
+      "lon": -65.4058618
+    },
+    {
+      "type": "node",
+      "id": 12874338406,
+      "lat": -24.793961,
+      "lon": -65.4059887
+    },
+    {
+      "type": "node",
+      "id": 12874338419,
+      "lat": -24.7951565,
+      "lon": -65.4059359
+    },
+    {
+      "type": "node",
+      "id": 12874634275,
+      "lat": -24.793899,
+      "lon": -65.4072576
+    },
+    {
+      "type": "node",
+      "id": 12874634276,
+      "lat": -24.793918,
+      "lon": -65.4070801
+    },
+    {
+      "type": "node",
+      "id": 12874634277,
+      "lat": -24.7939941,
+      "lon": -65.4071709
+    },
+    {
+      "type": "node",
+      "id": 12874634379,
+      "lat": -24.7938484,
+      "lon": -65.4085726
+    },
+    {
+      "type": "node",
+      "id": 12874634384,
+      "lat": -24.7947338,
+      "lon": -65.4072251
+    },
+    {
+      "type": "node",
+      "id": 12874634465,
+      "lat": -24.7937827,
+      "lon": -65.4098978
+    },
+    {
+      "type": "node",
+      "id": 12874634467,
+      "lat": -24.7938719,
+      "lon": -65.4100095
+    },
+    {
+      "type": "node",
+      "id": 12874634484,
+      "lat": -24.7937729,
+      "lon": -65.4100521
+    },
+    {
+      "type": "node",
+      "id": 12874634504,
+      "lat": -24.7935638,
+      "lon": -65.4112672
+    },
+    {
+      "type": "node",
+      "id": 12874634505,
+      "lat": -24.79433,
+      "lon": -65.408686
+    },
+    {
+      "type": "node",
+      "id": 12874634506,
+      "lat": -24.793964,
+      "lon": -65.4099351
+    },
+    {
+      "type": "node",
+      "id": 12874634510,
+      "lat": -24.7942541,
+      "lon": -65.4086799
+    },
+    {
+      "type": "node",
+      "id": 12874634511,
+      "lat": -24.794754,
+      "lon": -65.4072278
+    },
+    {
+      "type": "node",
+      "id": 12875844259,
+      "lat": -24.7944871,
+      "lon": -65.405892
+    },
+    {
+      "type": "node",
+      "id": 12875844260,
+      "lat": -24.794775,
+      "lon": -65.4059114
+    },
+    {
+      "type": "node",
+      "id": 12875844262,
+      "lat": -24.7943677,
+      "lon": -65.4058836
+    },
+    {
+      "type": "node",
+      "id": 12875844263,
+      "lat": -24.7942719,
+      "lon": -65.4071867
+    },
+    {
+      "type": "node",
+      "id": 12875844268,
+      "lat": -24.7940473,
+      "lon": -65.4086627
+    },
+    {
+      "type": "node",
+      "id": 12875844269,
+      "lat": -24.7940015,
+      "lon": -65.4052078
+    },
+    {
+      "type": "node",
+      "id": 12999251877,
+      "lat": -24.7906851,
+      "lon": -65.4097436
+    },
+    {
+      "type": "node",
+      "id": 13691431990,
+      "lat": -24.7932617,
+      "lon": -65.4085931
+    },
+    {
+      "type": "node",
+      "id": 392350310,
+      "lat": -24.7848873,
+      "lon": -65.411925
+    },
+    {
+      "type": "node",
+      "id": 392350322,
+      "lat": -24.7861943,
+      "lon": -65.4120542
+    },
+    {
+      "type": "node",
+      "id": 392350369,
+      "lat": -24.7884574,
+      "lon": -65.4122682
+    },
+    {
+      "type": "node",
+      "id": 446390853,
+      "lat": -24.7869253,
+      "lon": -65.4148975
+    },
+    {
+      "type": "node",
+      "id": 567058870,
+      "lat": -24.7860157,
+      "lon": -65.4133755
+    },
+    {
+      "type": "node",
+      "id": 567058871,
+      "lat": -24.7870476,
+      "lon": -65.4134854
+    },
+    {
+      "type": "node",
+      "id": 567058872,
+      "lat": -24.7883474,
+      "lon": -65.4136067
+    },
+    {
+      "type": "node",
+      "id": 567058879,
+      "lat": -24.7835422,
+      "lon": -65.4131584
+    },
+    {
+      "type": "node",
+      "id": 567058880,
+      "lat": -24.784789,
+      "lon": -65.4132621
+    },
+    {
+      "type": "node",
+      "id": 571784157,
+      "lat": -24.7881426,
+      "lon": -65.4163355
+    },
+    {
+      "type": "node",
+      "id": 571784162,
+      "lat": -24.7882499,
+      "lon": -65.4150271
+    },
+    {
+      "type": "node",
+      "id": 571784167,
+      "lat": -24.7867758,
+      "lon": -65.4162011
+    },
+    {
+      "type": "node",
+      "id": 1167269803,
+      "lat": -24.7858319,
+      "lon": -65.4147748
+    },
+    {
+      "type": "node",
+      "id": 1167269880,
+      "lat": -24.7846993,
+      "lon": -65.4146673
+    },
+    {
+      "type": "node",
+      "id": 1167270057,
+      "lat": -24.7834464,
+      "lon": -65.4145355
+    },
+    {
+      "type": "node",
+      "id": 1167270117,
+      "lat": -24.7855715,
+      "lon": -65.4175752
+    },
+    {
+      "type": "node",
+      "id": 1167270146,
+      "lat": -24.7846087,
+      "lon": -65.4160525
+    },
+    {
+      "type": "node",
+      "id": 1167270203,
+      "lat": -24.7856696,
+      "lon": -65.4161466
+    },
+    {
+      "type": "node",
+      "id": 1167270428,
+      "lat": -24.7880325,
+      "lon": -65.4178229
+    },
+    {
+      "type": "node",
+      "id": 1167270469,
+      "lat": -24.783626,
+      "lon": -65.4118031
+    },
+    {
+      "type": "node",
+      "id": 1188226890,
+      "lat": -24.7861443,
+      "lon": -65.412693
+    },
+    {
+      "type": "node",
+      "id": 1188226907,
+      "lat": -24.7848388,
+      "lon": -65.4126489
+    },
+    {
+      "type": "node",
+      "id": 1260432719,
+      "lat": -24.7872665,
+      "lon": -65.4128235
+    },
+    {
+      "type": "node",
+      "id": 1387566320,
+      "lat": -24.7833452,
+      "lon": -65.4159209
+    },
+    {
+      "type": "node",
+      "id": 2068477165,
+      "lat": -24.7838637,
+      "lon": -65.4145845
+    },
+    {
+      "type": "node",
+      "id": 2068477171,
+      "lat": -24.7871896,
+      "lon": -65.4149283
+    },
+    {
+      "type": "node",
+      "id": 2080106169,
+      "lat": -24.7860823,
+      "lon": -65.4127659
+    },
+    {
+      "type": "node",
+      "id": 3902992553,
+      "lat": -24.7869985,
+      "lon": -65.4141898
+    },
+    {
+      "type": "node",
+      "id": 4783628461,
+      "lat": -24.7874934,
+      "lon": -65.4122065
+    },
+    {
+      "type": "node",
+      "id": 5909119725,
+      "lat": -24.7876002,
+      "lon": -65.4121819
+    },
+    {
+      "type": "node",
+      "id": 10749357701,
+      "lat": -24.7839414,
+      "lon": -65.4145873
+    },
+    {
+      "type": "node",
+      "id": 10749357702,
+      "lat": -24.783504,
+      "lon": -65.4145414
+    },
+    {
+      "type": "node",
+      "id": 10749357703,
+      "lat": -24.7834703,
+      "lon": -65.414538
+    },
+    {
+      "type": "node",
+      "id": 11624973513,
+      "lat": -24.7836752,
+      "lon": -65.4118079
+    },
+    {
+      "type": "node",
+      "id": 11747705607,
+      "lat": -24.7885157,
+      "lon": -65.4150377
+    },
+    {
+      "type": "node",
+      "id": 11747705611,
+      "lat": -24.7882226,
+      "lon": -65.4153596
+    },
+    {
+      "type": "node",
+      "id": 11747705612,
+      "lat": -24.7881191,
+      "lon": -65.4166516
+    },
+    {
+      "type": "node",
+      "id": 11747705617,
+      "lat": -24.7881055,
+      "lon": -65.4168355
+    },
+    {
+      "type": "node",
+      "id": 11877258532,
+      "lat": -24.7883956,
+      "lon": -65.4130204
+    },
+    {
+      "type": "node",
+      "id": 12125603264,
+      "lat": -24.7864989,
+      "lon": -65.4134269
+    },
+    {
+      "type": "node",
+      "id": 13701395297,
+      "lat": -24.787588,
+      "lon": -65.4135358
+    },
+    {
+      "type": "node",
+      "id": 392350337,
+      "lat": -24.7826576,
+      "lon": -65.4075564
+    },
+    {
+      "type": "node",
+      "id": 392350338,
+      "lat": -24.782555,
+      "lon": -65.4089378
+    },
+    {
+      "type": "node",
+      "id": 392350340,
+      "lat": -24.7839841,
+      "lon": -65.406401
+    },
+    {
+      "type": "node",
+      "id": 392350341,
+      "lat": -24.7839014,
+      "lon": -65.4076919
+    },
+    {
+      "type": "node",
+      "id": 392350342,
+      "lat": -24.7838073,
+      "lon": -65.409049
+    },
+    {
+      "type": "node",
+      "id": 392350343,
+      "lat": -24.7837131,
+      "lon": -65.4104201
+    },
+    {
+      "type": "node",
+      "id": 392350344,
+      "lat": -24.7853361,
+      "lon": -65.40652
+    },
+    {
+      "type": "node",
+      "id": 392350345,
+      "lat": -24.7852213,
+      "lon": -65.407834
+    },
+    {
+      "type": "node",
+      "id": 392350346,
+      "lat": -24.7851203,
+      "lon": -65.4091942
+    },
+    {
+      "type": "node",
+      "id": 392350347,
+      "lat": -24.7850033,
+      "lon": -65.4105469
+    },
+    {
+      "type": "node",
+      "id": 392350348,
+      "lat": -24.7867668,
+      "lon": -65.4066662
+    },
+    {
+      "type": "node",
+      "id": 392350349,
+      "lat": -24.7866059,
+      "lon": -65.4079793
+    },
+    {
+      "type": "node",
+      "id": 392350350,
+      "lat": -24.7864696,
+      "lon": -65.4093416
+    },
+    {
+      "type": "node",
+      "id": 392350351,
+      "lat": -24.7863396,
+      "lon": -65.4106886
+    },
+    {
+      "type": "node",
+      "id": 392350352,
+      "lat": -24.7876419,
+      "lon": -65.40673
+    },
+    {
+      "type": "node",
+      "id": 392350353,
+      "lat": -24.7875891,
+      "lon": -65.4080772
+    },
+    {
+      "type": "node",
+      "id": 392350354,
+      "lat": -24.7875635,
+      "lon": -65.4094554
+    },
+    {
+      "type": "node",
+      "id": 392350355,
+      "lat": -24.7877121,
+      "lon": -65.4108343
+    },
+    {
+      "type": "node",
+      "id": 392350370,
+      "lat": -24.7887576,
+      "lon": -65.4081943
+    },
+    {
+      "type": "node",
+      "id": 446390857,
+      "lat": -24.7878513,
+      "lon": -65.4054067
+    },
+    {
+      "type": "node",
+      "id": 994612648,
+      "lat": -24.7875948,
+      "lon": -65.4101314
+    },
+    {
+      "type": "node",
+      "id": 1000789496,
+      "lat": -24.788958,
+      "lon": -65.4054916
+    },
+    {
+      "type": "node",
+      "id": 1167270037,
+      "lat": -24.7840627,
+      "lon": -65.4051096
+    },
+    {
+      "type": "node",
+      "id": 1167270196,
+      "lat": -24.7854324,
+      "lon": -65.4052214
+    },
+    {
+      "type": "node",
+      "id": 1167270305,
+      "lat": -24.7869281,
+      "lon": -65.4058612
+    },
+    {
+      "type": "node",
+      "id": 1167270361,
+      "lat": -24.7828178,
+      "lon": -65.4050225
+    },
+    {
+      "type": "node",
+      "id": 1176386839,
+      "lat": -24.786912,
+      "lon": -65.405318
+    },
+    {
+      "type": "node",
+      "id": 1260432442,
+      "lat": -24.7876673,
+      "lon": -65.4105321
+    },
+    {
+      "type": "node",
+      "id": 1260432445,
+      "lat": -24.787568,
+      "lon": -65.4098823
+    },
+    {
+      "type": "node",
+      "id": 1260437522,
+      "lat": -24.7874757,
+      "lon": -65.4062515
+    },
+    {
+      "type": "node",
+      "id": 1260437523,
+      "lat": -24.7873491,
+      "lon": -65.4060185
+    },
+    {
+      "type": "node",
+      "id": 1260437524,
+      "lat": -24.7875626,
+      "lon": -65.4064661
+    },
+    {
+      "type": "node",
+      "id": 1260437525,
+      "lat": -24.7875139,
+      "lon": -65.4063443
+    },
+    {
+      "type": "node",
+      "id": 1260437526,
+      "lat": -24.7874395,
+      "lon": -65.4061848
+    },
+    {
+      "type": "node",
+      "id": 1260437527,
+      "lat": -24.7873943,
+      "lon": -65.4060952
+    },
+    {
+      "type": "node",
+      "id": 1260437531,
+      "lat": -24.7876121,
+      "lon": -65.4066085
+    },
+    {
+      "type": "node",
+      "id": 1260437538,
+      "lat": -24.7870893,
+      "lon": -65.4056132
+    },
+    {
+      "type": "node",
+      "id": 1260437540,
+      "lat": -24.7871216,
+      "lon": -65.4057208
+    },
+    {
+      "type": "node",
+      "id": 1260437546,
+      "lat": -24.7872147,
+      "lon": -65.4058482
+    },
+    {
+      "type": "node",
+      "id": 1260437552,
+      "lat": -24.7871821,
+      "lon": -65.4058158
+    },
+    {
+      "type": "node",
+      "id": 1260437558,
+      "lat": -24.7870687,
+      "lon": -65.4055223
+    },
+    {
+      "type": "node",
+      "id": 1260437831,
+      "lat": -24.7876969,
+      "lon": -65.4065975
+    },
+    {
+      "type": "node",
+      "id": 1390703260,
+      "lat": -24.7868605,
+      "lon": -65.4060436
+    },
+    {
+      "type": "node",
+      "id": 1390703262,
+      "lat": -24.7869849,
+      "lon": -65.405818
+    },
+    {
+      "type": "node",
+      "id": 1390703264,
+      "lat": -24.7870224,
+      "lon": -65.4057943
+    },
+    {
+      "type": "node",
+      "id": 1390703266,
+      "lat": -24.7870629,
+      "lon": -65.4057899
+    },
+    {
+      "type": "node",
+      "id": 1390703268,
+      "lat": -24.7871229,
+      "lon": -65.4058048
+    },
+    {
+      "type": "node",
+      "id": 2068477168,
+      "lat": -24.7850311,
+      "lon": -65.4078137
+    },
+    {
+      "type": "node",
+      "id": 2068477174,
+      "lat": -24.7874455,
+      "lon": -65.4080644
+    },
+    {
+      "type": "node",
+      "id": 3898617082,
+      "lat": -24.7868107,
+      "lon": -65.4063435
+    },
+    {
+      "type": "node",
+      "id": 5941408761,
+      "lat": -24.7842544,
+      "lon": -65.40773
+    },
+    {
+      "type": "node",
+      "id": 7590861870,
+      "lat": -24.7870639,
+      "lon": -65.4053336
+    },
+    {
+      "type": "node",
+      "id": 7681050333,
+      "lat": -24.7868919,
+      "lon": -65.4059463
+    },
+    {
+      "type": "node",
+      "id": 10760869020,
+      "lat": -24.7876315,
+      "lon": -65.4069954
+    },
+    {
+      "type": "node",
+      "id": 11303618786,
+      "lat": -24.78447,
+      "lon": -65.4104946
+    },
+    {
+      "type": "node",
+      "id": 11303618794,
+      "lat": -24.7859394,
+      "lon": -65.4092837
+    },
+    {
+      "type": "node",
+      "id": 11303618804,
+      "lat": -24.786545,
+      "lon": -65.4085881
+    },
+    {
+      "type": "node",
+      "id": 11303618808,
+      "lat": -24.7875809,
+      "lon": -65.408518
+    },
+    {
+      "type": "node",
+      "id": 11624973509,
+      "lat": -24.7837559,
+      "lon": -65.4104243
+    },
+    {
+      "type": "node",
+      "id": 12882427228,
+      "lat": -24.786909,
+      "lon": -65.4052118
+    },
+    {
+      "type": "node",
+      "id": 12882427229,
+      "lat": -24.7870592,
+      "lon": -65.4052222
+    },
+    {
+      "type": "node",
+      "id": 12882427230,
+      "lat": -24.7868611,
+      "lon": -65.4053147
+    },
+    {
+      "type": "node",
+      "id": 12882427231,
+      "lat": -24.7871108,
+      "lon": -65.405338
+    },
+    {
+      "type": "node",
+      "id": 12882427232,
+      "lat": -24.786914,
+      "lon": -65.4053864
+    },
+    {
+      "type": "node",
+      "id": 12882427233,
+      "lat": -24.7870652,
+      "lon": -65.4053864
+    },
+    {
+      "type": "node",
+      "id": 13711224024,
+      "lat": -24.7876224,
+      "lon": -65.4072288
+    },
+    {
+      "type": "node",
+      "id": 13712871028,
+      "lat": -24.7881492,
+      "lon": -65.4060667
+    },
+    {
+      "type": "node",
+      "id": 13712871029,
+      "lat": -24.7889068,
+      "lon": -65.4061597
+    },
+    {
+      "type": "node",
+      "id": 878835003,
+      "lat": -24.7915305,
+      "lon": -65.4043806
+    },
+    {
+      "type": "node",
+      "id": 1167269921,
+      "lat": -24.7940319,
+      "lon": -65.4045555
+    },
+    {
+      "type": "node",
+      "id": 1176386765,
+      "lat": -24.7890599,
+      "lon": -65.4041774
+    },
+    {
+      "type": "node",
+      "id": 1176386807,
+      "lat": -24.7902438,
+      "lon": -65.4042576
+    },
+    {
+      "type": "node",
+      "id": 1260428345,
+      "lat": -24.7916047,
+      "lon": -65.4027726
+    },
+    {
+      "type": "node",
+      "id": 1260431092,
+      "lat": -24.7917245,
+      "lon": -65.4018279
+    },
+    {
+      "type": "node",
+      "id": 1260431218,
+      "lat": -24.7927818,
+      "lon": -65.4044523
+    },
+    {
+      "type": "node",
+      "id": 1260437832,
+      "lat": -24.7902211,
+      "lon": -65.4027179
+    },
+    {
+      "type": "node",
+      "id": 1260437833,
+      "lat": -24.7891802,
+      "lon": -65.402654
+    },
+    {
+      "type": "node",
+      "id": 1260438016,
+      "lat": -24.7928623,
+      "lon": -65.4028719
+    },
+    {
+      "type": "node",
+      "id": 1791167734,
+      "lat": -24.7901178,
+      "lon": -65.4042478
+    },
+    {
+      "type": "node",
+      "id": 8415593442,
+      "lat": -24.7916116,
+      "lon": -65.4027005
+    },
+    {
+      "type": "node",
+      "id": 8415593463,
+      "lat": -24.7915968,
+      "lon": -65.4028591
+    },
+    {
+      "type": "node",
+      "id": 12259994682,
+      "lat": -24.7916963,
+      "lon": -65.4019517
+    },
+    {
+      "type": "node",
+      "id": 12873752317,
+      "lat": -24.7927859,
+      "lon": -65.4043797
+    },
+    {
+      "type": "node",
+      "id": 12873752319,
+      "lat": -24.7928555,
+      "lon": -65.4044584
+    },
+    {
+      "type": "node",
+      "id": 12873752387,
+      "lat": -24.7928582,
+      "lon": -65.4029534
+    },
+    {
+      "type": "node",
+      "id": 12873890078,
+      "lat": -24.7939568,
+      "lon": -65.4045493
+    },
+    {
+      "type": "node",
+      "id": 12873890080,
+      "lat": -24.7940273,
+      "lon": -65.4046323
+    },
+    {
+      "type": "node",
+      "id": 1167269929,
+      "lat": -24.7855445,
+      "lon": -65.4038979
+    },
+    {
+      "type": "node",
+      "id": 1176386736,
+      "lat": -24.7880097,
+      "lon": -65.4040961
+    },
+    {
+      "type": "node",
+      "id": 1176386742,
+      "lat": -24.7868707,
+      "lon": -65.4040159
+    },
+    {
+      "type": "node",
+      "id": 1176386800,
+      "lat": -24.7841527,
+      "lon": -65.4037814
+    },
+    {
+      "type": "node",
+      "id": 1260437106,
+      "lat": -24.786813,
+      "lon": -65.4025802
+    },
+    {
+      "type": "node",
+      "id": 1260437536,
+      "lat": -24.7870115,
+      "lon": -65.4040248
+    },
+    {
+      "type": "node",
+      "id": 1260437542,
+      "lat": -24.7882177,
+      "lon": -65.4026074
+    },
+    {
+      "type": "node",
+      "id": 1260437543,
+      "lat": -24.7869461,
+      "lon": -65.4025572
+    },
+    {
+      "type": "node",
+      "id": 1260443039,
+      "lat": -24.7856429,
+      "lon": -65.4027823
+    },
+    {
+      "type": "node",
+      "id": 2109826778,
+      "lat": -24.7855961,
+      "lon": -65.4032969
+    },
+    {
+      "type": "node",
+      "id": 2109826779,
+      "lat": -24.7868435,
+      "lon": -65.403395
+    },
+    {
+      "type": "node",
+      "id": 5909157742,
+      "lat": -24.7870357,
+      "lon": -65.4046474
+    },
+    {
+      "type": "node",
+      "id": 5909157743,
+      "lat": -24.7868939,
+      "lon": -65.4046521
+    },
+    {
+      "type": "node",
+      "id": 5909157744,
+      "lat": -24.786977,
+      "lon": -65.4033972
+    },
+    {
+      "type": "node",
+      "id": 5941408754,
+      "lat": -24.7842543,
+      "lon": -65.4037899
+    },
+    {
+      "type": "node",
+      "id": 12882427189,
+      "lat": -24.7882088,
+      "lon": -65.4026708
+    },
+    {
+      "type": "node",
+      "id": 12882427219,
+      "lat": -24.786816,
+      "lon": -65.4026611
+    },
+    {
+      "type": "node",
+      "id": 12882427220,
+      "lat": -24.7869496,
+      "lon": -65.4026531
+    },
+    {
+      "type": "node",
+      "id": 12882427238,
+      "lat": -24.7868658,
+      "lon": -65.4039034
+    },
+    {
+      "type": "node",
+      "id": 12882427239,
+      "lat": -24.7870049,
+      "lon": -65.4039047
+    },
+    {
+      "type": "node",
+      "id": 12882427240,
+      "lat": -24.7868071,
+      "lon": -65.4040102
+    },
+    {
+      "type": "node",
+      "id": 12882427242,
+      "lat": -24.7868735,
+      "lon": -65.4040975
+    },
+    {
+      "type": "node",
+      "id": 12882427243,
+      "lat": -24.7870144,
+      "lon": -65.4041014
+    },
+    {
+      "type": "node",
+      "id": 12882427292,
+      "lat": -24.7868216,
+      "lon": -65.40281
+    },
+    {
+      "type": "node",
+      "id": 571784192,
+      "lat": -24.782118,
+      "lon": -65.4157953
+    },
+    {
+      "type": "node",
+      "id": 571784194,
+      "lat": -24.7821919,
+      "lon": -65.4144121
+    },
+    {
+      "type": "node",
+      "id": 5910349674,
+      "lat": -24.7808944,
+      "lon": -65.415652
+    },
+    {
+      "type": "node",
+      "id": 11555151031,
+      "lat": -24.781165,
+      "lon": -65.4156775
+    },
+    {
+      "type": "node",
+      "id": 11960088280,
+      "lat": -24.78201,
+      "lon": -65.4157843
+    },
+    {
+      "type": "node",
+      "id": 11960088281,
+      "lat": -24.7821987,
+      "lon": -65.4158036
+    },
+    {
+      "type": "node",
+      "id": 12884511859,
+      "lat": -24.7809768,
+      "lon": -65.4156585
+    },
+    {
+      "type": "node",
+      "id": 13701394982,
+      "lat": -24.7815179,
+      "lon": -65.4157221
+    },
+    {
+      "type": "node",
+      "id": 2052323006,
+      "lat": -24.7818833,
+      "lon": -65.4088685
+    },
+    {
+      "type": "node",
+      "id": 2052323015,
+      "lat": -24.7822079,
+      "lon": -65.4049623
+    },
+    {
+      "type": "node",
+      "id": 5910349679,
+      "lat": -24.7813542,
+      "lon": -65.4087905
+    },
+    {
+      "type": "node",
+      "id": 12884511928,
+      "lat": -24.7814262,
+      "lon": -65.4088011
+    },
+    {
+      "type": "node",
+      "id": 1260443014,
+      "lat": -24.7816161,
+      "lon": -65.4049003
+    },
+    {
+      "type": "node",
+      "id": 12884511962,
+      "lat": -24.7816719,
+      "lon": -65.4049061
+    }
+  ]
+}

@@ -1,0 +1,1488 @@
+==> src/Modelo/Patrones/IntelligenceStrategy.java <==
+package Patrones;
+
+import grafoDirigido.AbsGrafo;
+import recursos.NodoMapa;
+import recursos.RutaAsignada;
+
+public interface IntelligenceStrategy {
+    public RutaAsignada calculaETA(AbsGrafo a, NodoMapa origin, NodoMapa destino);
+}
+
+==> src/Modelo/Patrones/DijsktraStrat.java <==
+package Patrones;
+
+import java.util.ArrayList;
+
+import recursos.RutaAsignada;
+import grafoDirigido.AbsGrafo;
+import grafoDirigido.AbsGrafoD;
+import recursos.NodoMapa;
+
+public class DijsktraStrat implements IntelligenceStrategy {
+    @Override
+    public RutaAsignada calculaETA(AbsGrafo a, NodoMapa origin, NodoMapa destino) {
+        AbsGrafoD grafo = (AbsGrafoD) a;
+        int idxOrigen = ((grafoDirigido.GrafoSalta) a).buscarIndice(origin.getId());
+        int idxDestino = ((grafoDirigido.GrafoSalta) a).buscarIndice(destino.getId());
+        if (idxOrigen == -1 || idxDestino == -1) return new RutaAsignada(10000.0, new ArrayList<>());
+        return new RutaAsignada(grafo.obtenerCostoDijkstra(idxOrigen, idxDestino), new ArrayList<>());
+    }
+}
+
+
+==> src/Modelo/Patrones/FloydStrategy.java <==
+package Patrones;
+
+import java.util.ArrayList;
+
+import grafoDirigido.AbsGrafo;
+import grafoDirigido.AbsGrafoD;
+import recursos.NodoMapa;
+import recursos.RutaAsignada;
+
+public class FloydStrategy implements IntelligenceStrategy {
+    @Override
+    public RutaAsignada calculaETA(AbsGrafo a, NodoMapa origin, NodoMapa destino) {
+        AbsGrafoD grafo = (AbsGrafoD) a;
+        int idxOrigen = ((grafoDirigido.GrafoSalta) a).buscarIndice(origin.getId());
+        int idxDestino = ((grafoDirigido.GrafoSalta) a).buscarIndice(destino.getId());
+        if (idxOrigen == -1 || idxDestino == -1) return new RutaAsignada(10000.0, new ArrayList<>());
+        return new RutaAsignada(grafo.obtenerCostoFloyd(idxOrigen, idxDestino), new ArrayList<>());
+    }
+}
+
+==> src/Modelo/servicio/LectorJSON.java <==
+package servicio;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.IOException;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import grafoDirigido.GrafoSalta;
+
+public class LectorJSON {
+
+    public void probarLecturaNodos(String rutaArchivo, GrafoSalta grafo) {
+        try {
+            String contenido = new String(Files.readAllBytes(Paths.get(rutaArchivo)));
+            JSONObject jsonCompleto = new JSONObject(contenido);
+            JSONArray elementos = jsonCompleto.getJSONArray("elements");
+            int contadorCalles = 0;
+
+            for (int i = 0; i < elementos.length(); i++) {
+                JSONObject item = elementos.getJSONObject(i);
+                if (!item.getString("type").equals("way")) continue;
+
+                JSONArray nodes = item.getJSONArray("nodes");
+                JSONObject tags = item.optJSONObject("tags");
+                String tipoVia = "residential";
+                boolean esManoUnica = false;
+
+                if (tags != null) {
+                    tipoVia = tags.optString("highway", "residential");
+                    esManoUnica = tags.optString("oneway", "no").equals("yes");
+                }
+
+                for (int j = 0; j < nodes.length() - 1; j++) {
+                    long idOrigen  = nodes.getLong(j);
+                    long idDestino = nodes.getLong(j + 1);
+                    grafo.actualizarPeso(idOrigen, idDestino, tipoVia);
+                    if (!esManoUnica)
+                        grafo.actualizarPeso(idDestino, idOrigen, tipoVia);
+                    contadorCalles++;
+                }
+            }
+            System.out.println("Pesos actualizados: " + contadorCalles + " segmentos.");
+        } catch (IOException e) {
+            System.out.println("Error abriendo archivo: " + rutaArchivo);
+        } catch (Exception e) {
+            System.out.println("Error procesando JSON: " + e.getMessage());
+        }
+    }
+}
+==> src/Modelo/contenedores/MatrizGrafo.java <==
+package contenedores;
+
+public class MatrizGrafo extends MatrizArr{
+	public MatrizGrafo(int ordenGrafo){
+		super(ordenGrafo, ordenGrafo);
+	}
+	
+	public boolean areConnected(int i, int j){
+		boolean response=false;
+		if (i>=0 && i<getNroFilas() && j>=0 && j<getNroColumnas()){
+			if (this.matriz[i][j]!=null){
+				response=true;
+			}
+		}				
+		return response;
+	}
+	
+}
+
+==> src/Modelo/contenedores/Lista1DLinkedL.java <==
+package contenedores;
+import recursos.*;
+
+// implementando una lista simple
+public abstract class Lista1DLinkedL extends Lista0DLinkedL implements OperacionesCL3{
+	public void insertar(Object elemento, int posicion){
+		NodoDoble node;
+		if (posicion>tamanio() || posicion<0){
+			System.out.println("Error insertar. Posicion inexistente ");
+		}else{
+			if (posicion==0){ // insercion al comienzo
+				if (!estaVacia()){
+					this.frenteL=new NodoDoble(elemento, null, this.frenteL);
+					this.frenteL.getNextNodo().setPrevNodo(this.frenteL);
+				}else{
+					this.frenteL=this.finalL=new NodoDoble(elemento);					
+				}
+			}else{
+				if (posicion==tamanio()){ // insercion al fin
+					this.finalL = new NodoDoble(elemento, this.finalL, null); // nuevo nodo fin
+					this.finalL.getPrevNodo().setNextNodo(this.finalL); // reconexion penultimo nodo al nuevo fin
+				}else{
+					// insercion al medio					
+					NodoDoble prev, next;
+					prev=this.frenteL;
+					next=this.frenteL.getNextNodo();
+					for (int counter=1; counter<posicion;counter++){
+						prev=prev.getNextNodo(); next=next.getNextNodo();						
+					}
+					
+					node = new NodoDoble(elemento,prev,next);
+					prev.setNextNodo(node); // actualizo referencias
+					next.setPrevNodo(node);					
+				}
+			}			
+			this.ultimo++; // incremento "ultima posicion" de lista
+		}		
+	}
+	
+	public void reemplazar(Object elemento, int posicion){		
+		if (estaVacia()){
+			System.out.println("Error reemplazar. Lista vacia...");
+		} else {
+			if (posicion>=tamanio() || posicion<0){
+				System.out.println("Error reemplazar. La posicion no existe..");
+			}else{
+				if (posicion==0){
+					this.frenteL.setNodoInfo(elemento);
+				}else{
+					if (posicion==tamanio()-1){
+						this.finalL.setNodoInfo(elemento);
+					}else {
+						NodoDoble temp;
+						temp=this.frenteL;
+						
+						for (int counter=0; counter<posicion;counter++){						
+							temp=temp.getNextNodo();		
+						}				
+						
+						temp.setNodoInfo(elemento);
+					}
+				}				
+			}						
+		}		
+	}
+	
+	public abstract boolean iguales(Object elementoL, Object elemento);
+	
+	public int buscar(Object elemento){		
+		int posicion=-1; int contador=0;
+		Object unElemento;
+		NodoDoble temp;
+		
+		temp=this.frenteL;
+		while (temp!=null && posicion==-1){
+			unElemento=temp.getNodoInfo();
+			if (iguales(unElemento,elemento)){
+				posicion=contador;
+			}else{
+				temp=temp.getNextNodo();
+				contador++;
+			}
+		}				
+		return posicion;
+	}
+
+}
+
+==> src/Modelo/contenedores/ColaLinkedList.java <==
+package contenedores;
+import recursos.Nodo;
+import recursos.OperacionesCL1;
+public abstract class ColaLinkedList implements OperacionesCL1{
+	protected Nodo frenteC, finalC;
+	
+	public ColaLinkedList(){
+		limpiar();
+	}
+
+	public boolean estaVacia(){
+		return (this.frenteC==null);} 
+
+
+	public abstract void meter(Object elemento);
+	
+	public Object sacar(){
+		Object elemento = null;
+		if (!estaVacia()){
+			elemento=this.frenteC.getNodoInfo();
+			this.frenteC=this.frenteC.getNextNodo();
+			if (estaVacia()){
+				this.finalC=null; 
+			}
+		}else{
+			System.out.println("Error sacar. Cola vacia");
+		}
+		return elemento;
+	}
+	
+	public void limpiar(){
+		this.frenteC=this.finalC=null;
+	}	
+	
+}
+
+==> src/Modelo/contenedores/GraphPriorityQueue.java <==
+package contenedores;
+import recursos.Connection;
+import recursos.Nodo;
+
+public class GraphPriorityQueue extends ColaPrioridad {
+	
+	
+	public boolean esMenor(Object objA, Object objB){
+		boolean response=false;
+				
+		if (((Connection)objA).getConnectionCost()<((Connection)objB).getConnectionCost()){
+			response=true;
+		}
+		return response;
+	}
+
+	public boolean esMayor(Object objA, Object objB){
+		boolean response=false;
+
+		if (((Connection)objA).getConnectionCost()>((Connection)objB).getConnectionCost()){
+			response=true;
+		}	
+		return response;
+	}
+	
+	public boolean iguales(Object objA, Object objB){
+		boolean response=false;
+	
+		if (((Connection)objA).getConnectionCost()==((Connection)objB).getConnectionCost()){
+			response=true;
+		}	
+		return response;
+	}
+	
+	
+	void muestra(){
+		Nodo temp; Connection conexion;		
+		if (!estaVacia()){
+			temp=this.frenteC;
+			while (temp!=null){
+				conexion=(Connection)temp.getNodoInfo();
+				System.out.println("Conexion " + conexion.getVertexI() + " - " + conexion.getVertexJ() + ":" + conexion.getConnectionCost());
+				temp=temp.getNextNodo();
+			}			
+		}else{
+			System.out.println("Error muestra. Cola vacia");
+		}		
+	}	
+}
+
+==> src/Modelo/contenedores/VehiculoPriority.java <==
+package contenedores;
+
+import simulador.Vehiculo;
+
+public class VehiculoPriority extends ColaPrioridad{
+    @Override
+    public boolean esMenor(Object oa, Object ob){
+        Vehiculo a = (Vehiculo) oa;
+        Vehiculo b = (Vehiculo) ob;
+        return a.getEta() < b.getEta();
+    }
+
+    @Override
+    public boolean esMayor(Object oa, Object ob){
+        Vehiculo a = (Vehiculo) oa;
+        Vehiculo b = (Vehiculo) ob;
+        return a.getEta() > b.getEta();
+    }
+
+    @Override
+    public boolean iguales(Object oa, Object ob){
+        Vehiculo a = (Vehiculo) oa;
+        Vehiculo b = (Vehiculo) ob;
+        return a.getEta() == b.getEta();
+    }
+}
+
+==> src/Modelo/contenedores/MatrizArr.java <==
+package contenedores;
+
+public class MatrizArr {
+	protected Object[][] matriz;
+	protected int nroFilas, nroColumnas;
+	
+	public MatrizArr(int nroFilas, int nroColumnas){
+		this.nroFilas=nroFilas;
+		this.nroColumnas=nroColumnas;
+		this.matriz=new Object[this.nroFilas][this.nroColumnas];		
+	}
+	
+	public int getNroFilas(){ return this.nroFilas;}
+	public int getNroColumnas(){ return this.nroColumnas;}
+		
+	public void limpiaMatriz(){
+		for (int i=0;i<getNroFilas();i++){
+			for (int j=0;j<getNroColumnas();j++){
+				this.matriz[i][j]=null;
+			}
+		}
+	}	
+	
+	public void actualizar(Object objElemento, int posicionFila, int posicionColumna){
+		if (posicionFila>=getNroFilas() || posicionFila<0){
+				System.out.println("Error actualiza. Posicion fila inexistente ");
+			}else{
+				if (posicionColumna>=getNroColumnas() || posicionColumna<0){
+					System.out.println("Error actualiza. Posicion columna inexistente ");
+				}else{
+					this.matriz[posicionFila][posicionColumna]=objElemento;
+				}				
+			}
+		}
+	
+	
+	public Object devolver(int posicionFila, int posicionColumna){
+		Object objElemento=null;
+
+		if (posicionFila>=getNroFilas() || posicionFila<0){
+			System.out.println("Error devuelve. Posicion fila inexistente ");
+		}else{
+			if (posicionColumna>=getNroColumnas() || posicionColumna<0){
+				System.out.println("Error devuelve. Posicion columna inexistente ");
+			}else{
+				objElemento = this.matriz[posicionFila][posicionColumna];
+			}				
+		}		
+		return objElemento;
+	}	
+}
+
+==> src/Modelo/contenedores/Lista0DLinkedL.java <==
+package contenedores;
+import recursos.*;
+
+public abstract class Lista0DLinkedL implements OperacionesCL2{
+	protected NodoDoble frenteL, finalL;
+	protected int ultimo;
+	
+	public Lista0DLinkedL(){
+		this.limpiar();
+	}
+	
+	public void limpiar(){
+		this.frenteL=this.finalL=null;
+		this.ultimo=-1;		
+	}
+	
+	public boolean estaVacia(){
+		return (this.frenteL==null);
+	}
+	
+	public int tamanio(){
+		int cant=0;
+		if (!estaVacia()){
+			cant=this.ultimo+1;			
+		}
+		return cant;
+	}
+	
+	
+		
+	public void eliminar(int posicion){
+		if (estaVacia()){
+			System.out.println("Error eliminar. Lista vacia...");
+		}else{		
+			if (posicion>=tamanio() || posicion<0){
+				System.out.println("Error eliminar. Posicion inexistente ");
+			}else{				
+				if (posicion==0){ 
+					if (this.frenteL==this.finalL){
+						limpiar();						
+					}else{
+						this.frenteL=this.frenteL.getNextNodo();
+						this.frenteL.setPrevNodo(null);
+						this.ultimo--;
+					}
+				}else{
+					if (posicion==tamanio()-1){ 
+						this.finalL= this.finalL.getPrevNodo();
+						this.finalL.setNextNodo(null);						
+					}else{						
+						NodoDoble prev, next;
+						prev=this.frenteL;
+						next=this.frenteL.getNextNodo();
+						for (int counter=1; counter<posicion;counter++){
+							prev=prev.getNextNodo(); next=next.getNextNodo();						
+						}							
+						
+						next = next.getNextNodo();
+						prev.setNextNodo(next); // actualizo referencias
+						next.setPrevNodo(prev);				    	
+					}
+					this.ultimo--;
+				}				
+			}
+		}
+		
+	}
+		
+	
+	public Object devolver(int posicion){
+		Object elemento=null;
+		if (estaVacia()){
+			System.out.println("Error devolver. Lista vacia...");
+		} else {
+			if (posicion>=tamanio() || posicion<0){
+				System.out.println("Error devolver. La posicion no existe..");
+			}else{
+				NodoDoble temp;
+				temp=this.frenteL;
+				
+				for (int counter=0; counter<posicion;counter++){						
+					temp=temp.getNextNodo();		
+				}				
+				elemento=temp.getNodoInfo();
+			}						
+		}	
+		return elemento;
+
+	}	
+	
+	public abstract int buscar(Object elemento);
+
+}
+
+==> src/Modelo/contenedores/ColaSLinkedList.java <==
+package contenedores;
+import recursos.Nodo;
+public class ColaSLinkedList extends ColaLinkedList{
+
+	public void meter(Object elemento){
+		if (!estaVacia()){
+			this.finalC.setNextNodo(new Nodo(elemento));
+			this.finalC=this.finalC.getNextNodo();
+			// nuevo nodo es el ultimo.
+		}else{
+			this.frenteC=this.finalC= new Nodo(elemento);	
+		}
+	}
+		
+}
+
+==> src/Modelo/contenedores/ColaPrioridad.java <==
+package contenedores;
+import recursos.Nodo;
+
+public abstract class ColaPrioridad extends ColaLinkedList{
+	public abstract boolean esMenor(Object objA, Object objB);
+	public abstract boolean esMayor(Object objA, Object objB);
+	public abstract boolean iguales(Object objA, Object objB);
+
+	public void meter(Object elemento){
+		Nodo node;
+		node = new Nodo(elemento);
+		if (estaVacia()){
+			this.frenteC=this.finalC= new Nodo(elemento);
+		} else{
+			if (esMenor(elemento, this.frenteC.getNodoInfo())){
+				node.setNextNodo(this.frenteC);
+				this.frenteC=node;
+
+			}else{
+				Nodo temp = this.frenteC;
+				boolean flag=false;
+				while (temp.getNextNodo()!=null && !flag){
+					if (esMayor(elemento,temp.getNextNodo().getNodoInfo()) ||
+							iguales(elemento,temp.getNextNodo().getNodoInfo())){
+						temp=temp.getNextNodo();
+					}else{
+						flag=true;
+					}
+				}
+				node.setNextNodo(temp.getNextNodo());
+				temp.setNextNodo(node);				
+			}
+		}
+	}	
+}
+
+==> src/Modelo/contenedores/ListaDoubleLinkedL.java <==
+package contenedores;
+
+public class ListaDoubleLinkedL extends Lista1DLinkedL{
+
+	@Override
+	public boolean iguales(Object elementoL, Object elemento) {
+		return (boolean)elementoL==(boolean)elemento;
+	}
+
+}
+
+==> src/Modelo/simulador/EstadoVehiculo.java <==
+package simulador;
+
+public enum EstadoVehiculo {
+DISPONIBLE,OCUPADO,NOSERVICE    
+}
+
+==> src/Modelo/simulador/Main.java <==
+package simulador;
+import java.util.ArrayList;
+import grafoDirigido.GrafoSalta;
+
+public class Main { 
+    public static void main(String[] args) {
+        String rutaMeta   = "data/meta_datos_nodos_2k.csv";
+        String rutaMatriz = "data/matriz_nodos_2k.csv";
+        System.out.println("=== Cargando grafo de Salta... ===");
+        GrafoSalta grafo = new GrafoSalta(rutaMeta, rutaMatriz);
+        grafo.cargarGrafo();
+        new servicio.LectorJSON().probarLecturaNodos("data/2km.json", grafo);
+        System.out.println("Grafo listo. Nodos: " + grafo.getOrden());
+        System.out.println();
+        System.out.println("=== Registrando vehículos ===");
+        ArrayList<Vehiculo> flota = new ArrayList<>();
+        int[] nodosIniciales = {10, 50, 100, 200, 350};
+        for (int i = 0; i < nodosIniciales.length; i++) {
+            Vehiculo v = new Vehiculo(i, nodosIniciales[i]);
+            flota.add(v);
+            System.out.println("Registrado: Movil-" + i 
+                + " en nodo " + nodosIniciales[i] 
+                + " (" + grafo.getNodo(nodosIniciales[i]).getNombreEsquina() + ")");
+        }
+        System.out.println();
+        Despachador despachador = new Despachador(flota, grafo);
+        int nodoPasajero = 75;
+        System.out.println("=== Nueva solicitud ===");
+        System.out.println("Pasajero en nodo " + nodoPasajero 
+            + " (" + grafo.getNodo(nodoPasajero).getNombreEsquina() + ")");
+        System.out.println();
+        despachador.registrarDisponibles(nodoPasajero);
+        System.out.println("=== Intentando asignar vehículo ===");
+        Vehiculo asignado = despachador.asignaViaje(nodoPasajero);
+        System.out.println();
+        if (asignado != null) {
+            System.out.println("✓ Vehículo asignado: " + asignado);
+            System.out.println("  Desde: " + grafo.getNodo(asignado.getNodoActual()).getNombreEsquina());
+            System.out.println("  ETA:   " + String.format("%.1f", asignado.getEta()) + " segundos"
+                + " (" + String.format("%.1f", asignado.getEta() / 60.0) + " minutos)");
+        } else {
+            System.out.println("✗ Sin unidades disponibles.");
+        }
+        System.out.println();
+        System.out.println("=== Estado de la flota ===");
+        despachador.muestraCovhes();
+        System.out.println();
+        int nodoPasajero2 = 300;
+        System.out.println("=== Segunda solicitud ===");
+        System.out.println("Pasajero en nodo " + nodoPasajero2
+            + " (" + grafo.getNodo(nodoPasajero2).getNombreEsquina() + ")");
+        despachador.registrarDisponibles(nodoPasajero2);
+        Vehiculo asignado2 = despachador.asignaViaje(nodoPasajero2);
+        System.out.println();
+        if (asignado2 != null) {
+           System.out.println("✓ Vehículo asignado: " + asignado2);
+            System.out.println("  Desde: " + grafo.getNodo(asignado2.getNodoActual()).getNombreEsquina());
+            System.out.println("  ETA:   " + String.format("%.1f", asignado2.getEta()) + " segundos"
+                + " (" + String.format("%.1f", asignado2.getEta() / 60.0) + " minutos)");
+        } else {
+            System.out.println("✗ Sin unidades disponibles.");
+        }
+    }
+}
+
+==> src/Modelo/simulador/Vehiculo.java <==
+package simulador;
+
+public class Vehiculo {
+    private int id;
+    private int nodoActual;
+    private double eta;
+    private EstadoVehiculo state;
+    
+    public Vehiculo(int iD, int nodo){
+        this.id=iD;
+        this.nodoActual=nodo;
+        this.state=EstadoVehiculo.DISPONIBLE;
+        this.eta=0.0;
+    }
+    
+    public boolean aceptaViaje(){
+        return Math.random()<0.7;
+    }
+    public double getEta() {
+        return eta;
+    }
+    public int getId() {
+        return id;
+    }
+    public int getNodoActual() {
+        return nodoActual;
+    }
+    public EstadoVehiculo getState() {
+        return state;
+    }
+    public void setNodoActual(int nodoActual) {
+        this.nodoActual = nodoActual;
+    }
+    public void setEta(double eta) {
+        this.eta = eta;
+    }
+    public void setState(EstadoVehiculo state) {
+        this.state = state;
+    }
+@Override
+public String toString(){
+    return "Movil " + id + " [ETA: " + String.format("%.1f", eta) + " segs]";
+    }
+}
+
+
+
+==> src/Modelo/simulador/Despachador.java <==
+package simulador;
+
+import java.util.ArrayList;
+
+import recursos.RutaAsignada;
+import Patrones.DijsktraStrat;
+import Patrones.FloydStrategy;
+import Patrones.IntelligenceStrategy;
+import contenedores.VehiculoPriority;
+import recursos.NodoMapa;
+import grafoDirigido.AbsGrafo;
+import grafoDirigido.GrafoSalta;
+public class Despachador {
+    protected ArrayList<Vehiculo> vehiculos;
+    protected VehiculoPriority colaDespacho;
+    private AbsGrafo map;
+    private IntelligenceStrategy metodoDji;
+    private IntelligenceStrategy metodoFlo;
+    public Despachador(ArrayList<Vehiculo>a, AbsGrafo mapa){
+        this.colaDespacho=new VehiculoPriority();
+        this.vehiculos=a;
+        this.map=mapa;
+        this.metodoDji= new DijsktraStrat();
+        this.metodoFlo= new FloydStrategy();
+    }
+    
+    public void cargaAutos(Vehiculo a){
+        vehiculos.add(a);
+    }
+    public void limpiar(){
+        this.colaDespacho.limpiar();
+    }
+    public void registrarDisponibles(int nodePasajero){ 
+        limpiar();
+    for(int i=0;i<this.vehiculos.size();i++)
+        if(vehiculos.get(i).getState()== EstadoVehiculo.DISPONIBLE){ 
+        NodoMapa nodeAuto = ((GrafoSalta)this.map).getNodo(vehiculos.get(i).getNodoActual());
+        NodoMapa nodoPasajero = ((GrafoSalta)this.map).getNodo(nodePasajero);
+        if (nodeAuto != null && nodoPasajero != null) {
+            IntelligenceStrategy metodo;
+            int distancia=Math.abs(vehiculos.get(i).getNodoActual()-nodePasajero);
+            if (distancia>5)
+                metodo=this.metodoFlo;
+            else
+                metodo=this.metodoDji;
+            RutaAsignada ruta = metodo.calculaETA(this.map, nodeAuto, nodoPasajero);
+            vehiculos.get(i).setEta(ruta.getEta());
+                }
+            this.colaDespacho.meter(vehiculos.get(i));
+        }
+    }
+    public Vehiculo asignaViaje(int nodoOrigen){
+        Vehiculo candidato=null;
+        while(!this.colaDespacho.estaVacia()){
+            candidato=(Vehiculo)this.colaDespacho.sacar();
+            if((candidato).aceptaViaje()){ 
+                candidato.setState(EstadoVehiculo.OCUPADO);
+                return candidato;
+            }
+        }
+        return null;
+    }
+    public void muestraCovhes(){
+        for(int i=0;i<this.vehiculos.size();i++)
+            System.out.println(this.vehiculos.get(i).toString());
+    }
+}
+
+==> src/Modelo/grafoDirigido/AbsGrafo.java <==
+package grafoDirigido;
+
+import contenedores.ColaSLinkedList;
+import contenedores.ListaDoubleLinkedL;
+import contenedores.MatrizGrafo;
+import recursos.*;
+public abstract class AbsGrafo implements OperacionesG{
+	protected MatrizGrafo matrizCosto;
+	protected int ordenGrafo;
+	protected static double infinito=10000;
+	
+	public AbsGrafo(int ordenGrafo) {
+		this.ordenGrafo = ordenGrafo;
+		this.matrizCosto = new MatrizGrafo(getOrden());
+	}
+	
+	public int getOrden(){
+		return this.ordenGrafo;
+	}
+	
+	public abstract void cargarGrafo();
+	public abstract void muestraGrafo();
+	
+	private void bpf(ListaDoubleLinkedL listaMarca, int v){
+		boolean marcado;
+		double currCost;
+		
+		listaMarca.reemplazar((true), v);
+		System.out.println("vertice "+ v);
+		for (int w=0;w<getOrden();w++){
+			marcado=(boolean)listaMarca.devolver(w);
+			currCost=(double)this.matrizCosto.devolver(v,w);
+			if (currCost!=infinito && !marcado){
+				bpf(listaMarca,w);
+			}
+		}
+	}
+	
+	public void muestraBPF(){
+		ListaDoubleLinkedL listaMarca;
+		boolean marcado;
+		
+		listaMarca = new ListaDoubleLinkedL();
+		for (int v=0;v<getOrden();v++){
+			listaMarca.insertar(false, v);
+		}
+		
+		for (int v=0;v<getOrden();v++){
+			marcado=(boolean)listaMarca.devolver(v);
+			if (!marcado){
+				bpf(listaMarca,v);
+			}
+		}		
+	}
+	
+	private void bea(ListaDoubleLinkedL listaMarca, int v){
+		boolean marcado;
+		double currCost;
+		ColaSLinkedList cola;
+		int w;
+		
+		listaMarca.reemplazar(true, v);
+		System.out.println("vertice "+ v);
+		cola = new ColaSLinkedList();
+		cola.meter(v);
+		
+		while (!cola.estaVacia()){
+			w=(int)cola.sacar();
+			for (int z=0;z<getOrden();z++){
+				marcado=(boolean)listaMarca.devolver(z);
+				currCost=(double)this.matrizCosto.devolver(w,z);
+				if (currCost!=infinito && !marcado){
+					listaMarca.reemplazar(true, z);
+					cola.meter(z);
+					System.out.println("arista visitada " + w + " - " + z);
+				}		
+			}
+		}
+	}
+	
+
+	public void muestraBEA(){
+		ListaDoubleLinkedL listaMarca;
+		boolean marcado;
+		
+		listaMarca = new ListaDoubleLinkedL();
+		for (int v=0;v<getOrden();v++){
+			listaMarca.insertar(false, v);
+		}
+		
+		for (int v=0;v<getOrden();v++){
+			marcado=(boolean)listaMarca.devolver(v);
+			if (!marcado){
+				bea(listaMarca,v);
+			}
+		}		
+	}
+}
+
+==> src/Modelo/grafoDirigido/GrafoSalta.java <==
+package grafoDirigido;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import contenedores.ListaDoubleLinkedL;
+import contenedores.MatrizGrafo;
+import recursos.NodoMapa;
+
+public class GrafoSalta extends AbsGrafoD {
+    protected NodoMapa [] catalogo;
+    protected long [] idsOsm;
+    protected String rutaMetaDatos;
+    protected String rutaMatriz;
+
+    public static int contarLineas(String ruta){
+    int lineas=0;
+    try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
+        while (br.readLine() != null) {
+            lineas++;
+        }
+    } 
+    catch (IOException e) {
+        System.out.println("Error contando líneas en " + ruta + ": " + e.getMessage());
+    }
+    return (lineas > 0) ? lineas - 1 : 0;
+    }
+    public GrafoSalta(String rutaMD, String rutaMTZ){
+        super(contarLineas(rutaMD));
+        this.rutaMetaDatos=rutaMD;
+        this.rutaMatriz=rutaMTZ;
+        int n=getOrden();
+        this.idsOsm = new long[n];
+        this.catalogo= new NodoMapa[n];
+    }
+    @Override
+    public void cargarGrafo(){
+        cargarMetadatos();
+        cargarAristas();
+    }
+    private void cargarMetadatos() {
+        try (BufferedReader br = new BufferedReader(new FileReader(this.rutaMetaDatos))) {
+            String linea;
+            br.readLine();
+            int i = 0;
+            while ((linea = br.readLine()) != null && i < getOrden()) {
+                String[] datos = linea.split(",");
+                long id = Long.parseLong(datos[0].trim());
+                double lat = Double.parseDouble(datos[1].trim());
+                double lng = Double.parseDouble(datos[2].trim());
+                String calleA = datos[3].trim();
+                String calleB = datos[4].trim();
+                String esquina = datos[5].trim();
+                NodoMapa nodo = new NodoMapa(id, lat, lng, calleA, calleB, esquina);
+                this.catalogo[i] = nodo;
+                this.idsOsm[i] = id;
+                i++;
+            }
+        } catch (Exception e) {
+            System.out.println("Error al cargar los metadatos (Nodos): " + e.getMessage());
+        }
+    }
+    private void cargarAristas() {
+        try (BufferedReader br = new BufferedReader(new FileReader(this.rutaMatriz))) {
+               String[] cols = br.readLine().split(",");
+        long[] idsColumnas = new long[cols.length - 1];
+        for (int j = 1; j < cols.length; j++)
+            idsColumnas[j-1] = Long.parseLong(cols[j].trim());
+        String linea;
+        while ((linea = br.readLine()) != null) {
+            String[] datos = linea.split(",");
+            int indiceU = buscarIndice(Long.parseLong(datos[0].trim()));
+            if (indiceU == -1) continue;
+            for (int j = 1; j < datos.length; j++) {
+                if (datos[j].trim().equals("1")) {
+                    int indiceV = buscarIndice(idsColumnas[j-1]);
+                    if (indiceV == -1) continue;
+                    double eta = catalogo[indiceU].calcularETA(catalogo[indiceV], "residential");
+                    this.matrizCosto.actualizar(eta, indiceU, indiceV);
+                }
+            }
+        }
+        } catch (Exception e) {
+            System.out.println("Error al cargar las aristas: " + e.getMessage());
+        }
+    }
+    public int buscarIndice(long idOsM) {
+        for (int i = 0; i < this.idsOsm.length; i++) {
+            if (this.idsOsm[i] == idOsM) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    public NodoMapa getNodo(int indice) {
+        if (indice >= 0 && indice < this.catalogo.length) {
+            return this.catalogo[indice];
+        }
+        return null;
+    }
+    @Override
+public double obtenerCostoDijkstra(int origen, int destino) {
+    // inicializar listaDistancia con infinito explícito
+    this.listaDistancia = new ListaDoubleLinkedL();
+    this.listaCamino    = new ListaDoubleLinkedL();
+    this.listaSolucion  = new ListaDoubleLinkedL();
+
+    for (int i = 0; i < getOrden(); i++) {
+        this.listaSolucion.insertar(-1, i);
+        this.listaCamino.insertar(-1, i);
+        this.listaDistancia.insertar(infinito, i);
+    }
+    this.listaSolucion.reemplazar(origen, origen);
+
+    for (int i = 0; i < getOrden(); i++) {
+        if (i != origen) {
+            Object val = this.matrizCosto.devolver(origen, i);
+            this.listaDistancia.reemplazar(val != null ? val : infinito, i);
+            this.listaCamino.reemplazar(origen, i);
+        }
+    }
+    for (int i = 1; i < getOrden(); i++) {
+        double minCost = infinito;
+        int minVertex = -1;
+
+        for (int w = 0; w < getOrden(); w++) {
+            if (w != origen) {
+                double currCost = (double) this.listaDistancia.devolver(w);
+                int vertex      = (int)    this.listaSolucion.devolver(w);
+                if (currCost < minCost && vertex == -1) {
+                    minCost = currCost;
+                    minVertex = w;
+                }
+            }
+        }
+        if (minVertex != -1) {
+            this.listaSolucion.reemplazar(minVertex, minVertex);
+            this.listaDistancia.reemplazar(minCost, minVertex);
+
+            for (int v = 0; v < getOrden(); v++) {
+                int vertex = (int) this.listaSolucion.devolver(v);
+                if (vertex == -1) {
+                    Object arc   = this.matrizCosto.devolver(minVertex, v);
+                    double arcCost  = (arc != null) ? (double) arc : infinito;
+                    double currCost = (double) this.listaDistancia.devolver(v);
+                    if (minCost + arcCost < currCost) {
+                        this.listaDistancia.reemplazar(minCost + arcCost, v);
+                        this.listaCamino.reemplazar(minVertex, v);
+                    }
+                }
+            }
+        }
+    }
+
+    return (double) this.listaDistancia.devolver(destino);
+}
+@Override
+public double obtenerCostoFloyd(int origen, int destino) {
+    if (this.matrizCostoF == null) {
+        // inicializar con infinito antes de correr Floyd
+        this.matrizCostoF  = new MatrizGrafo(this.ordenGrafo);
+        this.matrizCaminoF = new MatrizGrafo(this.ordenGrafo);
+
+        for (int i = 0; i < ordenGrafo; i++) {
+            for (int j = 0; j < ordenGrafo; j++) {
+                if (i == j) {
+                    matrizCostoF.actualizar(0.0, i, j);
+                } else {
+                    Object val = matrizCosto.devolver(i, j);
+                    matrizCostoF.actualizar(val != null ? val : infinito, i, j);
+                }
+            }
+        }
+
+        // Floyd
+        for (int k = 0; k < ordenGrafo; k++) {
+            for (int i = 0; i < ordenGrafo; i++) {
+                for (int j = 0; j < ordenGrafo; j++) {
+                    double ik = ((Double) matrizCostoF.devolver(i, k));
+                    double kj = ((Double) matrizCostoF.devolver(k, j));
+                    double ij = ((Double) matrizCostoF.devolver(i, j));
+                    if (ik + kj < ij) {
+                        matrizCostoF.actualizar(ik + kj, i, j);
+                        matrizCaminoF.actualizar(k, i, j);
+                    }
+                }
+            }
+        }
+    }
+    return ((Double) this.matrizCostoF.devolver(origen, destino));
+}
+public int actualizarPeso(long idOrigen, long idDestino, String tipoVia) {
+    int indiceU = buscarIndice(idOrigen);
+    int indiceV = buscarIndice(idDestino);
+    if (indiceU == -1 || indiceV == -1) return 0;
+    if (this.matrizCosto.devolver(indiceU, indiceV) == null) return 0;
+    double eta = catalogo[indiceU].calcularETA(catalogo[indiceV], tipoVia);
+    this.matrizCosto.actualizar(eta, indiceU, indiceV);
+    return 1;
+}
+}
+
+
+==> src/Modelo/grafoDirigido/AbsGrafoD.java <==
+package grafoDirigido;
+import contenedores.*;
+import recursos.*;
+
+public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD{
+	
+	protected MatrizGrafo matrizCostoF,matrizCaminoF;
+	protected ListaDoubleLinkedL listaDistancia, listaCamino, listaSolucion;
+
+	public AbsGrafoD(int ordenGrafo){
+		super(ordenGrafo);
+	}
+		
+	public abstract void cargarGrafo();
+	
+	public void muestraDijkstra(int startVertex){
+		double currCost; int w;
+		
+		Dijkstra(startVertex);
+		
+		for (int v=0; v<getOrden();v++){
+			System.out.println("vertice " + v);
+			if (v!=startVertex){
+				currCost=(double)this.listaDistancia.devolver(v);
+				System.out.println("costo desde " + startVertex + " a " + v + "->" + currCost);
+			
+				System.out.println("mostrando un camino desde "+ v + " a " + startVertex);
+				
+				w=(int)this.listaCamino.devolver(v);
+				
+				do{
+					System.out.println("camino " + w);
+					w=(int)this.listaCamino.devolver(w);
+				}while(w!=-1);//recordemos que al inicializar cambiamos todos los -1 salvo el startVertex
+			}			
+		}
+		
+	}
+	
+	private void Dijkstra(int startVertex){
+		double minCost, currCost, arcCost; int minVertex, vertex;
+		
+		this.listaDistancia = new ListaDoubleLinkedL();
+		this.listaCamino = new ListaDoubleLinkedL();
+		this.listaSolucion = new ListaDoubleLinkedL();
+		
+		for (int i=0; i<getOrden();i++){			
+			this.listaSolucion.insertar(-1, i);
+			this.listaCamino.insertar(-1, i);
+			this.listaDistancia.insertar(infinito, i);
+		}
+		this.listaSolucion.reemplazar(startVertex,startVertex); // el primer vertice del camino
+		
+		for (int i=0; i<getOrden();i++){
+			if (i!=startVertex){
+				this.listaDistancia.reemplazar(this.matrizCosto.devolver(startVertex, i), i);
+				this.listaCamino.reemplazar(startVertex, i);					
+			}
+		}
+				
+		
+		for (int i=1; i<getOrden();i++){
+			minCost=infinito;
+			minVertex=-1;
+			
+			for (int w=0; w<getOrden();w++){
+				if (w!=startVertex){
+					currCost=(double) this.listaDistancia.devolver(w);// 
+					vertex=(int) this.listaSolucion.devolver(w);
+					if (currCost<minCost && vertex==-1){
+						minCost=currCost; minVertex=w;
+					}
+				}
+			}
+			
+			if(minVertex!=-1){
+				System.out.println("it " + i + " minVertex " + minVertex + " minCost " + minCost);
+				this.listaSolucion.reemplazar(minVertex, minVertex);
+				this.listaDistancia.reemplazar(minCost, minVertex);
+					
+				
+				for (int v=0;v<getOrden();v++){
+					vertex=(int)this.listaSolucion.devolver(v);
+					if (vertex==-1){
+						arcCost=(double)this.matrizCosto.devolver(minVertex, v);
+						currCost=(double)this.listaDistancia.devolver(v);
+						if (minCost+arcCost<currCost){
+							this.listaDistancia.reemplazar(minCost+arcCost, v);
+							this.listaCamino.reemplazar(minVertex, v);
+												
+						}					
+					}
+				}
+			}
+		}		
+	}
+
+
+	
+	public void muestraGrafo(){
+		double currCost;
+		for (int i=0; i<getOrden();i++){
+			for (int j=0; j<getOrden();j++){
+				if (i!=j){
+					currCost=(double)this.matrizCosto.devolver(i, j);
+					if (currCost!=infinito){
+						System.out.println("costo " + i + " a " + j + "->" + currCost);
+					}				
+				}
+			}			
+		}		
+	}
+	
+	
+	public void muestraFloyd(){
+		this.matrizCaminoF=new MatrizGrafo(this.ordenGrafo);
+		this.matrizCostoF=new MatrizGrafo(this.ordenGrafo);
+		double costoF;
+		for(int i=0;i<ordenGrafo;i++){
+			matrizCostoF.actualizar((double)0, i, i);}
+		
+		for(int i=0;i<ordenGrafo;i++){
+			for(int j=0;j<ordenGrafo;j++){
+				if(i!=j){
+					costoF=(double)matrizCosto.devolver(i, j);
+					matrizCostoF.actualizar(costoF, i, j);
+				}
+			}
+		}
+		
+		
+		
+		Object costo;
+		for(int k=0;k<ordenGrafo;k++){
+			for(int i=0;i<ordenGrafo;i++){
+				for(int j=0;j<ordenGrafo;j++){
+					if(((Double)matrizCostoF.devolver(i, k)).doubleValue()+((Double)matrizCostoF.devolver(k, j)).doubleValue()<((Double)matrizCostoF.devolver(i, j)).doubleValue()){
+						costo=(((Double)matrizCostoF.devolver(i, k)).doubleValue()+((Double)matrizCostoF.devolver(k, j)).doubleValue());
+						matrizCostoF.actualizar(costo, i, j);
+						matrizCaminoF.actualizar((k), i, j);//para obtener el camino de Floyd.
+					}
+				}
+			}
+		}
+		System.out.println("Floyd: ");
+		for(int i=0;i<ordenGrafo;i++){
+			for(int j=0;j<ordenGrafo;j++){
+				if(i!=j){
+					costoF=(double)matrizCostoF.devolver(i, j);
+					if(costoF!=infinito){System.out.println("Costo m�nimo de "+i+" hasta "+j+": "+costoF);}
+				}
+				
+				
+			}
+		}
+		
+	}
+	
+
+	
+	public void muestraCaminoFloyd(int origen, int destino){
+		double hayCamino = ((Double)this.matrizCostoF.devolver(origen, destino)).doubleValue();
+		if(hayCamino!=infinito) {
+			System.out.print("Camino entre "+origen+" y "+destino+": ");
+			System.out.print(origen);
+			buscarCaminoFloyd(origen,destino);
+			System.out.print(" "+destino);
+			System.out.println();
+		}else {
+			System.out.println("NO hay Camino entre " + origen + " y " + destino);
+		}	
+	}
+	
+	private void buscarCaminoFloyd(int i, int j){
+		Object valor=matrizCaminoF.devolver(i, j);
+		if(valor!=null){
+			int k=((Integer)valor).intValue();
+			buscarCaminoFloyd(i,k);
+			System.out.print(" "+k);
+			buscarCaminoFloyd(k,j);
+		}else{
+			System.out.print(" |");
+		}
+	}
+	public double obtenerCostoDijkstra(int origen, int destino) {
+		Dijkstra(origen); 
+		return (double) this.listaDistancia.devolver(destino);
+	}
+	public double obtenerCostoFloyd(int origen, int destino) {
+
+		if (this.matrizCostoF == null) {
+			this.muestraFloyd(); 
+		}
+		return (double) this.matrizCostoF.devolver(origen, destino);
+	}
+}
+
+==> src/Modelo/recursos/NodoDoble.java <==
+package recursos;
+
+public class NodoDoble {
+
+	private Object nodoInfo;
+	private NodoDoble prevNodo, nextNodo;
+	
+	public NodoDoble(Object nodoInfo){
+		this(nodoInfo,null,null);} 
+	
+	public NodoDoble(Object nodoInfo, NodoDoble nextNodo){
+		this(nodoInfo,null,nextNodo);} 
+	
+	public NodoDoble(Object nodoInfo, NodoDoble prevNodo, NodoDoble nextNodo){
+		this.nodoInfo=nodoInfo;
+		this.prevNodo=prevNodo; this.nextNodo=nextNodo; 
+	}
+	
+	public void setPrevNodo(NodoDoble prevNodo){
+		this.prevNodo=prevNodo;
+	}
+	
+	public NodoDoble getPrevNodo(){
+		return this.prevNodo; 
+	}
+	
+	public void setNextNodo(NodoDoble nextNodo){
+		this.nextNodo=nextNodo;
+	}
+	
+	public NodoDoble getNextNodo(){
+		return this.nextNodo; 
+	}
+	public void setNodoInfo(Object nodoInfo){
+		this.nodoInfo=nodoInfo; 
+	}
+	public Object getNodoInfo(){
+		return this.nodoInfo;
+	}
+
+}
+
+==> src/Modelo/recursos/OperacionesG.java <==
+package recursos;
+
+public interface OperacionesG {
+
+	public void muestraBEA();
+	public void muestraBPF();
+
+
+}
+
+==> src/Modelo/recursos/RutaAsignada.java <==
+package recursos;
+
+
+import java.util.ArrayList;
+
+public class RutaAsignada {
+    private double eta;
+    private ArrayList<Integer> caminoNodos;
+
+    public RutaAsignada(double eta, ArrayList<Integer> caminoNodos) {
+        this.eta = eta;
+        this.caminoNodos = caminoNodos;
+    }
+
+    public double getEta() {
+        return eta;
+    }
+
+    public ArrayList<Integer> getCaminoNodos() {
+        return caminoNodos;
+    }
+}
+==> src/Modelo/recursos/OperacionesCL2.java <==
+package recursos;
+
+public interface OperacionesCL2 {
+	
+	public int buscar(Object elemento);
+	public Object devolver(int posicion);
+	public void eliminar(int posicion);
+	public void limpiar();
+	public boolean estaVacia();		
+	public int tamanio();
+	
+}
+
+==> src/Modelo/recursos/Connection.java <==
+package recursos;
+public class Connection {
+	protected int vertexI, vertexJ;
+	protected double connectionCost;
+	
+	public Connection(int vertexI, int vertexJ, double connectionCost){
+		this.vertexI=vertexI;
+		this.vertexJ=vertexJ;
+		this.connectionCost=connectionCost;
+	}
+	
+	public int getVertexI(){
+		return this.vertexI;
+	}
+	
+	public int getVertexJ(){
+		return this.vertexJ;
+	}
+	
+	public double getConnectionCost(){
+		return this.connectionCost;
+	}	
+}
+
+==> src/Modelo/recursos/OperacionesCL1.java <==
+package recursos;
+public interface OperacionesCL1 {
+  void meter(Object elemento);
+  Object sacar();
+  void limpiar();
+  boolean estaVacia();
+}
+==> src/Modelo/recursos/Nodo.java <==
+package recursos;
+
+public class Nodo {
+	private Object nodoInfo;
+	private Nodo nextNodo;
+	
+	public Nodo(Object nodoInfo){
+		this(nodoInfo,null);
+	} 
+	
+	public Nodo(Object nodoInfo, Nodo nextNodo){
+		this.nodoInfo=nodoInfo;
+		this.nextNodo=nextNodo; 
+	}
+	public void setNodoInfo(Object nodoInfo){
+		this.nodoInfo=nodoInfo; 
+	}
+	
+	public void setNextNodo(Nodo nextNodo){
+		this.nextNodo=nextNodo; 
+	}
+	
+	public Object getNodoInfo(){
+		return this.nodoInfo; 
+	}
+	public Nodo getNextNodo(){
+		return this.nextNodo; 
+	}
+	
+	
+}
+
+==> src/Modelo/recursos/OperacionesCL3.java <==
+package recursos;
+
+// es para terminar de especificar las operaciones de una lista comun
+public interface OperacionesCL3 {	
+	public void insertar(Object elemento, int posicion);
+	public void reemplazar(Object elemento, int posicion);
+}
+
+==> src/Modelo/recursos/OperacionesGD.java <==
+
+package recursos;
+
+public interface OperacionesGD {
+
+	public void muestraDijkstra(int startVertex);
+	public void muestraFloyd();
+
+}
+
+==> src/Modelo/recursos/NodoMapa.java <==
+package recursos;
+public class NodoMapa{
+protected long id;
+protected double latitud,longitud;
+protected String calleA,calleB, nombreEsquina;
+
+public NodoMapa(){
+    this.id=0;
+    this.latitud=this.longitud=0.0;
+    this.calleA=this.calleB=this.nombreEsquina="";
+}
+public NodoMapa(long ID, double Lat, double LONG, String c1, String c2, String esq){
+    this.id=ID;
+    this.latitud=Lat;
+    this.longitud=LONG;
+    this.calleA=c1;
+    this.calleB=c2;
+    this.nombreEsquina=esq;
+}
+public String getCalleA() {
+    return calleA;
+}
+public String getCalleB() {
+    return calleB;
+}
+public long getId() {
+    return id;
+}
+public double getLatitud() {
+    return latitud;
+}
+public double getLongitud() {
+    return longitud;
+}
+public String getNombreEsquina(){
+    return this.nombreEsquina;
+}
+public double distanciaHaversine(NodoMapa otro) {
+double R = 6_710_000.0;
+
+double lat1 = Math.toRadians(this.latitud);
+double lat2 = Math.toRadians(otro.latitud);
+double dLat = Math.toRadians(otro.latitud - this.latitud);
+double dLng = Math.toRadians(otro.longitud - this.longitud);
+
+double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+     + Math.cos(lat1) * Math.cos(lat2)
+     * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+
+double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    return R * c; // metros
+}
+public double calcularETA(NodoMapa destino, String tipoVia){
+      double metros = distanciaHaversine(destino);
+    double velocidad = obtenerVelocidadMS(tipoVia);
+    return metros / velocidad;
+}
+
+private double obtenerVelocidadMS(String tipoVia) {
+    if (tipoVia == null) {
+        return 5.0;
+    }
+    switch (tipoVia.toLowerCase()) {
+        case "primary": return 45.0 / 3.6;   // 12.5 m/s
+        case "secondary": return 35.0 / 3.6; // 9.7 m/s
+        case "residential":
+        case "tertiary": return 25.0 / 3.6;  // 6.9 m/s
+        default: return 20.0 / 3.6;          // 5.5 m/s
+    }
+}
+}
