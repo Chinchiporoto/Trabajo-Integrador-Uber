@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "MainApp",
+            "request": "launch",
+            "mainClass": "Vista.MainApp",
+            "projectName": "Proyecto AYED_4317eda8",
+            "vmArgs": "--module-path /home/leandrojoel/javafx-sdk/javafx-sdk-21/lib --add-modules javafx.controls,javafx.fxml,javafx.graphics -Djava.library.path=/home/leandrojoel/javafx-sdk/javafx-sdk-21/lib"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "simulador.Main",
+            "projectName": "Proyecto AYED_4317eda8",
+            "vmArgs": "--module-path /home/leandrojoel/javafx-sdk/javafx-sdk-21/lib --add-modules javafx.controls,javafx.fxml,javafx.graphics -Djava.library.path=/home/leandrojoel/javafx-sdk/javafx-sdk-21/lib"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}",
+            "vmArgs": "--module-path /home/leandrojoel/javafx-sdk/javafx-sdk-21/lib --add-modules javafx.controls,javafx.fxml,javafx.graphics -Djava.library.path=/home/leandrojoel/javafx-sdk/javafx-sdk-21/lib"
+        }
+    ]
+}
