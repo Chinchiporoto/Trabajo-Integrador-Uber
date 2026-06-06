@@ -27,7 +27,8 @@
 }
 .list-cell {
     -fx-background-color: transparent;
-    -fx-text-fill: #e1e1e1;
+    -fx-text-fill: #c4b550;
+    -fx-font-weight: "Tahoma";
 }
 .button {
     -fx-background-color: #5d6d54; 
@@ -63,4 +64,8 @@
 .text-field:focused {
     -fx-background-color: #2b3027; /* Se oscurece un poquito más */
     -fx-border-color: #5d6d54; /* Borde Verde Oliva para indicar que está activo */
+}
+.etiqueta-titulo {
+    -fx-text-fill: #a0aa95;
+    -fx-font-weight: "Tahoma";
 }
