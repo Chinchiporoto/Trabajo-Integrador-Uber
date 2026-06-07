@@ -1,4 +1,4 @@
-package recursos;
+package Modelo.recursos;
 public class NodoMapa{
 protected long id;
 protected double latitud,longitud;

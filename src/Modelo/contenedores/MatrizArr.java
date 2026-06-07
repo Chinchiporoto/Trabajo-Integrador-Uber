@@ -1,4 +1,4 @@
-package contenedores;
+package Modelo.contenedores;
 
 public class MatrizArr {
 	protected Object[][] matriz;

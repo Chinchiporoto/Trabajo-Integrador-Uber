@@ -1,5 +1,5 @@
-package contenedores;
-import recursos.*;
+package Modelo.contenedores;
+import Modelo.recursos.*;
 
 public abstract class Lista0DLinkedL implements OperacionesCL2{
 	protected NodoDoble frenteL, finalL;

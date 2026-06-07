@@ -1,4 +1,4 @@
-package contenedores;
+package Modelo.contenedores;
 
 public class MatrizGrafo extends MatrizArr{
 	public MatrizGrafo(int ordenGrafo){

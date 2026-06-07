@@ -1,4 +1,4 @@
-package simulador;
+package Modelo.simulador;
 import java.util.ArrayList;
 public class Vehiculo {
     private int id;

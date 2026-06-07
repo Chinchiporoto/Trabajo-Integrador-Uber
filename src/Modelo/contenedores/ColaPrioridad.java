@@ -1,5 +1,5 @@
-package contenedores;
-import recursos.Nodo;
+package Modelo.contenedores;
+import Modelo.recursos.Nodo;
 
 public abstract class ColaPrioridad extends ColaLinkedList{
 	public abstract boolean esMenor(Object objA, Object objB);

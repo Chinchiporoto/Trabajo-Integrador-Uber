@@ -1,4 +1,4 @@
-package recursos;
+package Modelo.recursos;
 
 public class Nodo {
 	private Object nodoInfo;

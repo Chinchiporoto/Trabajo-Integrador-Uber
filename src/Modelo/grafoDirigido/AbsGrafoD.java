@@ -1,6 +1,6 @@
-package grafoDirigido;
-import contenedores.*;
-import recursos.*;
+package Modelo.grafoDirigido;
+import Modelo.contenedores.*;
+import Modelo.recursos.*;
 
 public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD{
 	

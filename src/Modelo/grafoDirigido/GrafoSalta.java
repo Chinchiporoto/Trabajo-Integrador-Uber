@@ -1,13 +1,13 @@
-package grafoDirigido;
+package Modelo.grafoDirigido;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import contenedores.ListaDoubleLinkedL;
-import contenedores.MatrizGrafo;
-import recursos.NodoMapa;
+import Modelo.contenedores.ListaDoubleLinkedL;
+import Modelo.contenedores.MatrizGrafo;
+import Modelo.recursos.NodoMapa;
 
 public class GrafoSalta extends AbsGrafoD {
     protected NodoMapa [] catalogo;

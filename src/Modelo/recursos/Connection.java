@@ -1,4 +1,4 @@
-package recursos;
+package Modelo.recursos;
 public class Connection {
 	protected int vertexI, vertexJ;
 	protected double connectionCost;

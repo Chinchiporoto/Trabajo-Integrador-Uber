@@ -1,6 +1,6 @@
-package contenedores;
+package Modelo.contenedores;
 
-import simulador.Vehiculo;
+import Modelo.simulador.Vehiculo;
 
 public class VehiculoPriority extends ColaPrioridad{
     @Override

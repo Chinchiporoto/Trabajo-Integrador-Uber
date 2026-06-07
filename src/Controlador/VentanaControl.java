@@ -12,6 +12,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import Modelo.servicio.*;
+import Modelo.simulador.*;
+import Modelo.recursos.*;
+import Modelo.grafoDirigido.*;
+import java.util.ArrayList;
+
 public class VentanaControl{
 private StackPane root;
 private Canvas canvasMap;
@@ -99,10 +105,104 @@ private void gestionarDespliegue(){
     Transition.play();;
 }
 public void renderizarMapa(){
-    new servicio.LectorJSON().dibujarMapa("data/Mapas de Salta-20260602/CentroyMacroSALTA.geojson", graphCx, widWindow, heightWindow);
+    new LectorJSON().dibujarMapa("data/Mapas de Salta-20260602/CentroyMacroSALTA.geojson", graphCx, widWindow, heightWindow);
 }
 public StackPane getRootnodo(){
     return root;
 }
 
+//Límites geográficos de Salta (Idénticos al LectorJSON)
+private final double LAT_MIN = -24.805;
+private final double LAT_MAX = -24.765;
+private final double LNG_MIN = -65.430;
+private final double LNG_MAX = -65.395;
+
+private double lngAPixel(double lng, double ancho) {
+ return (lng - LNG_MIN) / (LNG_MAX - LNG_MIN) * ancho;
 }
+
+private double latAPixel(double lat, double alto) {
+ return (1.0 - (lat - LAT_MIN) / (LAT_MAX - LAT_MIN)) * alto;
+}
+
+
+//Entran como parametros la flota de vehiculos y el grafo construido
+public void dibujarVehiculosYRutas(ArrayList<Vehiculo> flota, GrafoSalta grafo) {
+    
+    // 1. PRIMERA CAPA: Dibujar las rutas de los autos ocupados
+    graphCx.setLineWidth(3.5); 
+    graphCx.setStroke(Color.web("#00E5FF")); // Azul
+
+    for (Vehiculo v : flota) {
+        if (v.getState() == EstadoVehiculo.OCUPADO) {
+            ArrayList<Integer> ruta = v.getRutaAsignada();
+            
+            if (ruta != null && ruta.size() > 1) {
+                graphCx.beginPath(); 
+                
+                for (int i = 0; i < ruta.size(); i++) {
+                    NodoMapa nodo = grafo.getNodo(ruta.get(i));
+                    if (nodo != null) {
+                        double x = lngAPixel(nodo.getLongitud(), widWindow);
+                        double y = latAPixel(nodo.getLatitud(), heightWindow);
+                        
+                        if (i == 0) {
+                            graphCx.moveTo(x, y); 
+                        } else {
+                            graphCx.lineTo(x, y); 
+                        }
+                    }
+                }
+                graphCx.stroke(); 
+                
+                
+                //Esto necesariamente debe estar dentro del ciclo en el que realiza el calculo
+                //2. SEGUNDA CAPA: Dibujar al usuario
+                // Obtenemos el último nodo de la ruta (el destino)
+                int idNodoDestino = ruta.get(ruta.size() - 1);
+                NodoMapa nodoPasajero = grafo.getNodo(idNodoDestino);
+                
+                if (nodoPasajero != null) {
+                    double xp = lngAPixel(nodoPasajero.getLongitud(), widWindow);
+                    double yp = latAPixel(nodoPasajero.getLatitud(), heightWindow);
+                    
+                    // Dibujamos al pasajero de color Amarillo
+                    graphCx.setFill(Color.web("#FFD700")); 
+                    graphCx.fillOval(xp - 4, yp - 4, 8, 8);
+                }
+            }
+        }
+    }
+
+    // 3. TERCERA CAPA: Dibujar todos los vehículos por encima
+    for (Vehiculo v : flota) {
+        NodoMapa nodo = grafo.getNodo(v.getNodoActual());
+        if (nodo != null) {
+            double x = lngAPixel(nodo.getLongitud(), widWindow);
+            double y = latAPixel(nodo.getLatitud(), heightWindow);
+            
+            if (v.getState() == EstadoVehiculo.DISPONIBLE) {
+                graphCx.setFill(Color.web("#39FF14")); // Verde chillón
+            } else if (v.getState() == EstadoVehiculo.OCUPADO) {
+                graphCx.setFill(Color.web("#FF003C")); // Rojo intenso
+            }
+            
+            // El taxi es un poco más grande (12x12 píxeles)
+            graphCx.fillOval(x - 6, y - 6, 12, 12);
+        }
+    }
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

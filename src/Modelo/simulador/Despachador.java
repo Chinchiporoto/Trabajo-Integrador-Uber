@@ -1,15 +1,15 @@
-package simulador;
+package Modelo.simulador;
 
 import java.util.ArrayList;
 
-import recursos.RutaAsignada;
-import Patrones.DijsktraStrat;
-import Patrones.FloydStrategy;
-import Patrones.IntelligenceStrategy;
-import contenedores.VehiculoPriority;
-import recursos.NodoMapa;
-import grafoDirigido.AbsGrafo;
-import grafoDirigido.GrafoSalta;
+import Modelo.recursos.RutaAsignada;
+import Modelo.Patrones.DijsktraStrat;
+import Modelo.Patrones.FloydStrategy;
+import Modelo.Patrones.IntelligenceStrategy;
+import Modelo.contenedores.VehiculoPriority;
+import Modelo.recursos.NodoMapa;
+import Modelo.grafoDirigido.AbsGrafo;
+import Modelo.grafoDirigido.GrafoSalta;
 public class Despachador {
     protected ArrayList<Vehiculo> vehiculos;
     protected VehiculoPriority colaDespacho;

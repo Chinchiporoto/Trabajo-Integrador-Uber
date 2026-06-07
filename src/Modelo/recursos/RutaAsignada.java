@@ -1,4 +1,4 @@
-package recursos;
+package Modelo.recursos;
 
 
 import java.util.ArrayList;

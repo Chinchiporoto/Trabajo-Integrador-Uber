@@ -1,6 +1,9 @@
-package simulador;
+package Modelo.simulador;
 import java.util.ArrayList;
-import grafoDirigido.GrafoSalta;
+import Modelo.grafoDirigido.GrafoSalta;
+import Modelo.servicio.*;
+import Vista.MainApp; //hay que importar la ventana genérica
+import javafx.application.Application; //necesario para la gui
 
 public class Main { 
     public static void main(String[] args) {
@@ -9,7 +12,7 @@ public class Main {
         System.out.println("=== Cargando grafo de Salta... ===");
         GrafoSalta grafo = new GrafoSalta(rutaMeta, rutaMatriz);
         grafo.cargarGrafo();
-        new servicio.LectorJSON().probarLecturaNodos("data/2km.json", grafo);
+        new LectorJSON().probarLecturaNodos("data/2km.json", grafo);
         System.out.println("Grafo listo. Nodos: " + grafo.getOrden());
         System.out.println();
         System.out.println("=== Registrando vehículos ===");
@@ -60,5 +63,16 @@ public class Main {
         } else {
             System.out.println("✗ Sin unidades disponibles.");
         }
+        
+        
+        
+        System.out.println("\n=== Todo listo. Encendiendo interfaz gráfica ===");
+        
+        // 1. Inyectamos los datos a la ventana "tonta"
+        MainApp.inyectarDatosSimulacion(grafo, flota);
+        
+        // 2. Damos la orden de abrir la ventana gráfica
+        Application.launch(MainApp.class, args);
+        
     }
 }

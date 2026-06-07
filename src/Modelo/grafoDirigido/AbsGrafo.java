@@ -1,9 +1,9 @@
-package grafoDirigido;
+package Modelo.grafoDirigido;
 
-import contenedores.ColaSLinkedList;
-import contenedores.ListaDoubleLinkedL;
-import contenedores.MatrizGrafo;
-import recursos.*;
+import Modelo.contenedores.ColaSLinkedList;
+import Modelo.contenedores.ListaDoubleLinkedL;
+import Modelo.contenedores.MatrizGrafo;
+import Modelo.recursos.*;
 public abstract class AbsGrafo implements OperacionesG{
 	protected MatrizGrafo matrizCosto;
 	protected int ordenGrafo;

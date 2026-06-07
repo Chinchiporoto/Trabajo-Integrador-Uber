@@ -1,5 +1,5 @@
 
-package recursos;
+package Modelo.recursos;
 
 public interface OperacionesGD {
 

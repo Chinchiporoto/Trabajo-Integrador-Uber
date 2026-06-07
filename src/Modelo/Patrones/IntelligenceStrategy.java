@@ -1,8 +1,8 @@
-package Patrones;
+package Modelo.Patrones;
 
-import grafoDirigido.AbsGrafo;
-import recursos.NodoMapa;
-import recursos.RutaAsignada;
+import Modelo.grafoDirigido.AbsGrafo;
+import Modelo.recursos.NodoMapa;
+import Modelo.recursos.RutaAsignada;
 
 public interface IntelligenceStrategy {
     public RutaAsignada calculaETA(AbsGrafo a, NodoMapa origin, NodoMapa destino);
