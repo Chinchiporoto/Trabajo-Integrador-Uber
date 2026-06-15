@@ -69,3 +69,13 @@
     -fx-text-fill: #a0aa95;
     -fx-font-weight: "Tahoma";
 }
+
+.boton-solicitud{
+	-fx-background-color: #00E5FF; /* Pinta el fondo de azul cian eléctrico */
+	    -fx-text-fill: #121212;        /* Pinta las letras oscuras */
+	    -fx-font-weight: bold;         /* Pone la letra en Negrita */
+	    -fx-font-size: 14px;           /* Tamaño de la letra */
+	    -fx-background-radius: 5px;    /* Redondea las esquinas del botón 5 píxeles */
+	    -fx-padding: 10px 20px;        /* Agrega "colchón" interno (10px arriba/abajo, 20px a los lados) */
+	    -fx-cursor: hand;              /* Cambia la flecha del mouse por una "manito" al pasar por encima *
+}

@@ -10,12 +10,15 @@ import Modelo.contenedores.VehiculoPriority;
 import Modelo.recursos.NodoMapa;
 import Modelo.grafoDirigido.AbsGrafo;
 import Modelo.grafoDirigido.GrafoSalta;
+
 public class Despachador {
+	
     protected ArrayList<Vehiculo> vehiculos;
     protected VehiculoPriority colaDespacho;
     private AbsGrafo map;
     private IntelligenceStrategy metodoDji;
     private IntelligenceStrategy metodoFlo;
+    
     public Despachador(ArrayList<Vehiculo>a, AbsGrafo mapa){
         this.colaDespacho=new VehiculoPriority();
         this.vehiculos=a;
@@ -61,8 +64,22 @@ public class Despachador {
         }
         return null;
     }
-    public void muestraCovhes(){
+    
+    public void muestraCoches(){
         for(int i=0;i<this.vehiculos.size();i++)
             System.out.println(this.vehiculos.get(i).toString());
     }
-}
+    
+    public void crearViajeAleatorio(ArrayList<Vehiculo> flota, GrafoSalta grafo) {
+        // 1. Generamos solo el nodo pasajero
+        int maxNodos = grafo.getOrden();
+        int nodoPasajeroAleatorio = (int) (Math.random() * maxNodos);
+        
+        System.out.println("\n[Modelo-Despachador] Generando solicitud autónoma:");
+        System.out.println(" -> Pasajero en nodo: " + nodoPasajeroAleatorio);
+
+        //2. Se llama al método para asignar a alguno de los vehiculos ya instanciados
+        this.asignaViaje(nodoPasajeroAleatorio); 
+    }
+    
+}//fin clase

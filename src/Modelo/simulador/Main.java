@@ -46,7 +46,7 @@ public class Main {
         }
         System.out.println();
         System.out.println("=== Estado de la flota ===");
-        despachador.muestraCovhes();
+        despachador.muestraCoches();
         System.out.println();
         int nodoPasajero2 = 300;
         System.out.println("=== Segunda solicitud ===");
