@@ -1,3 +1,21 @@
 grafo_nodos_salta/xl/worksheets/sheet1.xml
-.classpath
-.vscode/launch.json
+*.class
+bin/
+out/
+
+# Archivos de configuración de IDEs (para que no choquen)
+.settings/
+.dependencyelement
+.xwb-properties
+.vscode/
+
+# Evitamos subir binarios nativos de Linux que rompan en Windows
+lib/*.so
+lib/*.dll
+
+# Basura del sistema o editores locales
+.directory
+*~  
+# Bloquear el zip y las carpetas del SDK desarmadas
+lib/*.zip
+lib/javafx-sdk-*/

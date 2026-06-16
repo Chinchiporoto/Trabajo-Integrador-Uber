@@ -1,22 +1,29 @@
 .root{
     -fx-background-color: #4c5844;
-    -fx-font-family: "Carlito"
+    -fx-font-family: "Carlito";
 }
+
+/* IDs del Contenedor Principal y del Canvas */
+#rootContainer {
+    -fx-border-color: #1a1c17 #7d8a6f #7d8a6f #1a1c17; 
+    -fx-border-width: 2;
+}
+
+#contenedorMapa {
+    -fx-border-color: #444444;    
+    -fx-border-width: 3px;        
+    -fx-border-style: solid;      
+    -fx-background-color: #1E1E1E;
+}
+
 #panelMap{
     -fx-background-color: #4c5844;
     -fx-border-color: #5d6d54;
     -fx-border-width: 0 0 0 2;
 }
+
 .label{
     -fx-text-fill: #ffffff;
-}
-.button{
-    -fx-background-color: #4c5844;
-    -fx-text-fill:  #ffffff;
-    -fx-background-radius: 0;
-    -fx-border-color:#3e4637
-    -fx-border-width 1;
-    -fx-padding: 8 16 8 16;
 }
 
 .list-view {
@@ -25,11 +32,16 @@
     -fx-border-width: 1 1 1 1; 
     -fx-border-radius: 0; 
 }
+
 .list-cell {
     -fx-background-color: transparent;
     -fx-text-fill: #c4b550;
     -fx-font-weight: "Tahoma";
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
 }
+
+/* Estilo Base de Botones */
 .button {
     -fx-background-color: #5d6d54; 
     -fx-border-color: #7d8a6f #1a1c17 #1a1c17 #7d8a6f; 
@@ -38,44 +50,53 @@
     -fx-background-radius: 0;
     -fx-padding: 8 16 8 16;
 }
+
+/* Efecto Mecánico de Hundido NATIVO y para Celdas de la Flota */
 .button:pressed {
-    -fx-background-color: #4b5844;
-    -fx-border-color: #1a1c17 #7d8a6f #7d8a6f #1a1c17; 
-    -fx-padding: 9 15 7 17; 
+    -fx-background-color: #3e4537; /* Verde Oliva Oscuro */
+    -fx-border-color: #1a1c17 #7d8a6f #7d8a6f #1a1c17; /* Sombra arriba/izq, luz abajo/der */
+    -fx-padding: 9 15 7 17; /* Desplazamiento mecánico de 1px del texto */
 }
+
+/* NUEVO: Botón de Directiva/Alerta Estático (No presionable, Hundido por defecto) */
+.button-directiva:disabled {
+    -fx-background-color: #3e4537; 
+    -fx-border-color: #1a1c17 #7d8a6f #7d8a6f #1a1c17; 
+    -fx-text-fill: #c4b550;
+    -fx-opacity: 0.65; /* Atenuado ornamental */
+    -fx-padding: 8 16 8 16;
+}
+
 /* EL CAMPO DE TEXTO (Relieve Bajo / Hueco) */
 .text-field {
-    -fx-background-color: #42493b; /* Fondo oscuro tipo consola */
-    
-    /* Borde Invertido: Sombra arriba/izq, Luz abajo/der */
+    -fx-background-color: #42493b; 
     -fx-border-color: #1a1c17 #7d8a6f #7d8a6f #1a1c17; 
-    
     -fx-border-width: 1;
     -fx-border-radius: 0;
     -fx-background-radius: 0;
-    
-    -fx-text-fill: #e1e1e1; /* Texto claro al escribir */
-    -fx-prompt-text-fill: #ffffff; /* El texto fantasma (placeholder) más apagado */
+    -fx-text-fill: #e1e1e1; 
+    -fx-prompt-text-fill: #ffffff; 
     -fx-padding: 6 8 6 8;
     -fx-font-family: "Tahoma";
 }
 
-/* Cuando hacés clic en el campo para escribir (Focus) */
 .text-field:focused {
-    -fx-background-color: #2b3027; /* Se oscurece un poquito más */
-    -fx-border-color: #5d6d54; /* Borde Verde Oliva para indicar que está activo */
+    -fx-background-color: #2b3027; 
+    -fx-border-color: #5d6d54; 
 }
+
 .etiqueta-titulo {
     -fx-text-fill: #a0aa95;
     -fx-font-weight: "Tahoma";
 }
 
-.boton-solicitud{
-	-fx-background-color: #00E5FF; /* Pinta el fondo de azul cian eléctrico */
-	    -fx-text-fill: #121212;        /* Pinta las letras oscuras */
-	    -fx-font-weight: bold;         /* Pone la letra en Negrita */
-	    -fx-font-size: 14px;           /* Tamaño de la letra */
-	    -fx-background-radius: 5px;    /* Redondea las esquinas del botón 5 píxeles */
-	    -fx-padding: 10px 20px;        /* Agrega "colchón" interno (10px arriba/abajo, 20px a los lados) */
-	    -fx-cursor: hand;              /* Cambia la flecha del mouse por una "manito" al pasar por encima *
+.marco-dispositivo {
+    -fx-background-color: #4c5844;
+    -fx-background-insets: 0; 
+    -fx-border-color: #5d6d54;
+    -fx-border-width: 3px 0 0 0;
+    -fx-padding: 15px;
+    -fx-alignment: center;
+    -fx-opacity: 1.0;
 }
+

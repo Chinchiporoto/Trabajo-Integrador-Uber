@@ -11,10 +11,10 @@ import org.json.JSONObject;
 import Modelo.grafoDirigido.GrafoSalta;
 
 public class LectorJSON {
-private static final double LAT_MIN = -24.805;
-private static final double LAT_MAX = -24.765;
-private static final double LNG_MIN = -65.430;
-private static final double LNG_MAX = -65.395;
+public static final double LAT_MIN = -24.805;
+public static final double LAT_MAX = -24.765;
+public static final double LNG_MIN = -65.430;
+public static final double LNG_MAX = -65.395;
     public void probarLecturaNodos(String rutaArchivo, GrafoSalta grafo) {
         try {
             String contenido = new String(Files.readAllBytes(Paths.get(rutaArchivo)));

@@ -17,6 +17,9 @@ public abstract class AbsGrafo implements OperacionesG{
 	public int getOrden(){
 		return this.ordenGrafo;
 	}
+	public MatrizGrafo getMatrizCosto() {
+    return this.matrizCosto;
+}
 	
 	public abstract void cargarGrafo();
 	public abstract void muestraGrafo();
