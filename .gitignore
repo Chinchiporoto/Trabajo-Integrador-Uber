@@ -4,11 +4,12 @@ bin/
 out/
 
 # Archivos de configuración de IDEs (para que no choquen)
+.project
 .settings/
 .dependencyelement
 .xwb-properties
 .vscode/
-
+.classpath
 # Evitamos subir binarios nativos de Linux que rompan en Windows
 lib/*.so
 lib/*.dll
