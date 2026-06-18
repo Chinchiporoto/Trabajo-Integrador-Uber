@@ -2,7 +2,6 @@ package Modelo.simulador;
 
 import java.util.ArrayList;
 import Modelo.grafoDirigido.GrafoSalta;
-import Modelo.recursos.NodoDoble;
 import Modelo.recursos.NodoMapa;
 import Modelo.servicio.*;
 import Vista.MainApp;
@@ -12,10 +11,12 @@ public class Main {
     public static void main(String[] args) {
         String rutaMeta   = "data/meta_datos_nodos_2k.csv";
         String rutaMatriz = "data/matriz_nodos_2k.csv";
-
         System.out.println("=== Cargando grafo de Salta... ===");
         GrafoSalta grafo = new GrafoSalta(rutaMeta, rutaMatriz);
         grafo.cargarGrafo();
+        
+        // BORRÁ o COMENTÁ la línea de grafo.obtenerCostoFloyd(0,0) que pusimos acá.
+
         new LectorJSON().probarLecturaNodos("data/2km.json", grafo);
         ArrayList<Vehiculo> flota = new ArrayList<>();
         int cantidadTaxis = 5;

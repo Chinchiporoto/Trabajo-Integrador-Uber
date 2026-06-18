@@ -4,9 +4,6 @@ import java.util.ArrayList;
 
 import Modelo.recursos.RutaAsignada;
 import Modelo.servicio.LectorJSON;
-import Modelo.Patrones.DijsktraStrat;
-import Modelo.Patrones.FloydStrategy;
-import Modelo.Patrones.IntelligenceStrategy;
 import Modelo.contenedores.VehiculoPriority;
 import Modelo.recursos.NodoMapa;
 import Modelo.grafoDirigido.AbsGrafo;
@@ -37,18 +34,16 @@ public class Despachador {
 	/** Lista de todos los vehículos en el sistema */
     protected ArrayList<Vehiculo> vehiculos;
     /** Cola de prioridad que ordena vehículos disponibles por distancia al pasajero */
-    protected VehiculoPriority colaDespacho;
+    
     /** Referencia al grafo de la ciudad (Salta) */
     private AbsGrafo map;
     /** Estrategia de Dijkstra para distancias cortas (< 1500m) */
-    private IntelligenceStrategy metodoDji;
-    /** Estrategia de Floyd para distancias largas (>= 1500m) */
-    private IntelligenceStrategy metodoFlo;
+ 
     /** Nodo del pasajero actual/activo */
     private NodoMapa pasajeroAct=null;
     /** Registro temporal de eventos para la interfaz gráfica */
     private ArrayList<String> logsTemporales = new ArrayList<>();
-    
+    private java.util.concurrent.CopyOnWriteArrayList<NodoMapa> pasajerosEsperando = new java.util.concurrent.CopyOnWriteArrayList<>();
     /**
      * Constructor que inicializa el despachador con una flota de vehículos.
      * 
@@ -59,11 +54,9 @@ public class Despachador {
      * @param mapa el grafo que representa la ciudad (Salta)
      */
     public Despachador(ArrayList<Vehiculo>a, AbsGrafo mapa){
-        this.colaDespacho=new VehiculoPriority();
         this.vehiculos=a;
         this.map=mapa;
-        this.metodoDji= new DijsktraStrat();
-        this.metodoFlo= new FloydStrategy();
+
     }
     /**
      * Retorna el nodo del pasajero actualmente activo.
@@ -73,16 +66,20 @@ public class Despachador {
     public NodoMapa getPasajeroAct() {
         return pasajeroAct;
     }
-    
+    public ArrayList<Vehiculo> getFlotaCompleta() {
+        return this.vehiculos;
+    }
+    public void agregarPasajeroEsperando(NodoMapa p) {
+        this.pasajerosEsperando.add(p);
+    }
+    public java.util.concurrent.CopyOnWriteArrayList<NodoMapa> getPasajerosEsperando() {
+        return this.pasajerosEsperando;
+    }
     /**
      * Retorna la cola de despacho con vehículos disponibles ordenados por distancia.
      * 
      * @return VehiculoPriority con vehículos disponibles
      */
-    public VehiculoPriority getColaDespacho() {
-        return this.colaDespacho;
-    }
-    
     /**
      * Establece el nodo del pasajero actualmente activo.
      * 
@@ -103,9 +100,6 @@ public class Despachador {
     /**
      * Limpia la cola de despacho.
      */
-    public void limpiar(){
-        this.colaDespacho.limpiar();
-    }
     /**
      * Registra todos los vehículos disponibles en la cola de despacho.
      * 
@@ -114,23 +108,6 @@ public class Despachador {
      * 
      * @param nodePasajero ID del nodo donde se encuentra el pasajero
      */
-    public void registrarDisponibles(int nodePasajero){ 
-        limpiar();
-        GrafoSalta gs = (GrafoSalta) this.map;
-        NodoMapa nodoPasajero = gs.getNodo(nodePasajero);
-        
-        for(int i = 0; i < this.vehiculos.size(); i++) {
-            Vehiculo v = vehiculos.get(i);
-            if(v.getState() == EstadoVehiculo.DISPONIBLE){ 
-                NodoMapa iAuto = gs.getNodo(v.getNodoActual());
-                double costo = iAuto.distanciaHaversine(nodoPasajero);
-                v.setEta(costo); 
-                
-                this.colaDespacho.meter(v);
-            }
-        }
-    }
-
     /**
      * Asigna un viaje a un vehículo disponible.
      * 
@@ -153,61 +130,7 @@ public class Despachador {
      * @see IntelligenceStrategy
      * @see EstadoVehiculo
      */
-    public Vehiculo asignaViaje(int nodoOrigen){
-        Vehiculo candidato = null;
-        GrafoSalta gs = (GrafoSalta) this.map;
-        NodoMapa nodoPasajero = gs.getNodo(nodoOrigen);
     
-    while(!this.colaDespacho.estaVacia()){
-        candidato = (Vehiculo) this.colaDespacho.sacar();
-        if(candidato.aceptaViaje()){ 
-            
-            // --- BLOQUEO ANTI-TELETRANSPORTACIÓN ---
-            // Le congelamos el buffer de patrullaje INMEDIATAMENTE en el hilo secundario
-            // para que deje de deambular y su posición decimal no se desplace mientras se calcula Dijkstra.
-            int nodoPartidaReal = candidato.getNodoActual();
-            if (candidato.getRutaAsignada() != null && !candidato.getRutaAsignada().isEmpty()) {
-                nodoPartidaReal = candidato.getRutaAsignada().get(0);
-            }
-            
-            NodoMapa nodoAuto = gs.getNodo(nodoPartidaReal);
-            double distanciaRecta = candidato.getEta();
-            Modelo.Patrones.IntelligenceStrategy Strat = (distanciaRecta < 1500) ? 
-                this.metodoDji : this.metodoFlo;
-            
-            RutaAsignada ruta = Strat.calculaETA(this.map, nodoAuto, nodoPasajero);
-            boolean esValida = true;
-            if (ruta.getEta() >= 9999.0) {
-                esValida = false;
-            } else {
-                for (int i = 0; i < ruta.getCaminoNodos().size() - 1; i++) {
-                    NodoMapa n1 = gs.getNodo(ruta.getCaminoNodos().get(i));
-                    NodoMapa n2 = gs.getNodo(ruta.getCaminoNodos().get(i+1));
-                    if (n1.distanciaHaversine(n2) > 500.0) {
-                        esValida = false;
-                        break;
-                    }
-                }
-            }
-            if (!esValida) {
-                this.registrarLog(" ↳ Móvil " + candidato.getId() + " ruta ilegal/aislada. Descartando...");
-                continue; 
-            }
-            
-            
-            candidato.getRutaAsignada().clear();
-           
-            candidato.setNodoActual(nodoPartidaReal);
-            
-            candidato.getRutaAsignada().addAll(ruta.getCaminoNodos());
-            candidato.setEta(ruta.getEta());
-            candidato.resetearRelojMecanico(); 
-            candidato.setState(EstadoVehiculo.OCUPADO);
-            return candidato;
-        }
-    }
-    return null;
-} 
     /**
      * Muestra en consola la información de todos los vehículos.
      */
@@ -234,38 +157,6 @@ public class Despachador {
      * @see #registrarDisponibles(int)
      * @see #asignaViaje(int)
      */
-    public void crearViajeAleatorio(ArrayList<Vehiculo> flota, GrafoSalta grafo) {
-        int maxNodos = grafo.getOrden();
-        int nodoPasajeroAleatorio;
-        NodoMapa pasajeroCandidato;
-        double margen = 0.002;
-        boolean nodoValido= false;
-        
-
-    do {
-        nodoPasajeroAleatorio = (int) (Math.random() * maxNodos);
-        pasajeroCandidato = grafo.getNodo(nodoPasajeroAleatorio);
-
-        if ((pasajeroCandidato != null) && grafo.esPuntoMuerto(nodoPasajeroAleatorio))
-            nodoValido=true;
-    } while (pasajeroCandidato == null || !nodoValido||
-             pasajeroCandidato.getLatitud() < (LectorJSON.LAT_MIN + margen) || 
-             pasajeroCandidato.getLatitud() > (LectorJSON.LAT_MAX - margen) || 
-             pasajeroCandidato.getLongitud() < (LectorJSON.LNG_MIN + margen) || 
-             pasajeroCandidato.getLongitud() > (LectorJSON.LNG_MAX - margen));
-
-    this.pasajeroAct = pasajeroCandidato;
-    
-    this.registrarLog("[PASAJERO] Solicitud generada en nodo: " + nodoPasajeroAleatorio);
-    
-    this.registrarDisponibles(nodoPasajeroAleatorio);
-    Vehiculo asignar = this.asignaViaje(nodoPasajeroAleatorio);
-    
-    if(asignar != null)
-        this.registrarLog("[DESPACHO] Viaje asignado al Móvil " + asignar.getId());
-    else
-        this.registrarLog("[ALERTA] No se pudo asignar ningún vehículo.");
-}
 
     /**
      * Registra un mensaje de evento en el sistema.
@@ -316,55 +207,68 @@ public class Despachador {
     GrafoSalta gs = (GrafoSalta) this.map;
     
     for (Vehiculo v : this.vehiculos) {
-        if (v.getState() == EstadoVehiculo.OCUPADO) {
-            boolean llegoADestino = v.avanzarUnNodo(gs);
-            if (llegoADestino && v.getRutaAsignada().isEmpty())
-                this.registrarLog("[TRACKING] Móvil " + v.getId() + " llegó a destino y está DISPONIBLE.");
-        }
-        else if (v.getState() == EstadoVehiculo.DISPONIBLE) { 
-        
-        boolean atrapadoPuntoMuerto= false;
-        
-            if (v.getRutaAsignada() == null) 
-                v.setRutaAsignada(new ArrayList<>());
-            
-            
-            while (v.getRutaAsignada().size() < 3) {
-                int nodoPunta = v.getRutaAsignada().isEmpty() ? 
-                 v.getNodoActual() : v.getRutaAsignada().get(v.getRutaAsignada().size() - 1); 
-            
-                 ArrayList<Integer> vecinos = gs.obtenerVecinosValidos(nodoPunta);
-                
-                
-                if (!vecinos.isEmpty()) {
-                    int esquinaAzar = vecinos.get((int) (Math.random() * vecinos.size()));
-                    v.getRutaAsignada().add(esquinaAzar); 
-                }
-                else {
-                    atrapadoPuntoMuerto = true;
-                    break; 
-                }
-            }
-            if (atrapadoPuntoMuerto && v.getRutaAsignada().isEmpty()) {
-                int nodoRescate = (int) (Math.random() * gs.getOrden());
-                NodoMapa nRescate = gs.getNodo(nodoRescate);
-            if (nRescate != null) {
-                    v.setNodoActual(nodoRescate);
-                    v.getRutaAsignada().clear();
-                    v.resetearRelojMecanico(); 
-                    System.out.println("[SISTEMA] Móvil " + v.getId() + " rescatado de punto muerto. Reubicado en nodo " + nodoRescate);
-                }
-            continue;
-            }
-    
-            if (!v.getRutaAsignada().isEmpty()) {
-                int nodoObjetivoInmediato = v.getRutaAsignada().get(0);
-                boolean cruzoEsquina = v.avanzarUnNodo(gs);  
-                if (cruzoEsquina) 
-                   v.setNodoActual(nodoObjetivoInmediato);
-            }
-        }
-}
+        try {
+            if (v.getState() == EstadoVehiculo.ENCAMINO || v.getState() == EstadoVehiculo.OCUPADO) {
+                synchronized(v) {
+                    boolean llegoAlFinaldeRuta = v.avanzarUnNodo(gs);
+                    
+                    if (llegoAlFinaldeRuta && v.getRutaAsignada().isEmpty()) {
+                        if(v.getState() == EstadoVehiculo.ENCAMINO) {
+                            int nodoRecogida = v.getNodoActual();
+                            int nodoDestino = v.getNodoDestinoFinal();
+                            
+                            this.registrarLog("[TRACKING] Móvil " + v.getId() + " recogió al pasajero en nodo " + nodoRecogida + ". Iniciando viaje al destino final: " + nodoDestino);
+                            
+                            long idOsmRecogida = gs.getNodo(nodoRecogida).getId();
+                            this.pasajerosEsperando.removeIf(p -> p.getId() == idOsmRecogida);
+                            
+                            v.getRutaAsignada().clear();
+                            
+                            // --- EXTRACCIÓN DEL DOBLE BUFFER (O(1)) ---
+                            // Ya no calculamos nada acá, simplemente sacamos la ruta pre-calculada
+                            // que nos dejó el SolicitudService en la "mochila" del auto.
+                            if (v.getRutaFase2() != null) {
+                                v.getRutaAsignada().addAll(v.getRutaFase2());
+                                v.setEta(v.getEtaFase2());
+                            }
+                            
+                            // Removemos el nodo base para destrabar el LERP
+                            if (!v.getRutaAsignada().isEmpty() && v.getRutaAsignada().get(0) == nodoRecogida) {
+                                v.getRutaAsignada().remove(0);
+                            }
+                            
+                            v.setNodoActual(nodoRecogida);
+                            v.resetearRelojMecanico();
+                            v.setState(EstadoVehiculo.OCUPADO);
+                        }
 
-}
+                        else if(v.getState() == EstadoVehiculo.OCUPADO) {
+                            this.registrarLog("[TRACKING] Móvil " + v.getId() + " llegó a destino final con éxito. Pasajero desembarcado.");
+                            v.setState(EstadoVehiculo.DISPONIBLE);
+                            v.setNodoDestinoFinal(-1);
+                            v.setEta(0.0);
+                        }
+                    }
+                }
+            }
+            // LÓGICA DE PATRULLAJE (¡Acá está lo que hacía que se movieran solos!)
+            else if (v.getState() == EstadoVehiculo.DISPONIBLE) {
+                v.patrullar(gs);
+            }
+
+        } 
+        // 🚨 SI ALGO EXPLOTA EN LA MATEMÁTICA, EL AUTO SE RESETEA SIN ROMPER EL JUEGO
+        catch (Exception e) {
+            System.err.println("Error detallado en Móvil " + v.getId() + ": " + e.getMessage());
+            e.printStackTrace(); 
+            
+            v.setState(EstadoVehiculo.DISPONIBLE);
+            if (v.getRutaAsignada() != null) {
+                v.getRutaAsignada().clear();
+            }
+            v.setNodoDestinoFinal(-1);
+            v.setEta(0.0);
+        }
+    }
+    }
 }

@@ -1,5 +1,5 @@
 package Modelo.simulador;
 
 public enum EstadoVehiculo {
-DISPONIBLE,OCUPADO,NOSERVICE    
+DISPONIBLE,OCUPADO,NOSERVICE,ENCAMINO   
 }

@@ -11,7 +11,8 @@
 
 #contenedorMapa {
     -fx-border-color: #444444;    
-    -fx-border-width: 3px;        
+    /* MODIFICAR ESTA LÍNEA (Arriba, Derecha, Abajo, Izquierda) */
+    -fx-border-width: 3px 3px 0px 3px;        
     -fx-border-style: solid;      
     -fx-background-color: #1E1E1E;
 }
@@ -99,4 +100,112 @@
     -fx-alignment: center;
     -fx-opacity: 1.0;
 }
+.ventana-steam {
+    -fx-background-color: #4c5844;
+    -fx-border-color: #7d8a6f #1a1c17 #1a1c17 #7d8a6f; /* Relieve 3D de ventana clásica */
+    -fx-border-width: 2;
+    -fx-padding: 20;
+}
+
+.texto-steam-titulo {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.texto-steam-estado {
+    -fx-text-fill: #9ba68f; /* El gris verdoso atenuado clásico */
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 12px;
+}
+
+/* La barra de carga clásica */
+.barra-steam {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.barra-steam .track {
+    -fx-background-color: #3e4537;
+    -fx-border-color: #1a1c17 #7d8a6f #7d8a6f #1a1c17; /* Efecto bien hundido */
+    -fx-border-width: 1;
+    -fx-background-radius: 0;
+}
+
+.contenedor-bloques-steam {
+    -fx-background-color: #3e4537;
+    -fx-border-color: #1a1c17 #7d8a6f #7d8a6f #1a1c17; 
+    -fx-border-width: 1;
+    -fx-padding: 1; /* menos padding = barra más baja */
+}
+ 
+/* Bloques individuales — más anchos y más bajos */
+.bloque-steam {
+    -fx-background-color: #c4b550; 
+    -fx-min-width: 13px;   /* más anchos (antes 11px) */
+    -fx-max-width: 14px;
+    -fx-min-height: 16px;  /* más bajos  (antes 19px) */
+    -fx-max-height: 12px;
+}
+.scroll-bar {
+    -fx-background-color: #3e4637;
+    -fx-border-color: #2b3026;
+    -fx-border-width: 1;
+}
+
+/* El "carril" oscuro por donde se desliza el botón */
+.scroll-bar .track {
+    -fx-background-color: #2b3026;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    /* Efecto de hundimiento del carril */
+    -fx-border-color: #1a1c17 #4d5b4a #4d5b4a #1a1c17; 
+    -fx-border-width: 1;
+}
+
+/* La barra arrastrable (Thumb) */
+.scroll-bar .thumb {
+    -fx-background-color: #4d5b4a; /* Verde oliva base */
+    -fx-background-radius: 0;
+    /* Efecto biselado 3D clásico de 2004 (luces arriba/izquierda, sombras abajo/derecha) */
+    -fx-border-color: #72836d #1a1c17 #1a1c17 #72836d; 
+    -fx-border-width: 1;
+}
+
+/* Hover de la barra arrastrable */
+.scroll-bar .thumb:hover {
+    -fx-background-color: #5a6b57; 
+}
+
+/* Clic en la barra arrastrable (se invierte el bisel para parecer hundido) */
+.scroll-bar .thumb:pressed {
+    -fx-background-color: #3e4637;
+    -fx-border-color: #1a1c17 #72836d #72836d #1a1c17;
+}
+
+/* Botones de las flechas en los extremos */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: #4d5b4a;
+    -fx-background-radius: 0;
+    -fx-border-color: #72836d #1a1c17 #1a1c17 #72836d;
+    -fx-border-width: 1;
+    -fx-padding: 4px;
+}
+
+/* Clic en los botones de flechas */
+.scroll-bar .increment-button:pressed,
+.scroll-bar .decrement-button:pressed {
+    -fx-background-color: #3e4637;
+    -fx-border-color: #1a1c17 #72836d #72836d #1a1c17;
+}
+
+/* Color de las flechitas (triángulos) internas */
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: #c4b550; /* Tu color de texto/acento */
+    -fx-shape: "M 0 0 L 4 4 L 8 0 Z"; /* Aseguramos bordes rectos en el dibujo de la flecha */
+}
+
 

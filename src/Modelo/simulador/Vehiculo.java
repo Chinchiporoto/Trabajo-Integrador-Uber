@@ -41,6 +41,10 @@ public class Vehiculo {
     private boolean coordenadasInicializadas = false;
     /** Timestamp del último cálculo de movimiento en milisegundos */
     private long ultimoTiempoMilis = 0;
+    private int nodoAnterior = -1;
+    private int nodoDestinoFinal=-1;
+    private ArrayList<Integer> rutaFase2 = null;
+    private double etaFase2 = 0.0;
     /**
      * Constructor que crea un nuevo vehículo en el sistema.
      * 
@@ -69,6 +73,16 @@ public class Vehiculo {
             this.lngActualDecimal = nodoBase.getLongitud();
             this.coordenadasInicializadas = true; // Ya nacen con posición real
         }
+    }
+    public void setRutaFase2(ArrayList<Integer> ruta) { this.rutaFase2 = ruta; }
+    public ArrayList<Integer> getRutaFase2() { return this.rutaFase2; }
+    public void setEtaFase2(double e) { this.etaFase2 = e; }
+    public double getEtaFase2() { return this.etaFase2; }
+    public int getNodoDestinoFinal(){
+        return this.nodoDestinoFinal;
+    }
+    public void setNodoDestinoFinal(int nodoDestino){
+        this.nodoDestinoFinal=nodoDestino;
     }
     /**
      * Retorna la ruta actual asignada al vehículo.
@@ -200,48 +214,60 @@ public class Vehiculo {
      * 
      * @see #resetearRelojMecanico()
      */
-    public boolean avanzarUnNodo(GrafoSalta grafo) {
+public boolean avanzarUnNodo(GrafoSalta grafo) {
         if (this.rutaAsignada != null && !this.rutaAsignada.isEmpty()) {
-        NodoMapa siguienteNodo = grafo.getNodo(this.rutaAsignada.get(0));
-        NodoMapa nodoBase = grafo.getNodo(this.nodoActual);
-        
-        if (siguienteNodo != null && nodoBase != null) {
-            long tiempoActual = System.currentTimeMillis();
-            if (!coordenadasInicializadas || this.ultimoTiempoMilis==0) {
-                this.latActualDecimal = nodoBase.getLatitud();
-                this.lngActualDecimal = nodoBase.getLongitud();
-                this.coordenadasInicializadas = true;
-                this.ultimoTiempoMilis = tiempoActual;
-            }
-            double deltaTime = (tiempoActual - this.ultimoTiempoMilis) / 1000.0;
-            this.ultimoTiempoMilis = tiempoActual;
-            if (deltaTime > 0.1) deltaTime = 0.03;
-            double factorVelocidadEstable = 4.5 * deltaTime;
-            if (factorVelocidadEstable > 1.0) factorVelocidadEstable = 1.0;
-            // Interpolación continua (LERP)
-            this.latActualDecimal += (siguienteNodo.getLatitud() - this.latActualDecimal) * factorVelocidadEstable; 
-            this.lngActualDecimal += (siguienteNodo.getLongitud() - this.lngActualDecimal) * factorVelocidadEstable; 
-
-            double distanciaUmbral = 0.00005;
-            if (Math.abs(this.latActualDecimal - siguienteNodo.getLatitud()) < distanciaUmbral && 
-                Math.abs(this.lngActualDecimal - siguienteNodo.getLongitud()) < distanciaUmbral) {
-                
-                this.nodoActual = this.rutaAsignada.remove(0); 
-                
-                if (this.rutaAsignada.isEmpty()) {
-                    this.state = EstadoVehiculo.DISPONIBLE;
-                    this.eta = 0.0;
-                    // CORREGIDO: NO apagamos coordenadasInicializadas, el auto sigue existiendo en el espacio decimal
-                    return true; 
+            NodoMapa siguienteNodo = grafo.getNodo(this.rutaAsignada.get(0));
+            NodoMapa nodoBase = grafo.getNodo(this.nodoActual);
+            
+            if (siguienteNodo != null && nodoBase != null) {
+                long tiempoActual = System.currentTimeMillis();
+                if (!coordenadasInicializadas || this.ultimoTiempoMilis == 0) {
+                    this.latActualDecimal = nodoBase.getLatitud();
+                    this.lngActualDecimal = nodoBase.getLongitud();
+                    this.coordenadasInicializadas = true;
+                    this.ultimoTiempoMilis = tiempoActual;
                 }
-                return true; 
+                
+                double deltaTime = (tiempoActual - this.ultimoTiempoMilis) / 1000.0;
+                this.ultimoTiempoMilis = tiempoActual;
+                
+                // Escudo anti-lag: Si la CPU se cuelga un instante, evitamos que el auto se teletransporte
+                if (deltaTime > 0.1) deltaTime = 0.016; 
+
+                // --- NUEVA MATEMÁTICA: MOVIMIENTO VECTORIAL CONSTANTE ---
+                // 1. Calculamos el vector de dirección y la distancia geométrica exacta
+                double dLat = siguienteNodo.getLatitud() - this.latActualDecimal;
+                double dLng = siguienteNodo.getLongitud() - this.lngActualDecimal;
+                double distanciaRestante = Math.sqrt(dLat * dLat + dLng * dLng);
+
+                // 2. Definimos la velocidad según el estado del auto (DISPONIBLE va paseando, OCUPADO va rápido)
+                double velocidad = (this.state == EstadoVehiculo.DISPONIBLE) ? 0.0006 : 0.0013; 
+                double paso = velocidad * deltaTime;
+
+                // 3. Verificamos si el paso que va a dar alcanza para llegar a la esquina
+                if (distanciaRestante <= paso || distanciaRestante < 0.00001) {
+                    // Llegó exacto a la esquina: lo "encajamos" matemáticamente en el vértice
+                    this.latActualDecimal = siguienteNodo.getLatitud();
+                    this.lngActualDecimal = siguienteNodo.getLongitud();
+                    this.nodoAnterior = this.nodoActual;
+                    this.nodoActual = this.rutaAsignada.remove(0);
+                    
+                    if (this.rutaAsignada.isEmpty()) {
+                        this.eta = 0.0;
+                        return true; // Termino toda la ruta
+                    }
+                    return true; // Llego a un nodo intermedio
+                } else {
+                    // Aún le falta: Normalizamos el vector y lo multiplicamos por nuestro paso constante
+                    this.latActualDecimal += (dLat / distanciaRestante) * paso;
+                    this.lngActualDecimal += (dLng / distanciaRestante) * paso;
+                }
             }
+        } else {
+            this.ultimoTiempoMilis = 0;
         }
-    }else{
-        this.ultimoTiempoMilis = 0;
+        return false;
     }
-    return false;
-}
     /**
      * Reinicia el reloj mecánico del movimiento del vehículo.
      * 
@@ -262,6 +288,80 @@ public class Vehiculo {
 public String toString(){
     return "Movil " + id + " [ETA: " + String.format("%.1f", eta) + " segs]";
 }
+
+public void patrullar(GrafoSalta gs) {
+        boolean atrapadoPuntoMuerto = false;
+        
+        if (this.getRutaAsignada() == null) {
+            this.setRutaAsignada(new ArrayList<>());
+        }
+
+        // Llenar buffer de patrullaje (siempre miramos 3 esquinas al futuro)
+        while (this.getRutaAsignada().size() < 3) {
+            int nodoPunta;
+            int nodoPrevioAlPunta;
+
+            // Identificamos de dónde venimos para no volver hacia atrás
+            if (this.getRutaAsignada().isEmpty()) {
+                nodoPunta = this.getNodoActual();
+                nodoPrevioAlPunta = this.nodoAnterior;
+            } else {
+                nodoPunta = this.getRutaAsignada().get(this.getRutaAsignada().size() - 1);
+                nodoPrevioAlPunta = this.getRutaAsignada().size() >= 2 
+                                    ? this.getRutaAsignada().get(this.getRutaAsignada().size() - 2) 
+                                    : this.getNodoActual();
+            }
+            
+            ArrayList<Integer> vecinos = gs.obtenerVecinosValidos(nodoPunta);
+            
+            if (!vecinos.isEmpty()) {
+                
+                // --- FILTRO ANTI PING-PONG (Evita giros en U) ---
+                ArrayList<Integer> vecinosHaciaAdelante = new ArrayList<>();
+                for (int v : vecinos) {
+                    if (v != nodoPrevioAlPunta) {
+                        vecinosHaciaAdelante.add(v);
+                    }
+                }
+                
+                int esquinaAzar;
+                // Si hay calles para seguir avanzando, elige una al azar
+                if (!vecinosHaciaAdelante.isEmpty()) {
+                    esquinaAzar = vecinosHaciaAdelante.get((int) (Math.random() * vecinosHaciaAdelante.size()));
+                } else {
+                    // Solo si es un callejón sin salida (no le queda otra), da la vuelta
+                    esquinaAzar = vecinos.get((int) (Math.random() * vecinos.size()));
+                }
+                
+                this.getRutaAsignada().add(esquinaAzar);
+            } else {
+                atrapadoPuntoMuerto = true;
+                break;
+            }
+        }
+
+        // Sistema de rescate si cae en una isla completamente desconectada
+        if (atrapadoPuntoMuerto && this.getRutaAsignada().isEmpty()) {
+            int nodoRescate = (int) (Math.random() * gs.getOrden());
+            Modelo.recursos.NodoMapa nRescate = gs.getNodo(nodoRescate);
+            if (nRescate != null) {
+                this.setNodoActual(nodoRescate);
+                this.nodoAnterior = -1; // Le borramos la memoria tras el rescate
+                this.getRutaAsignada().clear();
+                this.resetearRelojMecanico();
+            }
+            return;
+        }
+
+        // Ejecuta la cinemática vectorial suave que ya definimos
+        if (!this.getRutaAsignada().isEmpty()) {
+            int nodoObjetivoInmediato = this.getRutaAsignada().get(0);
+            boolean cruzoEsquina = this.avanzarUnNodo(gs);
+            if (cruzoEsquina) {
+                this.setNodoActual(nodoObjetivoInmediato);
+            }
+        }
+    }
 }
 
 
