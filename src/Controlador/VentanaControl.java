@@ -24,16 +24,13 @@ import java.util.ArrayList;
 /**
  * Controlador principal de la interfaz gráfica.
  *
- * Post-refactor: implementa SimuladorObserver y solo contiene:
+ * Implementa SimuladorObserver y solo contiene:
  * - Construcción y ensamblado del layout
  * - Panel lateral desplegable
  * - Timelines (motor 30ms y simulación 8s) — solo llaman al SimuladorService
  * - Implementación de SimuladorObserver: reacciona a eventos del Modelo
  * - Actualización de listas y log (solo UI)
  * - Modo selección manual de pasajero en el mapa
- *
- * Todo lo que antes era lógica de negocio (Task, cálculo de rutas,
- * asignación de vehículos) fue extraído a SimuladorService y SolicitudService.
  *
  * @see SimuladorService
  * @see Modelo.simulador.SolicitudService
@@ -105,8 +102,7 @@ public class VentanaControl implements SimuladorObserver {
 
     /**
      * El Modelo avisó que la flota se movió → redibujar canvas y actualizar lista.
-     * Siempre se recibe en el hilo de JavaFX (notificado desde Platform.runLater en
-     * tick).
+     * Siempre se recibe en el hilo de JavaFX.
      */
     @Override
     public void onFlotaActualizada(ArrayList<Vehiculo> flota) {
@@ -234,14 +230,14 @@ public class VentanaControl implements SimuladorObserver {
                 double lng = mapaView.pixelALng(event.getX());
                 System.out.println("[DEBUG] Coordenadas: Lat " + lat + " | Lng " + lng);
 
-                // ¡Magia! Le preguntamos al Modelo directamente:
+                // Le preguntamos al Modelo directamente:
                 int nodoCercano = simulador.getGrafo().buscarNodoMasCercano(lat, lng);
                 System.out.println("[DEBUG] Esquina más cercana encontrada: " + nodoCercano);
 
                 if (nodoCercano != -1) {
                     modoSeleccionManual = false;
                     botonSolicitud.setStyle("");
-                    botonSolicitud.setText("Mandar Solicitud de Viaje"); // <-- ¡Me había faltado esta línea!
+                    botonSolicitud.setText("Mandar Solicitud de Viaje");
 
                     System.out.println("[DEBUG] ¡Lanzando viaje al SolicitudService!");
                     simulador.spawnPasajero(nodoCercano);
@@ -311,7 +307,7 @@ public class VentanaControl implements SimuladorObserver {
     }
 
     // =========================================================
-    // Construcción del layout (igual que antes, sin cambios)
+    // Construcción del layout
     // =========================================================
 
     private void inicializarComponentes() {
