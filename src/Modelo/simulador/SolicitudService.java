@@ -5,9 +5,9 @@ import Modelo.Patrones.FloydStrategy;
 import Modelo.Patrones.IntelligenceStrategy;
 import Modelo.Patrones.SimuladorObserver;
 import Modelo.grafoDirigido.GrafoSalta;
+import Modelo.recursos.MapaBounds;
 import Modelo.recursos.NodoMapa;
 import Modelo.recursos.RutaAsignada;
-import Modelo.servicio.LectorJSON;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,28 +19,28 @@ import java.util.List;
  * vivía en la Vista ahora vive acá, en el Modelo.
  *
  * Responsabilidades:
- *  - Encontrar un nodo pasajero válido (aleatorio o manual)
- *  - Registrar el pasajero en el Despachador
- *  - Seleccionar el vehículo candidato de la cola de prioridad
- *  - Calcular ruta Fase 1 (auto → pasajero) con Dijkstra o Floyd
- *  - Calcular ruta Fase 2 (pasajero → destino final)
- *  - Aplicar el resultado al Vehiculo y notificar observers
+ * - Encontrar un nodo pasajero válido (aleatorio o manual)
+ * - Registrar el pasajero en el Despachador
+ * - Seleccionar el vehículo candidato de la cola de prioridad
+ * - Calcular ruta Fase 1 (auto → pasajero) con Dijkstra o Floyd
+ * - Calcular ruta Fase 2 (pasajero → destino final)
+ * - Aplicar el resultado al Vehiculo y notificar observers
  */
 public class SolicitudService {
 
-    private final ArrayList<Vehiculo>     flota;
-    private final GrafoSalta              grafo;
-    private final Despachador             despachador;
+    private final ArrayList<Vehiculo> flota;
+    private final GrafoSalta grafo;
+    private final Despachador despachador;
     private final List<SimuladorObserver> observers;
 
     public SolicitudService(ArrayList<Vehiculo> flota,
-                            GrafoSalta grafo,
-                            Despachador despachador,
-                            List<SimuladorObserver> observers) {
-        this.flota       = flota;
-        this.grafo       = grafo;
+            GrafoSalta grafo,
+            Despachador despachador,
+            List<SimuladorObserver> observers) {
+        this.flota = flota;
+        this.grafo = grafo;
         this.despachador = despachador;
-        this.observers   = observers;
+        this.observers = observers;
     }
 
     // =========================================================
@@ -49,21 +49,19 @@ public class SolicitudService {
 
     /**
      * Lanza el cálculo en un hilo secundario.
-     * @param nodoManual índice del nodo elegido por el usuario, o null para aleatorio
+     * 
+     * @param nodoManual índice del nodo elegido por el usuario, o null para
+     *                   aleatorio
      */
     public void ejecutar(Integer nodoManual) {
-        notifyEstado(true, "Calculando Ruta...");
+        notifyEstado(true);
 
         javafx.concurrent.Task<Resultado> tarea = crearTarea(nodoManual);
 
-        tarea.setOnSucceeded(e ->
-            javafx.application.Platform.runLater(() -> aplicar(tarea.getValue()))
-        );
+        tarea.setOnSucceeded(e -> javafx.application.Platform.runLater(() -> aplicar(tarea.getValue())));
         tarea.setOnFailed(e -> {
             tarea.getException().printStackTrace();
-            javafx.application.Platform.runLater(() ->
-                notifyEstado(false, "Mandar Solicitud de Viaje")
-            );
+            javafx.application.Platform.runLater(() -> notifyEstado(false));
         });
 
         new Thread(tarea).start();
@@ -83,25 +81,25 @@ public class SolicitudService {
     }
 
     private Resultado calcular(Integer nodoManual) throws InterruptedException {
-        int      idNodoPasajero;
+        int idNodoPasajero;
         NodoMapa pasajero;
-        double   margen   = 0.002;
-        int      maxNodos = grafo.getOrden();
+
+        int maxNodos = grafo.getOrden();
 
         // --- 1. Elegir nodo pasajero ---
         if (nodoManual != null) {
             idNodoPasajero = nodoManual;
-            pasajero       = grafo.getNodo(idNodoPasajero);
+            pasajero = grafo.getNodo(idNodoPasajero);
         } else {
             do {
-                idNodoPasajero = (int)(Math.random() * maxNodos);
-                pasajero       = grafo.getNodo(idNodoPasajero);
+                idNodoPasajero = (int) (Math.random() * maxNodos);
+                pasajero = grafo.getNodo(idNodoPasajero);
             } while (pasajero == null ||
-                     pasajero.getLatitud()  < LectorJSON.LAT_MIN + margen ||
-                     pasajero.getLatitud()  > LectorJSON.LAT_MAX - margen ||
-                     pasajero.getLongitud() < LectorJSON.LNG_MIN + margen ||
-                     pasajero.getLongitud() > LectorJSON.LNG_MAX - margen ||
-                     grafo.esPuntoMuerto(idNodoPasajero));
+                    pasajero.getLatitud() < MapaBounds.SPAWN_LAT_MIN ||
+                    pasajero.getLatitud() > MapaBounds.SPAWN_LAT_MAX ||
+                    pasajero.getLongitud() < MapaBounds.SPAWN_LNG_MIN ||
+                    pasajero.getLongitud() > MapaBounds.SPAWN_LNG_MAX ||
+                    grafo.esPuntoMuerto(idNodoPasajero));
         }
 
         // --- 2. Registrar pasajero esperando ---
@@ -109,12 +107,12 @@ public class SolicitudService {
 
         // --- 3. Delay realista en modo manual ---
         if (nodoManual != null) {
-            notifyEstadoAsync("Buscando taxi...");
-            Thread.sleep(2000 + (long)(Math.random() * 2000));
+            notifyEstadoAsync();
+            Thread.sleep(2000 + (long) (Math.random() * 2000));
         }
 
         // --- 4. Llenar cola de prioridad con disponibles ---
-      Modelo.contenedores.VehiculoPriority colaLocal = new Modelo.contenedores.VehiculoPriority();
+        Modelo.contenedores.VehiculoPriority colaLocal = new Modelo.contenedores.VehiculoPriority();
         for (Vehiculo v : despachador.getFlotaCompleta()) {
             if (v.getState() == EstadoVehiculo.DISPONIBLE) {
                 NodoMapa nAuto = grafo.getNodo(v.getNodoActual());
@@ -127,57 +125,61 @@ public class SolicitudService {
         Vehiculo ganador = null;
         RutaAsignada rutaFase1 = null;
         int nodoPartidaReal = -1;
-        
+
         while (!colaLocal.estaVacia()) {
             Vehiculo candidato = (Vehiculo) colaLocal.sacar();
-            if (!candidato.aceptaViaje()) continue;
+            if (!candidato.aceptaViaje())
+                continue;
 
             nodoPartidaReal = candidato.getNodoActual();
             if (candidato.getRutaAsignada() != null &&
-                !candidato.getRutaAsignada().isEmpty())
+                    !candidato.getRutaAsignada().isEmpty())
                 nodoPartidaReal = candidato.getRutaAsignada().get(0);
 
             NodoMapa nodoAuto = grafo.getNodo(nodoPartidaReal);
-            double   distancia = candidato.getEta();
+            double distancia = candidato.getEta();
 
-            IntelligenceStrategy strat = distancia < 1500
+            IntelligenceStrategy strat = distancia < 800
                     ? new DijsktraStrat()
                     : new FloydStrategy();
-
+            System.out.println("[ALGORITMO] " + (distancia < 800 ? "Dijkstra" : "Floyd")
+                    + " — distancia: " + (int) distancia + "m");
             RutaAsignada r = strat.calculaETA(grafo, nodoAuto, pasajero);
 
             if (esRutaValida(r)) {
-                ganador   = candidato;
+                ganador = candidato;
                 rutaFase1 = r;
                 break;
             }
         }
 
         // --- 6. Calcular ruta Fase 2 (pasajero → destino final) ---
-        RutaAsignada rutaFase2  = null;
-        int          destFinal  = -1;
+        RutaAsignada rutaFase2 = null;
+        int destFinal = -1;
 
         if (ganador != null) {
             int intentos = 0;
             do {
                 do {
-                    destFinal = (int)(Math.random() * maxNodos);
+                    destFinal = (int) (Math.random() * maxNodos);
                 } while (grafo.getNodo(destFinal) == null ||
-                         grafo.esPuntoMuerto(destFinal)  ||
-                         destFinal == idNodoPasajero);
+                        grafo.esPuntoMuerto(destFinal) ||
+                        destFinal == idNodoPasajero);
 
-                NodoMapa nDest  = grafo.getNodo(destFinal);
-                double   dist   = pasajero.distanciaHaversine(nDest);
-                IntelligenceStrategy s = dist < 1500
+                NodoMapa nDest = grafo.getNodo(destFinal);
+                double dist = pasajero.distanciaHaversine(nDest);
+                IntelligenceStrategy s = dist < 800
                         ? new DijsktraStrat()
                         : new FloydStrategy();
+                System.out.println("[ALGORITMO] " + (dist < 800 ? "Dijkstra" : "Floyd")
+                        + " — distancia: " + (int) dist + "m");
                 rutaFase2 = s.calculaETA(grafo, pasajero, nDest);
                 intentos++;
-            } while (rutaFase2.getEta() >= 9999.0 && intentos < 20);
+            } while (rutaFase2.esInvalida() && intentos < 20);
         }
 
         return new Resultado(ganador, rutaFase1, nodoPartidaReal,
-                             pasajero, idNodoPasajero, rutaFase2, destFinal);
+                pasajero, idNodoPasajero, rutaFase2, destFinal);
     }
 
     // =========================================================
@@ -192,10 +194,11 @@ public class SolicitudService {
 
                 r.ganador.getRutaAsignada().clear();
                 // Si el nodo de partida difiere del nodoActual, lo agregamos primero
-                if (r.nodoPartida != r.ganador.getNodoActual())
+                if (r.rutaFase1.getCaminoNodos().isEmpty() || r.rutaFase1.getCaminoNodos().get(0) != r.nodoPartida) {
                     r.ganador.getRutaAsignada().add(r.nodoPartida);
-
+                }
                 r.ganador.getRutaAsignada().addAll(r.rutaFase1.getCaminoNodos());
+
                 r.ganador.setEta(r.rutaFase1.getEta());
                 r.ganador.setNodoDestinoFinal(r.destFinal);
                 r.ganador.setRutaFase2(r.rutaFase2.getCaminoNodos());
@@ -205,17 +208,28 @@ public class SolicitudService {
                 r.pasajero.setConfirmado(true);
             }
             despachador.registrarLog("[DESPACHO] Viaje asignado al Móvil " + r.ganador.getId());
-            observers.forEach(o -> o.onViajeAsignado(r.ganador.getId()));
         } else {
             despachador.registrarLog("[ALERTA] No se pudo asignar ningún vehículo.");
         }
 
         // Notificar flota actualizada y logs acumulados
         observers.forEach(o -> o.onFlotaActualizada(flota));
-        for (String msj : despachador.obtenerYLimpiarLogs())
-            observers.forEach(o -> o.onLogRegistrado(msj));
 
-        notifyEstado(false, "Mandar Solicitud de Viaje");
+        for (String msj : despachador.obtenerYLimpiarLogs()) {
+            // Si es una asignación, extraemos el ID para que el botón sea clickeable
+            if (msj.contains("[DESPACHO] Viaje asignado")) {
+                try {
+                    int id = Integer.parseInt(msj.split("Móvil ")[1].trim().split(" ")[0]);
+                    observers.forEach(o -> o.onViajeAsignado(id, msj));
+                } catch (Exception ignored) {
+                    observers.forEach(o -> o.onLogRegistrado(msj));
+                }
+            } else {
+                // Si es cualquier otro log (TRACKING, ALERTA, etc), va como texto inactivo
+                observers.forEach(o -> o.onLogRegistrado(msj));
+            }
+        }
+        notifyEstado(false);
     }
 
     // =========================================================
@@ -223,22 +237,23 @@ public class SolicitudService {
     // =========================================================
 
     private boolean esRutaValida(RutaAsignada r) {
-        if (r.getEta() >= 9999.0) return false;
+        if (r.esInvalida())
+            return false;
         for (int i = 0; i < r.getCaminoNodos().size() - 1; i++) {
             NodoMapa n1 = grafo.getNodo(r.getCaminoNodos().get(i));
             NodoMapa n2 = grafo.getNodo(r.getCaminoNodos().get(i + 1));
-            if (n1.distanciaHaversine(n2) > 500.0) return false;
+            if (n1.distanciaHaversine(n2) > 500.0)
+                return false;
         }
         return true;
     }
 
-    private void notifyEstado(boolean ocupado, String texto) {
-        observers.forEach(o -> o.onEstadoSolicitudCambiado(ocupado, texto));
+    private void notifyEstado(boolean ocupado) {
+        observers.forEach(o -> o.onEstadoSolicitudCambiado(ocupado));
     }
 
-    /** Versión thread-safe para llamar desde hilo secundario */
-    private void notifyEstadoAsync(String texto) {
-        javafx.application.Platform.runLater(() -> notifyEstado(true, texto));
+    private void notifyEstadoAsync() {
+        javafx.application.Platform.runLater(() -> notifyEstado(true));
     }
 
     // =========================================================
@@ -246,23 +261,23 @@ public class SolicitudService {
     // =========================================================
 
     static class Resultado {
-        final Vehiculo     ganador;
+        final Vehiculo ganador;
         final RutaAsignada rutaFase1;
-        final int          nodoPartida;
-        final NodoMapa     pasajero;
-        final int          idPasajero;
+        final int nodoPartida;
+        final NodoMapa pasajero;
+        final int idPasajero;
         final RutaAsignada rutaFase2;
-        final int          destFinal;
+        final int destFinal;
 
         Resultado(Vehiculo g, RutaAsignada r1, int np,
-                  NodoMapa p, int ip, RutaAsignada r2, int df) {
-            ganador     = g;
-            rutaFase1   = r1;
+                NodoMapa p, int ip, RutaAsignada r2, int df) {
+            ganador = g;
+            rutaFase1 = r1;
             nodoPartida = np;
-            pasajero    = p;
-            idPasajero  = ip;
-            rutaFase2   = r2;
-            destFinal   = df;
+            pasajero = p;
+            idPasajero = ip;
+            rutaFase2 = r2;
+            destFinal = df;
         }
     }
 }

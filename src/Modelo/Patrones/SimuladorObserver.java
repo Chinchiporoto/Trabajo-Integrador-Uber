@@ -16,8 +16,8 @@ public interface SimuladorObserver {
     void onLogRegistrado(String mensaje);
 
     /** Se dispara cuando se asigna un viaje exitoso */
-    void onViajeAsignado(int idMovil);
+    void onViajeAsignado(int idMovil, String logMensaje);
 
     /** Se dispara para habilitar/deshabilitar el botón de solicitud */
-    void onEstadoSolicitudCambiado(boolean ocupado, String textoBtnSolicitud);
+    void onEstadoSolicitudCambiado(boolean ocupado);
 }

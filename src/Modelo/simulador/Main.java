@@ -1,13 +1,14 @@
 package Modelo.simulador;
-
 import java.util.ArrayList;
 import Modelo.grafoDirigido.GrafoSalta;
-import Modelo.recursos.NodoMapa;
 import Modelo.servicio.*;
+import Modelo.recursos.NodoMapa;
+
 import Vista.MainApp;
 import javafx.application.Application; 
 
 public class Main { 
+    
     public static void main(String[] args) {
         String rutaMeta   = "data/meta_datos_nodos_2k.csv";
         String rutaMatriz = "data/matriz_nodos_2k.csv";

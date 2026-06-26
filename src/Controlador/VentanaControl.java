@@ -11,13 +11,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-
+import javafx.scene.layout.Priority;
 import Modelo.Patrones.SimuladorObserver;
 import Modelo.simulador.EstadoVehiculo;
 import Modelo.simulador.SimuladorService;
 import Modelo.simulador.Vehiculo;
-import Modelo.grafoDirigido.GrafoSalta;
-import Modelo.recursos.NodoMapa;
+
 import Vista.MapaView;
 
 import java.util.ArrayList;
@@ -26,12 +25,12 @@ import java.util.ArrayList;
  * Controlador principal de la interfaz gráfica.
  *
  * Post-refactor: implementa SimuladorObserver y solo contiene:
- *  - Construcción y ensamblado del layout
- *  - Panel lateral desplegable
- *  - Timelines (motor 30ms y simulación 8s) — solo llaman al SimuladorService
- *  - Implementación de SimuladorObserver: reacciona a eventos del Modelo
- *  - Actualización de listas y log (solo UI)
- *  - Modo selección manual de pasajero en el mapa
+ * - Construcción y ensamblado del layout
+ * - Panel lateral desplegable
+ * - Timelines (motor 30ms y simulación 8s) — solo llaman al SimuladorService
+ * - Implementación de SimuladorObserver: reacciona a eventos del Modelo
+ * - Actualización de listas y log (solo UI)
+ * - Modo selección manual de pasajero en el mapa
  *
  * Todo lo que antes era lógica de negocio (Task, cálculo de rutas,
  * asignación de vehículos) fue extraído a SimuladorService y SolicitudService.
@@ -47,31 +46,31 @@ public class VentanaControl implements SimuladorObserver {
 
     // --- Layout ---
     private StackPane root;
-    private HBox      contenedor;
-    private Button    bToggle;
-    private VBox      pData;
+    private HBox contenedor;
+    private Button bToggle;
+    private VBox pData;
 
     // --- Listas del panel lateral ---
-    private ListView<String>  listCabbie;
-    private ListView<HBox>    listTravel;
+    private ListView<String> listCabbie;
+    private ListView<HBox> listTravel;
 
     // --- Botón inferior ---
     private Button botonSolicitud;
 
     // --- Estado UI ---
-    private boolean panelVisible       = false;
+    private boolean panelVisible = false;
     private boolean modoSeleccionManual = false;
     private boolean camaraSigueVehiculo = false;
-    private int     idVehiculoEnFoco    = -1;
+    private int idVehiculoEnFoco = -1;
 
     // --- Dimensiones ---
     private final double widWindow;
     private final double heightWindow;
 
-    
     // --- Service inyectado ---
     private SimuladorService simulador;
-
+    private javafx.animation.Timeline motorMovimiento;
+    private javafx.animation.Timeline relojSimulador;
     private final double widePanel = 260.0;
 
     // =========================================================
@@ -79,7 +78,7 @@ public class VentanaControl implements SimuladorObserver {
     // =========================================================
 
     public VentanaControl(double wide, double height) {
-        this.widWindow    = wide;
+        this.widWindow = wide;
         this.heightWindow = height - 100;
 
         inicializarComponentes();
@@ -92,7 +91,8 @@ public class VentanaControl implements SimuladorObserver {
 
     /**
      * Recibe el SimuladorService ya construido y se registra como observer.
-     * Debe llamarse antes de iniciarMotorMovimiento() y iniciarSimulacionAutomatica().
+     * Debe llamarse antes de iniciarMotorMovimiento() y
+     * iniciarSimulacionAutomatica().
      */
     public void setSimuladorService(SimuladorService s) {
         this.simulador = s;
@@ -105,7 +105,8 @@ public class VentanaControl implements SimuladorObserver {
 
     /**
      * El Modelo avisó que la flota se movió → redibujar canvas y actualizar lista.
-     * Siempre se recibe en el hilo de JavaFX (notificado desde Platform.runLater en tick).
+     * Siempre se recibe en el hilo de JavaFX (notificado desde Platform.runLater en
+     * tick).
      */
     @Override
     public void onFlotaActualizada(ArrayList<Vehiculo> flota) {
@@ -120,11 +121,11 @@ public class VentanaControl implements SimuladorObserver {
             for (Vehiculo v : flota) {
                 if (v.getId() == idVehiculoEnFoco) {
                     if (v.getState() == EstadoVehiculo.OCUPADO ||
-                        v.getState() == EstadoVehiculo.ENCAMINO) {
+                            v.getState() == EstadoVehiculo.ENCAMINO) {
                         mapaView.centrarCamara(v.getLatDecimal(), v.getLngDecimal());
                     } else {
                         camaraSigueVehiculo = false;
-                        idVehiculoEnFoco    = -1;
+                        idVehiculoEnFoco = -1;
                     }
                     break;
                 }
@@ -143,18 +144,46 @@ public class VentanaControl implements SimuladorObserver {
      * El botón del log de "[DESPACHO]" también activa el tracking al clickearlo,
      * pero este callback lo activa automáticamente sin necesitar clic del usuario.
      */
+    private void registrarLogDespacho(String mensaje, int idMovil) {
+        HBox fila = new HBox();
+        fila.setAlignment(Pos.CENTER_LEFT);
+        fila.setSpacing(5);
+
+        Button btn = new Button(mensaje);
+        btn.getStyleClass().add("button");
+        btn.setMaxWidth(Double.MAX_VALUE);
+        HBox.setHgrow(btn, Priority.ALWAYS);
+
+        btn.setOnAction(e -> {
+            this.idVehiculoEnFoco = idMovil; // ← int directo, sin parsing
+            this.camaraSigueVehiculo = true;
+            System.out.println("[CÁMARA] Tracking activado — Móvil " + idMovil);
+        });
+
+        fila.getChildren().add(btn);
+        listTravel.getItems().add(0, fila);
+    }
+
     @Override
-    public void onViajeAsignado(int idMovil) {
-        this.idVehiculoEnFoco    = idMovil;
-        this.camaraSigueVehiculo = true;
-        System.out.println("[CÁMARA] Tracking activado — Móvil " + idMovil);
+    public void onViajeAsignado(int idMovil, String logMensaje) {
+        registrarLogDespacho(logMensaje, idMovil);
     }
 
     /** El SolicitudService cambió de estado → actualizar botón */
     @Override
-    public void onEstadoSolicitudCambiado(boolean ocupado, String textoBtnSolicitud) {
+    public void onEstadoSolicitudCambiado(boolean ocupado) {
         botonSolicitud.setDisable(ocupado);
-        botonSolicitud.setText(textoBtnSolicitud);
+
+        if (ocupado) {
+            botonSolicitud.setText("Calculando...");
+        } else {
+            // Cuando se libera, respetamos en qué modo estaba el usuario
+            if (modoSeleccionManual) {
+                botonSolicitud.setText("Hacé clic en el mapa para ubicar al usuario...");
+            } else {
+                botonSolicitud.setText("Mandar Solicitud de Viaje");
+            }
+        }
     }
 
     // =========================================================
@@ -165,9 +194,6 @@ public class VentanaControl implements SimuladorObserver {
      * Inicia el motor de movimiento: llama simulador.tick() cada 30ms.
      * El tick mueve la flota y notifica a este Observer vía onFlotaActualizada.
      */
-    public void iniciarMotorMovimiento() { simulador.iniciarMotorMovimiento(); }
-    public void iniciarSimulacionAutomatica() { simulador.iniciarSimulacionAutomatica(); }
-    public void detenerSimulacionAutomatica() { simulador.detenerSimulacionAutomatica(); }
 
     // =========================================================
     // Modo selección manual de pasajero en el mapa
@@ -197,7 +223,7 @@ public class VentanaControl implements SimuladorObserver {
         // Click en el canvas: solo actúa si estamos en modo selección manual
         mapaView.setOnMapaClicked(event -> {
             System.out.println("=== [DEBUG] CLIC EN EL MAPA DETECTADO ===");
-            
+
             if (!modoSeleccionManual) {
                 System.out.println("[DEBUG] Ignorado: No está en modo manual.");
                 return;
@@ -216,7 +242,7 @@ public class VentanaControl implements SimuladorObserver {
                     modoSeleccionManual = false;
                     botonSolicitud.setStyle("");
                     botonSolicitud.setText("Mandar Solicitud de Viaje"); // <-- ¡Me había faltado esta línea!
-                    
+
                     System.out.println("[DEBUG] ¡Lanzando viaje al SolicitudService!");
                     simulador.spawnPasajero(nodoCercano);
                     iniciarSimulacionAutomatica();
@@ -233,7 +259,7 @@ public class VentanaControl implements SimuladorObserver {
         mapaView.setOnDragIniciado(() -> {
             if (this.camaraSigueVehiculo) {
                 this.camaraSigueVehiculo = false;
-                this.idVehiculoEnFoco    = -1;
+                this.idVehiculoEnFoco = -1;
                 System.out.println("[CÁMARA] Control manual. Tracking desactivado.");
             }
         });
@@ -245,14 +271,13 @@ public class VentanaControl implements SimuladorObserver {
 
     public void actualizarConsolaFlota(ArrayList<Vehiculo> flota) {
         listCabbie.getItems().clear();
-        
+
         // Instanciamos nuestra nueva clase limpia desde la Vista
         listCabbie.setCellFactory(lv -> new Vista.CeldaTaxiFactory());
-        
+
         for (Vehiculo v : flota) {
             listCabbie.getItems().add(
-                String.format("Móvil %02d - %s", v.getId(), v.getState())
-            );
+                    String.format("Móvil %02d - %s", v.getId(), v.getState()));
         }
     }
 
@@ -264,26 +289,10 @@ public class VentanaControl implements SimuladorObserver {
         Button btn = new Button(mensaje);
         btn.getStyleClass().add("button");
         btn.setMaxWidth(Double.MAX_VALUE);
-        javafx.scene.layout.HBox.setHgrow(btn, javafx.scene.layout.Priority.ALWAYS);
+        HBox.setHgrow(btn, Priority.ALWAYS);
 
-        if (mensaje.contains("[DESPACHO] Viaje asignado")) {
-            // Click en el log → activar tracking de cámara sobre ese móvil
-            btn.setOnAction(e -> {
-                try {
-                    int idMovil = Integer.parseInt(
-                        mensaje.split("Móvil ")[1].trim().split(" ")[0]);
-                    this.idVehiculoEnFoco    = idMovil;
-                    this.camaraSigueVehiculo = true;
-                    System.out.println("[CÁMARA] Tracking activado — Móvil " + idMovil);
-                } catch (Exception ex) {
-                    camaraSigueVehiculo = false;
-                    idVehiculoEnFoco    = -1;
-                }
-            });
-        } else {
-            btn.setDisable(true);
-            btn.getStyleClass().add("button-directiva");
-        }
+        btn.setDisable(true);
+        btn.getStyleClass().add("button-directiva");
 
         fila.getChildren().add(btn);
         listTravel.getItems().add(0, fila);
@@ -293,7 +302,9 @@ public class VentanaControl implements SimuladorObserver {
     // API pública para MainApp
     // =========================================================
 
-    public StackPane getRootnodo()   { return root; }
+    public StackPane getRootnodo() {
+        return root;
+    }
 
     public void renderizarMapa() {
         mapaView.renderizarMapa();
@@ -361,7 +372,7 @@ public class VentanaControl implements SimuladorObserver {
         // 4. ENSAMBLADO FINAL
         VBox distribucionVertical = new VBox();
         distribucionVertical.getChildren().addAll(
-            mapaView.getContenedor(), contenedorInferior);
+                mapaView.getContenedor(), contenedorInferior);
 
         root.getChildren().add(distribucionVertical);
         root.getChildren().add(contenedor);
@@ -373,8 +384,7 @@ public class VentanaControl implements SimuladorObserver {
     }
 
     private void gestionarDespliegue() {
-        TranslateTransition tt =
-            new TranslateTransition(Duration.millis(250), contenedor);
+        TranslateTransition tt = new TranslateTransition(Duration.millis(250), contenedor);
         if (panelVisible) {
             tt.setToX(widePanel);
             bToggle.setText("◀\nT\nR\nA\nC\nK");
@@ -385,5 +395,27 @@ public class VentanaControl implements SimuladorObserver {
             panelVisible = true;
         }
         tt.play();
+    }
+
+    public void iniciarMotorMovimiento() {
+        motorMovimiento = new Timeline(
+                new KeyFrame(Duration.millis(16), e -> simulador.tick()));
+        motorMovimiento.setCycleCount(Timeline.INDEFINITE);
+        motorMovimiento.play();
+    }
+
+    public void iniciarSimulacionAutomatica() {
+        relojSimulador = new Timeline(
+                new KeyFrame(Duration.seconds(8), e -> {
+                    System.out.println("\n[SIMULADOR] ---> Spawn automático de pasajero...");
+                    simulador.spawnPasajero(null);
+                }));
+        relojSimulador.setCycleCount(Timeline.INDEFINITE);
+        relojSimulador.play();
+    }
+
+    public void detenerSimulacionAutomatica() {
+        if (relojSimulador != null)
+            relojSimulador.stop();
     }
 }

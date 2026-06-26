@@ -19,8 +19,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * sin tener lógica de negocio mezclada.
  */
 public class SimuladorService {
-    private javafx.animation.Timeline motorMovimiento;
-    private javafx.animation.Timeline relojSimulador;
+    
     private final ArrayList<Vehiculo>           flota;
     private final GrafoSalta                    grafo;
     private final Despachador                   despachador;
@@ -58,18 +57,17 @@ public class SimuladorService {
 
         // Notificar logs acumulados y detectar viajes asignados
         for (String msj : despachador.obtenerYLimpiarLogs()) {
-            observers.forEach(o -> o.onLogRegistrado(msj));
-
-            if (msj.contains("[DESPACHO] Viaje asignado")) {
-                try {
-                    // Extraer id del mensaje "[DESPACHO] Viaje asignado al Móvil X"
-                    int idMovil = Integer.parseInt(
-                        msj.split("Móvil ")[1].trim().split(" ")[0]
-                    );
-                    observers.forEach(o -> o.onViajeAsignado(idMovil));
-                } catch (Exception ignored) {}
-            }
+    if (msj.contains("[DESPACHO] Viaje asignado")) {
+        try {
+            int id = Integer.parseInt(msj.split("Móvil ")[1].trim().split(" ")[0]);
+            observers.forEach(o -> o.onViajeAsignado(id, msj)); // tipado + texto juntos
+        } catch (Exception ignored) {
+            observers.forEach(o -> o.onLogRegistrado(msj)); // fallback si falla
         }
+    } else {
+        observers.forEach(o -> o.onLogRegistrado(msj));
+    }
+}
     }
 
     // =========================================================
@@ -93,33 +91,5 @@ public class SimuladorService {
     public GrafoSalta          getGrafo()       { return grafo; }
     public Despachador         getDespachador() { return despachador; }
 
-public void iniciarMotorMovimiento() {
-        if (motorMovimiento == null) {
-            // Bajamos el latido a 16ms -> ¡60 Fotogramas por segundo!
-            motorMovimiento = new javafx.animation.Timeline(
-                new javafx.animation.KeyFrame(javafx.util.Duration.millis(16), e -> tick())
-            );
-            motorMovimiento.setCycleCount(javafx.animation.Timeline.INDEFINITE);
-        }
-        motorMovimiento.play();
-    }
 
-    public void iniciarSimulacionAutomatica() {
-        if (relojSimulador == null) {
-            relojSimulador = new javafx.animation.Timeline(
-                new javafx.animation.KeyFrame(javafx.util.Duration.seconds(8), e -> {
-                    System.out.println("\n[SIMULADOR] ---> Spawn automático de pasajero...");
-                    spawnPasajero(null);
-                })
-            );
-            relojSimulador.setCycleCount(javafx.animation.Timeline.INDEFINITE);
-        }
-        relojSimulador.play();
-    }
-
-    public void detenerSimulacionAutomatica() {
-        if (relojSimulador != null) {
-            relojSimulador.stop();
-        }
-} 
 }

@@ -202,10 +202,32 @@
 }
 
 /* Color de las flechitas (triángulos) internas */
-.scroll-bar .increment-arrow,
-.scroll-bar .decrement-arrow {
-    -fx-background-color: #c4b550; /* Tu color de texto/acento */
-    -fx-shape: "M 0 0 L 4 4 L 8 0 Z"; /* Aseguramos bordes rectos en el dibujo de la flecha */
+.scroll-bar:vertical .decrement-arrow {
+    -fx-background-color: #c4b550;
+    -fx-shape: "M 0 4 L 4 0 L 8 4 Z";
 }
+
+/* 2. Flecha Abajo (Barra vertical - botón inferior) */
+.scroll-bar:vertical .increment-arrow {
+    -fx-background-color: #c4b550;
+    -fx-shape: "M 0 0 L 4 4 L 8 0 Z";
+}
+
+/* 3. Flecha Izquierda (Barra horizontal - botón izquierdo) */
+.scroll-bar:horizontal .decrement-arrow {
+    -fx-background-color: #c4b550;
+    -fx-shape: "M 4 0 L 0 4 L 4 8 Z";
+}
+
+/* 4. Flecha Derecha (Barra horizontal - botón derecho) */
+.scroll-bar:horizontal .increment-arrow {
+    -fx-background-color: #c4b550;
+    -fx-shape: "M 0 0 L 4 4 L 0 8 Z";
+}
+.list-view .corner,
+.scroll-pane .corner {
+    -fx-background-color: #4d5b4a; /* El mismo tono oscuro del carril (track) */
+}
+
 
 
