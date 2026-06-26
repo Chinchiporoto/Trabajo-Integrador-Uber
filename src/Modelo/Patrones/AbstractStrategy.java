@@ -15,7 +15,6 @@ public abstract class AbstractStrategy implements IntelligenceStrategy {
         return calcular(grafo, idxOrigen, idxDestino);
     }
 
-    // Cada estrategia solo implementa su algoritmo
     protected abstract RutaAsignada calcular(GrafoSalta grafo, int idxOrigen, int idxDestino);
 
 }

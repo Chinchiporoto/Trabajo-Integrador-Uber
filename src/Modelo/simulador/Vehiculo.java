@@ -356,12 +356,10 @@ public class Vehiculo {
             this.setRutaAsignada(new ArrayList<>());
         }
 
-        // Llenar buffer de patrullaje (siempre miramos 3 esquinas al futuro)
         while (this.getRutaAsignada().size() < 3) {
             int nodoPunta;
             int nodoPrevioAlPunta;
 
-            // Identificamos de dónde venimos para no volver hacia atrás
             if (this.getRutaAsignada().isEmpty()) {
                 nodoPunta = this.getNodoActual();
                 nodoPrevioAlPunta = this.nodoAnterior;
@@ -376,7 +374,6 @@ public class Vehiculo {
 
             if (!vecinos.isEmpty()) {
 
-                // --- FILTRO ANTI PING-PONG (Evita giros en U) ---
                 ArrayList<Integer> vecinosHaciaAdelante = new ArrayList<>();
                 for (int v : vecinos) {
                     if (v != nodoPrevioAlPunta) {
@@ -385,11 +382,11 @@ public class Vehiculo {
                 }
 
                 int esquinaAzar;
-                // Si hay calles para seguir avanzando, elige una al azar
+
                 if (!vecinosHaciaAdelante.isEmpty()) {
                     esquinaAzar = vecinosHaciaAdelante.get((int) (Math.random() * vecinosHaciaAdelante.size()));
                 } else {
-                    // Solo si es un callejón sin salida (no le queda otra), da la vuelta
+
                     esquinaAzar = vecinos.get((int) (Math.random() * vecinos.size()));
                 }
 
@@ -400,7 +397,6 @@ public class Vehiculo {
             }
         }
 
-        // Sistema de rescate si cae en una isla completamente desconectada
         if (atrapadoPuntoMuerto && this.getRutaAsignada().isEmpty()) {
             int nodoRescate = (int) (Math.random() * gs.getOrden());
             Modelo.recursos.NodoMapa nRescate = gs.getNodo(nodoRescate);
@@ -408,19 +404,16 @@ public class Vehiculo {
             if (nRescate != null) {
                 this.setNodoActual(nodoRescate);
 
-                // ¡LA SOLUCIÓN AL AUTO VOLADOR!
-                // Sincronizamos la física decimal con el nuevo nodo de rescate
                 this.latActualDecimal = nRescate.getLatitud();
                 this.lngActualDecimal = nRescate.getLongitud();
 
-                this.nodoAnterior = -1; // Le borramos la memoria tras el rescate
+                this.nodoAnterior = -1;
                 this.getRutaAsignada().clear();
                 this.resetearRelojMecanico();
             }
             return;
         }
 
-        // Ejecuta la cinemática vectorial suave que ya definimos
         if (!this.getRutaAsignada().isEmpty()) {
             int nodoObjetivoInmediato = this.getRutaAsignada().get(0);
             boolean cruzoEsquina = this.avanzarUnNodo(gs);

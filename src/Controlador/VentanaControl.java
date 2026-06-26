@@ -317,7 +317,6 @@ public class VentanaControl implements SimuladorObserver {
     private void inicializarComponentes() {
         root = new StackPane();
         root.setId("rootContainer");
-
         // 1. MAPA
         mapaView = new MapaView(widWindow, heightWindow);
 
