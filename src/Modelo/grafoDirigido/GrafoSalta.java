@@ -29,62 +29,19 @@ import Modelo.recursos.RutaAsignada;
  */
 public class GrafoSalta extends AbsGrafoD {
 
-    /**
-     * Array que almacena los nodos (intersecciones) del grafo con su información
-     * geográfica
-     */
     protected NodoMapa[] catalogo;
-    /** Array con los identificadores OSM (OpenStreetMap) de cada nodo */
     protected long[] idsOsm;
-    /**
-     * Ruta al archivo CSV de metadatos de nodos (latitud, longitud, nombres de
-     * calles)
-     */
+
     protected String rutaMetaDatos;
-    /** Ruta al archivo CSV con la matriz de adyacencia del grafo */
     protected String rutaMatriz;
 
-    // =========================================================
-    // OPTIMIZACIÓN 1: HashMap para buscarIndice() — O(n) → O(1)
-    // Antes: recorría los 1665 elementos con un for cada vez.
-    // Ahora: lookup directo por clave OSM.
-    // =========================================================
     private HashMap<Long, Integer> idToIndex;
 
-    // =========================================================
-    // OPTIMIZACIÓN 2: Floyd con double[][] primitivo
-    // Antes: MatrizGrafo (Object[][]) con boxing/unboxing en cada
-    // operación del triple loop — ~4.600M casteos extra.
-    // Ahora: double[][] y int[][] sin ningún objeto intermedio.
-    // =========================================================
     private double[][] floydCostoRapido;
     private int[][] floydCaminoRapido; // -1 = sin nodo intermedio
 
-    /**
-     * Progreso real del loop externo de Floyd (k = 0..n-1).
-     * volatile para que el hilo JavaFX lo lea de forma segura
-     * sin sincronización explícita.
-     * El splash lo lee cada 50ms para actualizar la barra.
-     */
     public volatile int floydK = 0;
 
-    // =========================================================
-    // OPTIMIZACIÓN 3: Dijkstra con arrays primitivos
-    // Antes: ListaDoubleLinkedL — devolver(w) es O(n), llamado
-    // dentro del doble loop → Dijkstra efectivo O(n³).
-    // Ahora: double[] y int[] con acceso O(1) por índice.
-    // =========================================================
-
-    // =========================================================
-    // OPTIMIZACIÓN 4: Cache de vecinos válidos — int[][] primitivo
-    // Antes: obtenerVecinosValidos() recorría los 1665 nodos y
-    // llamaba matrizCosto.devolver() cada vez que un vehículo
-    // patrullaba (~cada 30ms por vehículo).
-    // Ahora: se calcula UNA sola vez al terminar cargarGrafo() y
-    // se devuelve directamente desde el cache. Sin java.util,
-    // solo un int[][] donde vecinosCache[i] son los índices
-    // vecinos del nodo i.
-    // =========================================================
     private int[][] vecinosCache;
 
     // ----------------------------------------------------------------
